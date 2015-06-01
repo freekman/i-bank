@@ -27,9 +27,9 @@ public class ClientInformation {
 
   @Post
   public Reply<?> sendInfo() {
-    User user = bankUser.get();
-    if (null != user) {
-      return Reply.with(new UserDTO(user.getName(), user.getPassword(), user.getAmount())).as(Json.class).status(200);
+    User currentUser = bankUser.get();
+    if (null != currentUser) {
+      return Reply.with(new UserDTO(currentUser.getName(), currentUser.getPassword(), currentUser.getAmount())).as(Json.class).status(200);
     }
     return Reply.with("Sid not found!").status(404);
   }
