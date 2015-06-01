@@ -1,6 +1,6 @@
 package com.clouway.http;
 
-import com.clouway.core.Manager;
+import com.clouway.core.TransactionManager;
 import com.clouway.core.Transaction;
 import com.clouway.validator.SimpleValidator;
 import com.google.inject.Inject;
@@ -18,12 +18,12 @@ import com.google.sitebricks.http.Post;
 @Service
 public class BankService {
   private final SimpleValidator<Transaction> transactionValidator;
-  private final Manager manager;
+  private final TransactionManager transactionManager;
 
   @Inject
-  public BankService(SimpleValidator transactionValidator, Manager manager) {
+  public BankService(SimpleValidator transactionValidator, TransactionManager transactionManager) {
     this.transactionValidator = transactionValidator;
-    this.manager = manager;
+    this.transactionManager = transactionManager;
   }
 
   @Post
@@ -38,10 +38,10 @@ public class BankService {
     Transaction result = null;
     boolean transactionIsValid = transactionValidator.isValid(transaction);
     if (transactionIsValid && dto.getTransactionType().equals("deposit")) {
-      result = manager.deposit(dto.getAmount());
+      result = transactionManager.deposit(dto.getAmount());
       return Reply.with(result).as(Json.class).status(200);
     } else if (transactionIsValid && dto.getTransactionType().equals("withdraw")) {
-      result = manager.withdraw(dto.getAmount());
+      result = transactionManager.withdraw(dto.getAmount());
       return Reply.with(result).as(Json.class).status(200);
     }
     return Reply.with("Transaction did not occur").status(400);

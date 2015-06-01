@@ -5,13 +5,13 @@ import com.google.inject.Inject;
 /**
  * Created byivan.genchev1989@gmail.com.
  */
-public class BankManager implements Manager {
+public class BankTransactionManager implements TransactionManager {
 
   private final BankUser bankUser;
   private final UserRegister userRegister;
 
   @Inject
-  public BankManager(BankUser bankUser, UserRegister userRegister) {
+  public BankTransactionManager(BankUser bankUser, UserRegister userRegister) {
     this.bankUser = bankUser;
     this.userRegister = userRegister;
   }

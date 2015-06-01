@@ -8,9 +8,9 @@ import org.junit.Rule;
 import static org.hamcrest.CoreMatchers.is;
 import static org.hamcrest.MatcherAssert.assertThat;
 
-public class BankManagerTest {
+public class BankTransactionManagerTest {
 
-  private BankManager manager;
+  private BankTransactionManager manager;
   private BankUser bankUser;
   private UserRegister userRegister;
   @Rule
@@ -20,7 +20,7 @@ public class BankManagerTest {
   public void setUp() throws Exception {
     userRegister = context.mock(UserRegister.class);
     bankUser = context.mock(BankUser.class);
-    manager = new BankManager(bankUser, userRegister);
+    manager = new BankTransactionManager(bankUser, userRegister);
   }
 
   @Test

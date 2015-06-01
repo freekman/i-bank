@@ -1,6 +1,6 @@
 package com.clouway.http;
 
-import com.clouway.core.Manager;
+import com.clouway.core.TransactionManager;
 import com.clouway.core.Transaction;
 import com.clouway.validator.SimpleValidator;
 import com.google.sitebricks.client.Transport;
@@ -21,7 +21,7 @@ import static org.hamcrest.MatcherAssert.assertThat;
 public class BankServiceWithdrawTest {
   private BankService bankService;
   private SimpleValidator<Transaction> validator;
-  private Manager manager;
+  private TransactionManager transactionManager;
   private Request rq;
   @Rule
   public JUnitRuleMockery context = new JUnitRuleMockery();
@@ -29,9 +29,9 @@ public class BankServiceWithdrawTest {
   @Before
   public void setUp() throws Exception {
     validator = context.mock(SimpleValidator.class);
-    manager = context.mock(Manager.class);
+    transactionManager = context.mock(TransactionManager.class);
     rq = context.mock(Request.class);
-    bankService = new BankService(validator, manager);
+    bankService = new BankService(validator, transactionManager);
   }
 
   @Test
@@ -46,7 +46,7 @@ public class BankServiceWithdrawTest {
       }));
       oneOf(validator).isValid(new Transaction(10.0, "withdraw"));
       will(returnValue(true));
-      oneOf(manager).withdraw(10.0);
+      oneOf(transactionManager).withdraw(10.0);
       will(returnValue(new Transaction(10.0, "OK")));
     }});
     Reply replay = bankService.executeTransaction(rq);
