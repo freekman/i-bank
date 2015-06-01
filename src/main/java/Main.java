@@ -7,7 +7,7 @@ public class Main {
   public static void main(String[] args) throws Exception {
     Server server = new Server(8080);
     WebAppContext webapp = new WebAppContext();
-    webapp.setWar("AngularBank.war");
+    webapp.setWar("src/main/webapp/");
     server.setHandler(webapp);
     server.start();
     server.join();

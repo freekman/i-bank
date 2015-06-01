@@ -1,9 +1,8 @@
 package com.clouway.http;
 
+import com.clouway.core.BankUser;
 import com.clouway.core.Session;
-import com.clouway.core.SidProvider;
 import com.clouway.core.User;
-import com.clouway.core.UserFinder;
 import com.google.sitebricks.headless.Reply;
 import org.jmock.Expectations;
 import org.jmock.integration.junit4.JUnitRuleMockery;
@@ -19,27 +18,23 @@ import static org.hamcrest.MatcherAssert.assertThat;
 public class ClientInformationTest {
 
   private ClientInformation info;
-  private UserFinder userFinder;
-  private SidProvider sidProvider;
+  private BankUser bankUser;
 
   @Rule
   public JUnitRuleMockery context = new JUnitRuleMockery();
 
   @Before
   public void setUp() throws Exception {
-    userFinder = context.mock(UserFinder.class);
-    sidProvider = context.mock(SidProvider.class);
-    info = new ClientInformation(userFinder, sidProvider);
+    bankUser = context.mock(BankUser.class);
+    info = new ClientInformation(bankUser);
 
   }
 
   @Test
   public void deposit() throws Exception {
     context.checking(new Expectations() {{
-      oneOf(sidProvider).get();
-      will(returnValue("asd"));
-      oneOf(userFinder).findBySidIfExist("asd");
-      will(returnValue(new User("Ivan", "qqq", 12.00,new Session("asd","Ivan",0l))));
+      oneOf(bankUser).get();
+      will(returnValue(new User("Ivan", "qqq", 12.00, new Session("asd", "Ivan", 0l))));
     }});
     Reply<?> reply = info.sendInfo();
     assertThat(reply, is(contains(new UserDTO("Ivan", "qqq", 12.00))));
@@ -49,9 +44,8 @@ public class ClientInformationTest {
   @Test
   public void sidNotFound() throws Exception {
     context.checking(new Expectations() {{
-      oneOf(sidProvider).get();
+      oneOf(bankUser).get();
       will(returnValue(null));
-      never(userFinder).findBySidIfExist("asd");
     }});
     Reply<?> reply = info.sendInfo();
     assertThat(reply, is(contains("Sid not found!")));

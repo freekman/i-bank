@@ -24,19 +24,15 @@ import java.util.Calendar;
  */
 @Singleton
 public class SecurityFilter implements Filter {
-
   private SessionFinder sessionFinder;
   private SessionRegister sessionRegister;
-
   @Inject
   public SecurityFilter(SessionFinder sessionFinder, SessionRegister sessionRegister) {
     this.sessionFinder = sessionFinder;
     this.sessionRegister = sessionRegister;
   }
-
   @Override
   public void init(FilterConfig filterConfig) throws ServletException {
-    System.out.println("Security Filter Created.");
   }
 
   @Override

@@ -15,7 +15,6 @@ class UserDTO {
   public UserDTO(String name, String password, Double amount) {
     this.name = name;
     this.password = password;
-
     this.amount = amount;
   }
 
@@ -28,7 +27,6 @@ class UserDTO {
 
     if (name != null ? !name.equals(userDTO.name) : userDTO.name != null) return false;
     if (password != null ? !password.equals(userDTO.password) : userDTO.password != null) return false;
-
     return true;
   }
 
