@@ -22,9 +22,8 @@ class UserDTO {
   public boolean equals(Object o) {
     if (this == o) return true;
     if (o == null || getClass() != o.getClass()) return false;
-
     UserDTO userDTO = (UserDTO) o;
-
+    
     if (name != null ? !name.equals(userDTO.name) : userDTO.name != null) return false;
     if (password != null ? !password.equals(userDTO.password) : userDTO.password != null) return false;
     return true;

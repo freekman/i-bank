@@ -23,7 +23,7 @@ public class BankServiceDepositTest {
   private BankService bankService;
   private SimpleValidator<Transaction> validator;
   private TransactionManager transactionManager;
-  private Request rq;
+  private Request request;
   @Rule
   public JUnitRuleMockery context = new JUnitRuleMockery();
 
@@ -31,14 +31,14 @@ public class BankServiceDepositTest {
   public void setUp() throws Exception {
     validator = context.mock(SimpleValidator.class);
     transactionManager = context.mock(TransactionManager.class);
-    rq = context.mock(Request.class);
+    request = context.mock(Request.class);
     bankService = new BankService(validator, transactionManager);
   }
 
   @Test
   public void happyPath() throws Exception {
     context.checking(new Expectations() {{
-      oneOf(rq).read(TransactionDTO.class);
+      oneOf(request).read(TransactionDTO.class);
       will(returnValue(new RequestRead<TransactionDTO>() {
         @Override
         public TransactionDTO as(Class<? extends Transport> transport) {
@@ -50,7 +50,7 @@ public class BankServiceDepositTest {
       oneOf(transactionManager).deposit(10.0);
       will(returnValue(new Transaction(10.0, "ok")));
     }});
-    Reply replay = bankService.executeTransaction(rq);
+    Reply replay = bankService.executeTransaction(request);
     assertThat(replay, is(contains(new Transaction(10.0, "ok"))));
     assertThat(replay, is(statusIs(200)));
   }

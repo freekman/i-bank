@@ -57,7 +57,7 @@ public class UserAuthenticator implements Authenticator<User> {
     sessionRegister.createSession(sid, user.getName(), Calendar.getInstance().getTimeInMillis());
   }
 
-  static String sha1(String input) {
+  private String sha1(String input) {
     MessageDigest mDigest = null;
     try {
       mDigest = MessageDigest.getInstance("SHA1");
