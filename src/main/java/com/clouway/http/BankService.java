@@ -1,7 +1,7 @@
 package com.clouway.http;
 
-import com.clouway.core.TransactionManager;
 import com.clouway.core.Transaction;
+import com.clouway.core.TransactionManager;
 import com.clouway.validator.SimpleValidator;
 import com.google.inject.Inject;
 import com.google.sitebricks.At;
@@ -27,7 +27,7 @@ public class BankService {
   }
 
   @Post
-  public Reply<?> executeTransaction(Request request) {Re
+  public Reply<?> executeTransaction(Request request) {
     TransactionDTO dto = request.read(TransactionDTO.class).as(Json.class);
     if (null == dto) {
       return Reply.with("Transaction did not occur").status(400);
