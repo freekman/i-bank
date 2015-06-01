@@ -18,12 +18,11 @@ public class CurrentBankUser implements BankUser {
 
   @Override
   public User get() {
-    User current = null;
     String sid = sidProvider.get();
     if (null != sid) {
-      current = userFinder.findBySidIfExist(sid);
+      return userFinder.findBySidIfExist(sid);
     }
-    return current;
+    return null;
   }
 
 }
