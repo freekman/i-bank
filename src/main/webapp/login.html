@@ -1,0 +1,42 @@
+<html>
+<head>
+    <title>Bank Home</title>
+    <link href="../css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="css/bankStyle.css"/>
+</head>
+<body>
+<div class="navbar navbar-inverse">
+    <div class="container">
+        <div class="nav navbar-right">
+            <a href="/home" class="navbar-brand">Home</a>
+        </div>
+        <a href="/register" class="navbar-brand">Register</a>
+        <a href="/login" class="navbar-brand">LogIn</a>
+    </div>
+</div>
+
+
+<div class="row">
+    <div class="col-md-4"></div>
+    <div class="col-md-4">
+        <div class="form-signin">
+            <form class="form-signin" method="post" action="/login">
+                <h2 class="form-signin-heading" style="color: dodgerblue">Login</h2>
+                <label class="sr-only">User Name</label>
+                <input type="uName" name="uName" class="form-control" placeholder="User name" required autofocus
+                       value="${uName}"/>
+                <label for="inputPassword" class="sr-only">Password</label>
+                <input type="password" name="pwd" id="inputPassword" class="form-control" placeholder="Password"
+                       required>
+                <button class="btn btn-lg btn-primary btn-block" type="submit">Login</button>
+            </form>
+        </div>
+    </div>
+    <div class="col-md-4"></div>
+</div>
+<div class="navbar navbar-default navbar-fixed-bottom">
+</div>
+<script src="../jquery/jquery-1.11.2.js"></script>
+<script src="../js/bootstrap.min.js"></script>
+</body>
+</html>

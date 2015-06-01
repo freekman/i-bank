@@ -1,0 +1,68 @@
+<div class="navbar navbar-inverse">
+    <div class="container">
+        <a class="navbar-brand">{{uName}}</a>
+        <a class="navbar-brand">&nbsp;:&nbsp;$&nbsp;{{balance}}</a>
+
+        <div class="nav navbar-right">
+            <a href="/logout" class="navbar-brand">Log Out</a>
+        </div>
+    </div>
+</div>
+<div class="container">
+    <div class="jumbotron">
+        <div style="width: 30%;margin-left: auto;margin-right: auto">
+            <div class="panel-group" id="accordion" role="tablist" aria-multiselectable="true">
+                <div class="panel panel-default">
+                    <div class="panel-heading" role="tab" id="headingOne">
+                        <h4 class="panel-title">
+                            <a data-toggle="collapse" data-parent="#accordion" href="#collapseOne" aria-expanded="true"
+                               aria-controls="collapseOne">
+                                Withdraw
+                            </a>
+                        </h4>
+                    </div>
+                    <div id="collapseOne" class="panel-collapse collapse in" role="tabpanel"
+                         aria-labelledby="headingOne">
+                        <div class="panel-body">
+                            <form name="formW">
+                                <input type="text" class="form-control" name="amount" ng-model="amount"
+                                       ng-blur="validateWithdraw(amount)" ng-pattern="regex"/>
+                                <button class="btn btn-lg btn-primary btn-block"
+                                        ng-click="withdraw(amount,formW.amount.$valid)">Withdraw
+                                </button>
+                            </form>
+                            <span class="text-danger" withdraw-status></span>
+                        </div>
+                        <!--WithDraw-->
+                    </div>
+                </div>
+                <div class="panel panel-default">
+                    <div class="panel-heading" role="tab" id="headingTwo">
+                        <h4 class="panel-title">
+                            <a class="collapsed" data-toggle="collapse" data-parent="#accordion" href="#collapseTwo"
+                               aria-expanded="false" aria-controls="collapseTwo">
+                                Deposit
+                            </a>
+                        </h4>
+                    </div>
+                    <div id="collapseTwo" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingTwo">
+                        <div class="panel-body">
+                            <form name="formD">
+                                <input type="text" class="form-control" name="amount" ng-model="amount"
+                                       ng-blur="validateDeposit(amount)" ng-pattern="regex"/>
+                                <button class="btn btn-lg btn-primary btn-block"
+                                        ng-click="deposit(amount,formD.amount.$valid)">Deposit
+                                </button>
+                            </form>
+                            <span class="text-danger" deposit-status></span>
+                        </div>
+                        <!--Deposit-->
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="navbar navbar-default navbar-fixed-bottom"></div>

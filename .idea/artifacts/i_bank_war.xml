@@ -1,0 +1,8 @@
+<component name="ArtifactManager">
+  <artifact type="war" name="i-bank:war">
+    <output-path>$PROJECT_DIR$/target</output-path>
+    <root id="archive" name="AngularBank.war">
+      <element id="artifact" artifact-name="i-bank:war exploded" />
+    </root>
+  </artifact>
+</component>
