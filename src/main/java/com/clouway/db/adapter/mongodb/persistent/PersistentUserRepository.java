@@ -56,23 +56,6 @@ public class PersistentUserRepository implements UserRegister, UserFinder {
   }
 
   @Override
-  public List<User> findAll() {
-    List<User> list = new ArrayList<>();
-    FindIterable<Document> result = db.getCollection("user").find();
-    for (Document document : result) {
-      String name = (String) document.get("name");
-      String pwd = (String) document.get("password");
-      Double amount = (Double) document.get("amount");
-      Document session = (Document) document.get("session");
-      String sessionId = session.getString("sid");
-      Long time = session.getLong("timeOut");
-
-      list.add(new User(name, pwd, amount, new Session(sessionId, name, time)));
-    }
-    return list;
-  }
-
-  @Override
   public User findByName(String userName) {
     Document result = db.getCollection("user").find(eq("name", userName)).first();
     if (null != result) {

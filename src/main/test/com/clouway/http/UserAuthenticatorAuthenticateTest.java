@@ -37,7 +37,7 @@ public class UserAuthenticatorAuthenticateTest {
       oneOf(userFinder).findByName("Ivan");
       will(returnValue(user));
     }});
-    boolean result = userAuthenticator.authenticate(new User("Ivan", "qwerty", 0.0, new Session("", "Ivan", 0l)));
+    boolean result = userAuthenticator.authenticate(user);
     assertTrue(result);
   }
 
