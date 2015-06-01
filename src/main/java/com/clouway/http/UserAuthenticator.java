@@ -28,14 +28,14 @@ public class UserAuthenticator implements Authenticator<User> {
   private final UserFinder userFinder;
   private final SessionRegister sessionRegister;
   private final Provider<HttpServletRequest> requestProvider;
-  private final Provider<HttpServletResponse> resp;
+  private final Provider<HttpServletResponse> responseProvider;
 
   @Inject
-  public UserAuthenticator(UserFinder userFinder, SessionRegister sessionRegister, Provider<HttpServletRequest> requestProvider, Provider<HttpServletResponse> resp) {
+  public UserAuthenticator(UserFinder userFinder, SessionRegister sessionRegister, Provider<HttpServletRequest> requestProvider, Provider<HttpServletResponse> responseProvider) {
     this.userFinder = userFinder;
     this.sessionRegister = sessionRegister;
     this.requestProvider = requestProvider;
-    this.resp = resp;
+    this.responseProvider = responseProvider;
   }
 
   public boolean authenticate(User user) {
@@ -52,7 +52,7 @@ public class UserAuthenticator implements Authenticator<User> {
       UUID uuid = new UUID(10, 5);
       String randomValue = "vankaBanka" + uuid.randomUUID().toString();
       sid = sha1(randomValue);
-      resp.get().addCookie(new Cookie("sid", sid));
+      responseProvider.get().addCookie(new Cookie("sid", sid));
     }
     sessionRegister.createSession(sid, user.getName(), Calendar.getInstance().getTimeInMillis());
   }
