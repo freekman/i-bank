@@ -4,7 +4,7 @@ import com.clouway.core.Authenticator;
 import com.clouway.core.SessionRegister;
 import com.clouway.core.User;
 import com.clouway.core.UserFinder;
-import com.clouway.core.UserSidProvider;
+import com.clouway.core.CurrentSidProvider;
 import com.google.inject.Inject;
 import com.google.inject.Provider;
 import com.google.sitebricks.At;
@@ -48,7 +48,7 @@ public class UserAuthenticator implements Authenticator<User> {
   }
 
   public void createAndSaveSession(User user) {
-    String sid = new UserSidProvider(requestProvider.get()).get();
+    String sid = new CurrentSidProvider(requestProvider.get()).get();
     if (sid == null) {
       UUID uuid = new UUID(10, 5);
       String randomValue = "vankaBanka" + uuid.randomUUID().toString();

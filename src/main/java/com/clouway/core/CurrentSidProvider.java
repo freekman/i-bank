@@ -8,11 +8,11 @@ import javax.servlet.http.HttpServletRequest;
 /**
  * @author Ivan Genchev (ivan.genchev1989@gmail.com)
  */
-public class UserSidProvider implements SidProvider {
+public class CurrentSidProvider implements SidProvider {
   private HttpServletRequest req;
 
   @Inject
-  public UserSidProvider(HttpServletRequest req) {
+  public CurrentSidProvider(HttpServletRequest req) {
     this.req = req;
   }
 

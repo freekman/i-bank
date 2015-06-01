@@ -5,11 +5,10 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="e7a84ea4-d6f3-45eb-8cd6-8d225d0af739" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/uiDesigner.xml" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/main/java/com/clouway/core/UserAlreadyExistsException.java" afterPath="$PROJECT_DIR$/src/main/java/com/clouway/core/ExistingUserException.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/clouway/db/adapter/mongodb/persistent/PersistentUserRepository.java" afterPath="$PROJECT_DIR$/src/main/java/com/clouway/db/adapter/mongodb/persistent/PersistentUserRepository.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/clouway/http/RegistrationPage.java" afterPath="$PROJECT_DIR$/src/main/java/com/clouway/http/RegistrationPage.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/clouway/core/Rule.java" afterPath="$PROJECT_DIR$/src/main/java/com/clouway/core/Rule.java" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/src/main/java/com/clouway/core/UserSidProvider.java" afterPath="$PROJECT_DIR$/src/main/java/com/clouway/core/CurrentSidProvider.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/clouway/http/GuiceCreator.java" afterPath="$PROJECT_DIR$/src/main/java/com/clouway/http/GuiceCreator.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/clouway/http/SecurityFilter.java" afterPath="$PROJECT_DIR$/src/main/java/com/clouway/http/SecurityFilter.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/clouway/http/UserAuthenticator.java" afterPath="$PROJECT_DIR$/src/main/java/com/clouway/http/UserAuthenticator.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path="i-bank.iws" />
@@ -99,8 +98,8 @@
       <file leaf-file-name="ExistingUserException.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/main/java/com/clouway/core/ExistingUserException.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.10440835" vertical-offset="0" max-vertical-offset="862">
-              <caret line="5" column="13" selection-start-line="5" selection-start-column="13" selection-end-line="5" selection-end-column="13" />
+            <state vertical-scroll-proportion="0.14617169" vertical-offset="0" max-vertical-offset="862">
+              <caret line="7" column="0" selection-start-line="7" selection-start-column="0" selection-end-line="7" selection-end-column="0" />
               <folding />
             </state>
           </provider>
@@ -576,12 +575,12 @@
       <option name="number" value="Default" />
       <updated>1433140413384</updated>
       <workItem from="1433140414005" duration="19000" />
-      <workItem from="1433140458119" duration="2146000" />
+      <workItem from="1433140458119" duration="2277000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="2165000" />
+    <option name="totallyTimeSpent" value="2296000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="992" y="52" width="927" height="1028" extended-state="4" />
@@ -717,8 +716,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/com/clouway/core/ExistingUserException.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.10440835" vertical-offset="0" max-vertical-offset="862">
-          <caret line="5" column="13" selection-start-line="5" selection-start-column="13" selection-end-line="5" selection-end-column="13" />
+        <state vertical-scroll-proportion="0.14617169" vertical-offset="0" max-vertical-offset="862">
+          <caret line="7" column="0" selection-start-line="7" selection-start-column="0" selection-end-line="7" selection-end-column="0" />
           <folding />
         </state>
       </provider>

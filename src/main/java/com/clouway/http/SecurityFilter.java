@@ -3,7 +3,7 @@ package com.clouway.http;
 import com.clouway.core.Session;
 import com.clouway.core.SessionFinder;
 import com.clouway.core.SessionRegister;
-import com.clouway.core.UserSidProvider;
+import com.clouway.core.CurrentSidProvider;
 import com.google.inject.Inject;
 import com.google.inject.Singleton;
 
@@ -44,7 +44,7 @@ public class SecurityFilter implements Filter {
     boolean isActive = false;
     String reqURI = ((HttpServletRequest) request).getRequestURI();
     String destination = getDestination(reqURI);
-    String sessionId = new UserSidProvider((HttpServletRequest) request).get();
+    String sessionId = new CurrentSidProvider((HttpServletRequest) request).get();
     Session session = sessionFinder.findBySid(sessionId);
 
     Session currentSession = null;

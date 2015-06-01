@@ -29,7 +29,7 @@ public class GuiceCreator extends GuiceServletContextListener {
         bind(BankUser.class).to(CurrentBankUser.class);
         bind(TransactionManager.class).to(BankTransactionManager.class);
         bind(SimpleValidator.class).to(TransactionValidator.class);
-        bind(SidProvider.class).to(UserSidProvider.class);
+        bind(SidProvider.class).to(CurrentSidProvider.class);
         bind(SessionFinder.class).to(PersistentSessionRepository.class);
         bind(SessionRegister.class).to(PersistentSessionRepository.class);
         bind(Authenticator.class).to(UserAuthenticator.class);
