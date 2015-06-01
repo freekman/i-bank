@@ -5,9 +5,9 @@ package com.clouway.http;
  */
 class UserDTO {
 
-  private String name;
-  private String password;
-  private Double amount;
+  public String name;
+  public String password;
+  public Double amount;
 
   public UserDTO() {
   }
@@ -17,18 +17,6 @@ class UserDTO {
     this.password = password;
 
     this.amount = amount;
-  }
-
-  public String getName() {
-    return name;
-  }
-
-  public String getPassword() {
-    return password;
-  }
-
-  public Double getAmount() {
-    return amount;
   }
 
   @Override

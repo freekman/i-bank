@@ -39,7 +39,7 @@ public class RegistrationPage {
   @Post
   public void get() {
     UserDTO userDTO = new UserDTO(uName, pwd, 0.0);
-    User user = new User(userDTO.getName(), userDTO.getPassword(), userDTO.getAmount(), new Session("", userDTO.getName(), 0));
+    User user = new User(userDTO.name, userDTO.password, userDTO.amount, new Session("", userDTO.name, 0));
     messages = validator.validate(user);
     if (messages.size() == 0) {
       messages = new ArrayList<String>() {{

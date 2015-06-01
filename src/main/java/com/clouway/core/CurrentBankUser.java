@@ -20,7 +20,7 @@ public class CurrentBankUser implements BankUser {
   public User get() {
     String sid = sidProvider.get();
     if (null != sid) {
-      return userFinder.findBySidIfExist(sid);
+       return userFinder.findBySidIfExist(sid);
     }
     return null;
   }
