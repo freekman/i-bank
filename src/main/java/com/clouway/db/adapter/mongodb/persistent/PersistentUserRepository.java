@@ -2,7 +2,7 @@ package com.clouway.db.adapter.mongodb.persistent;
 
 import com.clouway.core.Session;
 import com.clouway.core.User;
-import com.clouway.core.UserAlreadyExistsException;
+import com.clouway.core.ExistingUserException;
 import com.clouway.core.UserFinder;
 import com.clouway.core.UserRegister;
 import com.google.inject.Inject;
@@ -40,7 +40,7 @@ public class PersistentUserRepository implements UserRegister, UserFinder {
                               .append("sid", user.getSession().getSessionId())
                               .append("timeOut", user.getSession().getSessionTimeCreated())));
     } catch (MongoWriteException e) {
-      throw new UserAlreadyExistsException();
+      throw new ExistingUserException();
     }
   }
 
@@ -51,7 +51,7 @@ public class PersistentUserRepository implements UserRegister, UserFinder {
               new Document("$set", new Document("amount", newAmount)));
       System.out.println(db.toString());
     } catch (MongoWriteException e) {
-      throw new UserAlreadyExistsException();
+      throw new ExistingUserException();
     }
   }
 

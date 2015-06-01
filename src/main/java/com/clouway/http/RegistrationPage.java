@@ -2,7 +2,7 @@ package com.clouway.http;
 
 import com.clouway.core.Session;
 import com.clouway.core.User;
-import com.clouway.core.UserAlreadyExistsException;
+import com.clouway.core.ExistingUserException;
 import com.clouway.core.UserRegister;
 import com.clouway.validator.Validator;
 import com.google.inject.Inject;
@@ -47,7 +47,7 @@ public class RegistrationPage {
       }};
       try {
         userRegistry.register(user);
-      } catch (UserAlreadyExistsException e) {
+      } catch (ExistingUserException e) {
         messages = new ArrayList<String>() {{
           add("User already exists.");
         }};
