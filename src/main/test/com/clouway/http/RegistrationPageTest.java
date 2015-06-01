@@ -1,12 +1,21 @@
 package com.clouway.http;
 
+import com.clouway.core.ExistingUserException;
+import com.clouway.core.Session;
+import com.clouway.core.User;
 import com.clouway.core.UserRegister;
 import com.clouway.validator.Validator;
+import org.jmock.Expectations;
 import org.jmock.integration.junit4.JUnitRuleMockery;
 import org.junit.Before;
 import org.junit.Rule;
+import org.junit.Test;
+
+import java.util.ArrayList;
+import java.util.List;
 
 import static org.hamcrest.CoreMatchers.is;
+import static org.junit.Assert.*;
 
 public class RegistrationPageTest {
 
@@ -14,7 +23,7 @@ public class RegistrationPageTest {
   public JUnitRuleMockery context = new JUnitRuleMockery();
   private RegistrationPage page;
   private UserRegister userRegister;
-  private Validator<UserDTO> validator;
+  private Validator<User> validator;
 
   @Before
   public void setUp() throws Exception {
@@ -23,35 +32,39 @@ public class RegistrationPageTest {
     page = new RegistrationPage(userRegister, validator);
   }
 
-//  @Test
-//  public void deposit() throws Exception {
-//    page.uName = "Ivan";
-//    page.pwd = "qwert";
-//    final List<String> erList = new ArrayList<>();
-//    final UserDTO testUserDTO = new UserDTO("Ivan", "qwert", 0.0);
-//    context.checking(new Expectations() {{
-//      oneOf(validator).validate(testUserDTO);
-//      will(returnValue(erList));
-//      oneOf(userRegister).register(testUserDTO);
-//    }});
-//    page.get();
-//    assertThat(page.getMessages().size(), is(1));
-//    assertThat(page.getMessages().get(0), is("Registration successful."));
-//  }
-//  @Test
-//  public void userAlreadyExists() throws Exception {
-//    page.uName = "Ivan";
-//    page.pwd = "qwert";
-//    final List<String> erList = new ArrayList<>();
-//    final UserDTO testUserDTO = new UserDTO("Ivan", "qwert", 0.0);
-//    context.checking(new Expectations() {{
-//      oneOf(validator).validate(testUserDTO);
-//      will(returnValue(erList));
-//      oneOf(userRegister).register(testUserDTO);will(throwException(new UserAlreadyExistsException()));
-//    }});
-//    page.get();
-//    assertThat(page.getMessages().size(), is(1));
-//    assertThat(page.getMessages().get(0), is("User already exists."));
-//  }
+  @Test
+  public void deposit() throws Exception {
+    page.uName = "Ivan";
+    page.pwd = "qwert";
+    final List<String> erList = new ArrayList<>();
+    context.checking(new Expectations() {{
+      oneOf(validator).validate(getUser());
+      will(returnValue(erList));
+      oneOf(userRegister).register(getUser());
+    }});
+    page.get();
+    assertThat(page.getMessages().size(), is(1));
+    assertThat(page.getMessages().get(0), is("Registration successful."));
+  }
+
+  @Test
+  public void userAlreadyExists() throws Exception {
+    page.uName = "Ivan";
+    page.pwd = "qwert";
+    final List<String> erList = new ArrayList<>();
+    context.checking(new Expectations() {{
+      oneOf(validator).validate(getUser());
+      will(returnValue(erList));
+      oneOf(userRegister).register(getUser());
+      will(throwException(new ExistingUserException()));
+    }});
+    page.get();
+    assertThat(page.getMessages().size(), is(1));
+    assertThat(page.getMessages().get(0), is("User already exists."));
+  }
+
+  private User getUser() {
+    return new User("Ivan", "qwert", 0.0, new Session("", "Ivan", 0));
+  }
 
 }

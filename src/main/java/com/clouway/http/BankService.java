@@ -27,10 +27,8 @@ public class BankService {
   }
 
   @Post
-  public Reply<?> executeTransaction(Request request) {
-
+  public Reply<?> executeTransaction(Request request) {Re
     TransactionDTO dto = request.read(TransactionDTO.class).as(Json.class);
-    System.out.println("DTO " + dto);
     if (null == dto) {
       return Reply.with("Transaction did not occur").status(400);
     }
