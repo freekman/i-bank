@@ -40,7 +40,6 @@ public class UserAuthenticator implements Authenticator<User> {
 
   public boolean authenticate(User user) {
     User foundUser = userFinder.findByName(user.getName());
-    System.out.println("Found User " + foundUser);
     if ((null != foundUser && foundUser.getName().equals(user.getName())) && foundUser.getPassword().equals(user.getPassword())) {
       return true;
     }
