@@ -34,6 +34,7 @@ public class LogOutService {
   @Get
   public Reply<?> get() {
     String sid = sidProvider.get();
+
     if (null != sid) {
       sessionRegister.clearSession(sid);
     }

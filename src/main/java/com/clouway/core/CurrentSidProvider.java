@@ -30,18 +30,4 @@ public class CurrentSidProvider implements SidProvider {
     return null;
   }
 
-  public Cookie getCookie() {
-
-    Cookie[] cookies = req.getCookies();
-    if (cookies == null) {
-      return null;
-    }
-    for (Cookie cookie : cookies) {
-      if (cookie.getName().equalsIgnoreCase("sid")) {
-        return cookie;
-      }
-    }
-    return null;
-
-  }
 }
