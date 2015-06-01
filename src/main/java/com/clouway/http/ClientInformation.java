@@ -26,8 +26,6 @@ public class ClientInformation {
     this.userFinder = userFinder;
     this.sidProvider = sidProvider;
   }
-
-  @Get
   @Post
   public Reply<?> sendInfo() {
     String sid = sidProvider.get();
