@@ -42,7 +42,7 @@ public class RegistrationPageTest {
       will(returnValue(erList));
       oneOf(userRegister).register(getUser());
     }});
-    page.get();
+    page.register();
     assertThat(page.getMessages().size(), is(1));
     assertThat(page.getMessages().get(0), is("Registration successful."));
   }
@@ -58,7 +58,7 @@ public class RegistrationPageTest {
       oneOf(userRegister).register(getUser());
       will(throwException(new ExistingUserException()));
     }});
-    page.get();
+    page.register();
     assertThat(page.getMessages().size(), is(1));
     assertThat(page.getMessages().get(0), is("User already exists."));
   }

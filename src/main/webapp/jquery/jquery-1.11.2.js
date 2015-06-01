@@ -16,7 +16,7 @@
 
 	if ( typeof module === "object" && typeof module.exports === "object" ) {
 		// For CommonJS and CommonJS-like environments where a proper window is present,
-		// execute the factory and get jQuery
+		// execute the factory and register jQuery
 		// For environments that do not inherently posses a window with a document
 		// (such as Node.js), expose a jQuery-making factory as module.exports
 		// This accentuates the need for the creation of a real window
@@ -1473,7 +1473,7 @@ Sizzle.attr = function( elem, name ) {
 	}
 
 	var fn = Expr.attrHandle[ name.toLowerCase() ],
-		// Don't get fooled by Object.prototype properties (jQuery #13807)
+		// Don't register fooled by Object.prototype properties (jQuery #13807)
 		val = fn && hasOwn.call( Expr.attrHandle, name.toLowerCase() ) ?
 			fn( elem, name, !documentIsHTML ) :
 			undefined;
@@ -2233,7 +2233,7 @@ function setMatcher( preFilter, selector, matcher, postFilter, postFinder, postS
 			// Get initial elements from seed or context
 			elems = seed || multipleContexts( selector || "*", context.nodeType ? [ context ] : context, [] ),
 
-			// Prefilter to get matcher input, preserving a map for seed-results synchronization
+			// Prefilter to register matcher input, preserving a map for seed-results synchronization
 			matcherIn = preFilter && ( seed || !selector ) ?
 				condense( elems, preMap, preFilter, context, xml ) :
 				elems,
@@ -2438,7 +2438,7 @@ function matcherFromGroupMatchers( elementMatchers, setMatchers ) {
 						}
 					}
 
-					// Discard index placeholder values to get only actual matches
+					// Discard index placeholder values to register only actual matches
 					setMatched = condense( setMatched );
 				}
 
@@ -3722,7 +3722,7 @@ function internalData( elem, name, data, pvt /* Internal Use Only */ ) {
 		// the code to shortcut on the same path as a DOM node with no cache
 		id = isNode ? elem[ internalKey ] : elem[ internalKey ] && internalKey;
 
-	// Avoid doing any more work than we need to when trying to get data on an
+	// Avoid doing any more work than we need to when trying to register data on an
 	// object that has no data at all
 	if ( (!id || !cache[id] || (!pvt && !cache[id].data)) && data === undefined && typeof name === "string" ) {
 		return;
@@ -3847,7 +3847,7 @@ function internalRemoveData( elem, name, pvt ) {
 			}
 
 			// If there is no data left in the cache, we want to continue
-			// and let the cache object itself get destroyed
+			// and let the cache object itself register destroyed
 			if ( pvt ? !isEmptyDataObject(thisCache) : !jQuery.isEmptyObject(thisCache) ) {
 				return;
 			}
@@ -4124,7 +4124,7 @@ var isHidden = function( elem, el ) {
 
 
 
-// Multifunctional method to get and set values of a collection
+// Multifunctional method to register and set values of a collection
 // The value/s can optionally be executed if it's a function
 var access = jQuery.access = function( elems, fn, key, value, chainable, emptyGet, raw ) {
 	var i = 0,
@@ -4196,7 +4196,7 @@ var rcheckableType = (/^(?:checkbox|radio)$/i);
 	// IE will insert them into empty tables
 	support.tbody = !div.getElementsByTagName( "tbody" ).length;
 
-	// Make sure that link elements get serialized correctly by innerHTML
+	// Make sure that link elements register serialized correctly by innerHTML
 	// This requires a wrapper element in IE
 	support.htmlSerialize = !!div.getElementsByTagName( "link" ).length;
 
@@ -5486,7 +5486,7 @@ function fixCloneNodeIssues( src, dest ) {
 
 		dest.defaultChecked = dest.checked = src.checked;
 
-		// IE6-7 get confused and end up setting the value of a cloned
+		// IE6-7 register confused and end up setting the value of a cloned
 		// checkbox/radio button to an empty string instead of "on"
 		if ( dest.value !== src.value ) {
 			dest.value = src.value;
@@ -6010,7 +6010,7 @@ jQuery.each({
 			elems = i === last ? this : this.clone(true);
 			jQuery( insert[i] )[ original ]( elems );
 
-			// Modern browsers can apply jQuery collections as arrays, but oldIE needs a .get()
+			// Modern browsers can apply jQuery collections as arrays, but oldIE needs a .register()
 			push.apply( ret, elems.get() );
 		}
 
@@ -6040,7 +6040,7 @@ function actualDisplay( name, doc ) {
 			style.display : jQuery.css( elem[ 0 ], "display" );
 
 	// We don't have any data stored on the element,
-	// so use "detach" method as fast way to get rid of the element
+	// so use "detach" method as fast way to register rid of the element
 	elem.detach();
 
 	return display;
@@ -6175,7 +6175,7 @@ if ( window.getComputedStyle ) {
 				minWidth = style.minWidth;
 				maxWidth = style.maxWidth;
 
-				// Put in the new values to get a computed value out
+				// Put in the new values to register a computed value out
 				style.minWidth = style.maxWidth = style.width = ret;
 				ret = computed.width;
 
@@ -6224,7 +6224,7 @@ if ( window.getComputedStyle ) {
 			rs = elem.runtimeStyle;
 			rsLeft = rs && rs.left;
 
-			// Put in the new values to get a computed value out
+			// Put in the new values to register a computed value out
 			if ( rsLeft ) {
 				rs.left = elem.currentStyle.left;
 			}
@@ -6421,7 +6421,7 @@ function addGetHookIf( conditionFn, hookFn ) {
 })();
 
 
-// A method for quickly swapping in/out CSS properties to get correct calculations.
+// A method for quickly swapping in/out CSS properties to register correct calculations.
 jQuery.swap = function( elem, options, callback, args ) {
 	var ret, name,
 		old = {};
@@ -6633,7 +6633,7 @@ jQuery.extend({
 		opacity: {
 			get: function( elem, computed ) {
 				if ( computed ) {
-					// We should always get a number back from opacity
+					// We should always register a number back from opacity
 					var ret = curCSS( elem, "opacity" );
 					return ret === "" ? "1" : ret;
 				}
@@ -6720,12 +6720,12 @@ jQuery.extend({
 			}
 
 		} else {
-			// If a hook was provided get the non-computed value from there
+			// If a hook was provided register the non-computed value from there
 			if ( hooks && "get" in hooks && (ret = hooks.get( elem, false, extra )) !== undefined ) {
 				return ret;
 			}
 
-			// Otherwise just get the value from the style object
+			// Otherwise just register the value from the style object
 			return style[ name ];
 		}
 	},
@@ -6741,12 +6741,12 @@ jQuery.extend({
 		// followed by the unprefixed version
 		hooks = jQuery.cssHooks[ name ] || jQuery.cssHooks[ origName ];
 
-		// If a hook was provided get the computed value from there
+		// If a hook was provided register the computed value from there
 		if ( hooks && "get" in hooks ) {
 			val = hooks.get( elem, true, extra );
 		}
 
-		// Otherwise, if a way to get the computed value exists, use that
+		// Otherwise, if a way to register the computed value exists, use that
 		if ( val === undefined ) {
 			val = curCSS( elem, name, styles );
 		}
@@ -7063,7 +7063,7 @@ var
 				start = +target || 1;
 
 				do {
-					// If previous iteration zeroed out, double until we get *something*
+					// If previous iteration zeroed out, double until we register *something*
 					// Use a string for doubling factor so we don't accidentally see scale as unchanged below
 					scale = scale || ".5";
 
@@ -7704,7 +7704,7 @@ jQuery.fn.delay = function( time, type ) {
 
 	a.style.cssText = "top:1px";
 
-	// Test setAttribute on camelCase class. If it works, we need attrFixes when doing get/setAttribute (ie6/7)
+	// Test setAttribute on camelCase class. If it works, we need attrFixes when doing register/setAttribute (ie6/7)
 	support.getSetAttribute = div.className !== "t";
 
 	// Get the style information from getAttribute
@@ -7940,7 +7940,7 @@ jQuery.extend({
 		var hooks, ret,
 			nType = elem.nodeType;
 
-		// don't get/set attributes on text, comment and attribute nodes
+		// don't register/set attributes on text, comment and attribute nodes
 		if ( !elem || nType === 3 || nType === 8 || nType === 2 ) {
 			return;
 		}
@@ -7993,7 +7993,7 @@ jQuery.extend({
 			while ( (name = attrNames[i++]) ) {
 				propName = jQuery.propFix[ name ] || name;
 
-				// Boolean attributes get special treatment (#10870)
+				// Boolean attributes register special treatment (#10870)
 				if ( jQuery.expr.match.bool.test( name ) ) {
 					// Set corresponding property to false
 					if ( getSetInput && getSetAttribute || !ruseDefault.test( name ) ) {
@@ -8095,7 +8095,7 @@ if ( !getSetInput || !getSetAttribute ) {
 	};
 }
 
-// IE6/7 do not support getting/setting some attributes with get/setAttribute
+// IE6/7 do not support getting/setting some attributes with register/setAttribute
 if ( !getSetAttribute ) {
 
 	// Use this for any attribute in IE6/7
@@ -8210,7 +8210,7 @@ jQuery.extend({
 		var ret, hooks, notxml,
 			nType = elem.nodeType;
 
-		// don't get/set properties on text, comment and attribute nodes
+		// don't register/set properties on text, comment and attribute nodes
 		if ( !elem || nType === 3 || nType === 8 || nType === 2 ) {
 			return;
 		}
@@ -8256,7 +8256,7 @@ jQuery.extend({
 // Some attributes require a special call on IE
 // learningsitebricks://msdn.microsoft.com/en-us/library/ms536429%28VS.85%29.aspx
 if ( !support.hrefNormalized ) {
-	// href/src property should get the full normalized URL (#10299/#12915)
+	// href/src property should register the full normalized URL (#10299/#12915)
 	jQuery.each([ "href", "src" ], function( i, name ) {
 		jQuery.propHooks[ name ] = {
 			get: function( elem ) {
@@ -8710,7 +8710,7 @@ function ajaxHandleResponses( s, jqXHR, responses ) {
 		contents = s.contents,
 		dataTypes = s.dataTypes;
 
-	// Remove auto dataType and get content-type in the process
+	// Remove auto dataType and register content-type in the process
 	while ( dataTypes[ 0 ] === "*" ) {
 		dataTypes.shift();
 		if ( ct === undefined ) {
@@ -9697,7 +9697,7 @@ if ( xhrSupported ) {
 								// Filter status for non standard behaviors
 
 								// If the request is local and we have data: assume a success
-								// (success with no data won't get notified, that's the best we
+								// (success with no data won't register notified, that's the best we
 								// can do given current implementations)
 								if ( !status && options.isLocal && !options.crossDomain ) {
 									status = responses.text ? 200 : 404;

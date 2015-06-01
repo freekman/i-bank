@@ -1,8 +1,8 @@
 package com.clouway.http;
 
+import com.clouway.core.ExistingUserException;
 import com.clouway.core.Session;
 import com.clouway.core.User;
-import com.clouway.core.ExistingUserException;
 import com.clouway.core.UserRegister;
 import com.clouway.validator.Validator;
 import com.google.inject.Inject;
@@ -37,11 +37,11 @@ public class RegistrationPage {
   }
 
   @Post
-  public void get() {
+  public void register() {
     UserDTO userDTO = new UserDTO(uName, pwd, 0.0);
     User user = new User(userDTO.name, userDTO.password, userDTO.amount, new Session("", userDTO.name, 0));
     messages = validator.validate(user);
-    if (messages.size() == 0) {
+    if (messages.isEmpty()) {
       messages = new ArrayList<String>() {{
         add("Registration successful.");
       }};
