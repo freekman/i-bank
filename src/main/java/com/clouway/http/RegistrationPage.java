@@ -5,6 +5,7 @@ import com.clouway.core.Session;
 import com.clouway.core.User;
 import com.clouway.core.UserRegister;
 import com.clouway.validator.Validator;
+import com.google.common.collect.Lists;
 import com.google.inject.Inject;
 import com.google.sitebricks.At;
 import com.google.sitebricks.Show;
@@ -42,15 +43,11 @@ public class RegistrationPage {
     User user = new User(userDTO.name, userDTO.password, userDTO.amount, new Session("", userDTO.name, 0));
     messages = validator.validate(user);
     if (messages.isEmpty()) {
-      messages = new ArrayList<String>() {{
-        add("Registration successful.");
-      }};
+      messages= Lists.newArrayList("Registration successful.");
       try {
         userRegistry.register(user);
       } catch (ExistingUserException e) {
-        messages = new ArrayList<String>() {{
-          add("User already exists.");
-        }};
+        messages= Lists.newArrayList("User already exists.");
       }
     }
   }
