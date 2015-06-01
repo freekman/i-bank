@@ -48,7 +48,7 @@ public class RegistrationPageTest {
   }
 
   @Test
-  public void userAlreadyExists() throws Exception {
+  public void registerUserTwice() throws Exception {
     page.uName = "Ivan";
     page.pwd = "qwert";
     final List<String> erList = new ArrayList<>();
