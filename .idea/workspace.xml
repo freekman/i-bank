@@ -5,55 +5,127 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="e7a84ea4-d6f3-45eb-8cd6-8d225d0af739" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/java/com/clouway/http/HttpModule.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/java/MyMain.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/java/com/clouway/http/PageModule.java" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/configuration.properties" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/pom.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/main/java/com/clouway/http/GuiceCreator.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/target/AngularBank/WEB-INF/classes/Main.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/target/AngularBank/WEB-INF/classes/com/clouway/core/BankManager.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/target/AngularBank/WEB-INF/classes/com/clouway/core/Manager.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/target/AngularBank/WEB-INF/classes/com/clouway/core/UserAlreadyExistsException.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/target/AngularBank/WEB-INF/classes/com/clouway/core/UserSidProvider.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/target/AngularBank/WEB-INF/classes/com/clouway/http/RegistrationPage$1.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/target/AngularBank/WEB-INF/classes/com/clouway/http/RegistrationPage$2.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/target/classes/Main.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/target/classes/com/clouway/core/BankManager.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/target/classes/com/clouway/core/Manager.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/target/classes/com/clouway/core/UserAlreadyExistsException.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/target/classes/com/clouway/core/UserSidProvider.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/target/classes/com/clouway/http/GuiceCreator$1.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/target/classes/com/clouway/http/GuiceCreator$2.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/target/classes/com/clouway/http/GuiceCreator.class" afterPath="" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/AngularBank.iml" afterPath="$PROJECT_DIR$/i-bank.iml" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/main/java/Main.java" afterPath="$PROJECT_DIR$/src/main/java/com/clouway/core/Main.java" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/web.xml" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/target/AngularBank.war" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/target/AngularBank/WEB-INF/classes/com/clouway/core/Authenticator.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/target/AngularBank/WEB-INF/classes/com/clouway/core/BankUser.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/target/AngularBank/WEB-INF/classes/com/clouway/core/CurrentBankUser.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/target/AngularBank/WEB-INF/classes/com/clouway/core/Rule.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/target/AngularBank/WEB-INF/classes/com/clouway/core/Session.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/target/AngularBank/WEB-INF/classes/com/clouway/core/SessionFinder.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/target/AngularBank/WEB-INF/classes/com/clouway/core/SessionRegister.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/target/AngularBank/WEB-INF/classes/com/clouway/core/SidProvider.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/target/AngularBank/WEB-INF/classes/com/clouway/core/Transaction.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/target/AngularBank/WEB-INF/classes/com/clouway/core/User.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/target/AngularBank/WEB-INF/classes/com/clouway/core/UserFinder.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/target/AngularBank/WEB-INF/classes/com/clouway/core/UserRegister.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/target/AngularBank/WEB-INF/classes/com/clouway/db/adapter/mongodb/persistent/PersistentSessionRepository.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/target/AngularBank/WEB-INF/classes/com/clouway/db/adapter/mongodb/persistent/PersistentUserRepository.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/target/AngularBank/WEB-INF/classes/com/clouway/http/BankService.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/target/AngularBank/WEB-INF/classes/com/clouway/http/ClientInformation.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/target/AngularBank/WEB-INF/classes/com/clouway/http/GuiceCreator$1.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/target/AngularBank/WEB-INF/classes/com/clouway/http/GuiceCreator$2.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/target/AngularBank/WEB-INF/classes/com/clouway/http/GuiceCreator.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/target/AngularBank/WEB-INF/classes/com/clouway/http/HomePage.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/target/AngularBank/WEB-INF/classes/com/clouway/http/LogOutService.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/target/AngularBank/WEB-INF/classes/com/clouway/http/LoginPage.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/target/AngularBank/WEB-INF/classes/com/clouway/http/RegistrationPage.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/target/AngularBank/WEB-INF/classes/com/clouway/http/SecurityFilter.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/target/AngularBank/WEB-INF/classes/com/clouway/http/StatusTransactionDTO.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/target/AngularBank/WEB-INF/classes/com/clouway/http/TransactionDTO.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/target/AngularBank/WEB-INF/classes/com/clouway/http/UserAuthenticator.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/target/AngularBank/WEB-INF/classes/com/clouway/http/UserDTO.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/target/AngularBank/WEB-INF/classes/com/clouway/validator/SimpleValidator.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/target/AngularBank/WEB-INF/classes/com/clouway/validator/TransactionValidator.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/target/AngularBank/WEB-INF/classes/com/clouway/validator/UserFormValidator.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/target/AngularBank/WEB-INF/classes/com/clouway/validator/Validator.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/target/AngularBank/WEB-INF/lib/annotations-7.0.3.jar" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/target/AngularBank/WEB-INF/lib/aopalliance-1.0.jar" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/target/AngularBank/WEB-INF/lib/async-http-client-1.6.3.jar" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/target/AngularBank/WEB-INF/lib/commons-fileupload-1.3.1.jar" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/target/AngularBank/WEB-INF/lib/commons-io-2.2.jar" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/target/AngularBank/WEB-INF/lib/fongo-2.0.0.jar" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/target/AngularBank/WEB-INF/lib/geojson-jackson-1.2.jar" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/target/AngularBank/WEB-INF/lib/guava-18.0.jar" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/target/AngularBank/WEB-INF/lib/guice-3.0.jar" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/target/AngularBank/WEB-INF/lib/guice-multibindings-3.0.jar" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/target/AngularBank/WEB-INF/lib/guice-servlet-3.0.jar" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/target/AngularBank/WEB-INF/lib/jackson-annotations-2.2.2.jar" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/target/AngularBank/WEB-INF/lib/jackson-core-2.2.2.jar" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/target/AngularBank/WEB-INF/lib/jackson-core-asl-1.9.0.jar" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/target/AngularBank/WEB-INF/lib/jackson-databind-2.2.2.jar" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/target/AngularBank/WEB-INF/lib/jackson-mapper-asl-1.9.0.jar" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/target/AngularBank/WEB-INF/lib/javax.inject-1.jar" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/target/AngularBank/WEB-INF/lib/javax.servlet-api-3.1.0.jar" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/target/AngularBank/WEB-INF/lib/jcip-annotations-1.0.jar" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/target/AngularBank/WEB-INF/lib/jetty-http-9.3.0.M1.jar" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/target/AngularBank/WEB-INF/lib/jetty-io-9.3.0.M1.jar" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/target/AngularBank/WEB-INF/lib/jetty-security-9.3.0.M1.jar" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/target/AngularBank/WEB-INF/lib/jetty-server-9.3.0.M1.jar" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/target/AngularBank/WEB-INF/lib/jetty-servlet-9.3.0.M1.jar" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/target/AngularBank/WEB-INF/lib/jetty-util-9.3.0.M1.jar" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/target/AngularBank/WEB-INF/lib/jetty-webapp-9.3.0.M1.jar" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/target/AngularBank/WEB-INF/lib/jetty-xml-9.3.0.M1.jar" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/target/AngularBank/WEB-INF/lib/js-1.7R2.jar" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/target/AngularBank/WEB-INF/lib/jsoup-1.5.2.jar" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/target/AngularBank/WEB-INF/lib/jts-1.13.jar" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/target/AngularBank/WEB-INF/lib/mongo-java-driver-3.0.1.jar" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/target/AngularBank/WEB-INF/lib/mvel2-2.1.3.Final.jar" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/target/AngularBank/WEB-INF/lib/netty-3.2.4.Final.jar" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/target/AngularBank/WEB-INF/lib/servlet-api-2.5.jar" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/target/AngularBank/WEB-INF/lib/sitebricks-0.8.8.jar" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/target/AngularBank/WEB-INF/lib/sitebricks-annotations-0.8.8.jar" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/target/AngularBank/WEB-INF/lib/sitebricks-client-0.8.8.jar" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/target/AngularBank/WEB-INF/lib/sitebricks-converter-0.8.8.jar" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/target/AngularBank/WEB-INF/lib/slf4j-api-1.7.12.jar" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/target/AngularBank/WEB-INF/lib/slf4j-simple-1.7.12.jar" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/target/AngularBank/WEB-INF/lib/xpp3_min-1.1.4c.jar" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/target/AngularBank/WEB-INF/lib/xstream-1.3.1.jar" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/target/AngularBank/WEB-INF/web.xml" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/target/AngularBank/build/concat.css" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/target/AngularBank/build/concat.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/target/AngularBank/build/welcome.html" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/target/AngularBank/css/bankStyle.css" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/target/AngularBank/css/bootstrap-theme.css" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/target/AngularBank/css/bootstrap-theme.css.map" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/target/AngularBank/css/bootstrap-theme.min.css" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/target/AngularBank/css/bootstrap.css" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/target/AngularBank/css/bootstrap.css.map" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/target/AngularBank/css/bootstrap.min.css" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/target/AngularBank/css/concat.css" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/target/AngularBank/fonts/glyphicons-halflings-regular.eot" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/target/AngularBank/fonts/glyphicons-halflings-regular.svg" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/target/AngularBank/fonts/glyphicons-halflings-regular.ttf" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/target/AngularBank/fonts/glyphicons-halflings-regular.woff" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/target/AngularBank/fonts/glyphicons-halflings-regular.woff2" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/target/AngularBank/home.html" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/target/AngularBank/img/bank11.jpg" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/target/AngularBank/img/bank13.jpg" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/target/AngularBank/img/bank2.jpg" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/target/AngularBank/img/bank3.jpg" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/target/AngularBank/img/bank4.jpg" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/target/AngularBank/img/bank6.jpg" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/target/AngularBank/img/bank7.jpg" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/target/AngularBank/img/bank8.jpg" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/target/AngularBank/img/bank9.jpg" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/target/AngularBank/index.html" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/target/AngularBank/jquery/jquery-1.11.2.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/target/AngularBank/js/bootstrap.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/target/AngularBank/js/bootstrap.min.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/target/AngularBank/js/concat.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/target/AngularBank/js/npm.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/target/AngularBank/login.html" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/target/AngularBank/partials/welcome.html" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/target/AngularBank/register.html" afterPath="" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/src/main/java/MyMain.java" afterPath="$PROJECT_DIR$/src/main/java/com/clouway/core/Main.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/AngularBank-jar-with-dependencies.jar" afterPath="$PROJECT_DIR$/target/AngularBank-jar-with-dependencies.jar" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/AngularBank.war" afterPath="$PROJECT_DIR$/target/AngularBank.war" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/AngularBank/WEB-INF/classes/com/clouway/http/BankService.class" afterPath="$PROJECT_DIR$/target/AngularBank/WEB-INF/classes/com/clouway/http/BankService.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/AngularBank/WEB-INF/classes/com/clouway/http/ClientInformation.class" afterPath="$PROJECT_DIR$/target/AngularBank/WEB-INF/classes/com/clouway/http/ClientInformation.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/AngularBank/WEB-INF/classes/com/clouway/core/CurrentBankUser.class" afterPath="$PROJECT_DIR$/target/AngularBank/WEB-INF/classes/com/clouway/core/CurrentBankUser.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/AngularBank/WEB-INF/classes/com/clouway/http/GuiceCreator$1.class" afterPath="$PROJECT_DIR$/target/AngularBank/WEB-INF/classes/com/clouway/http/GuiceCreator$1.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/AngularBank/WEB-INF/classes/com/clouway/http/GuiceCreator$2.class" afterPath="$PROJECT_DIR$/target/AngularBank/WEB-INF/classes/com/clouway/http/GuiceCreator$2.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/AngularBank/WEB-INF/classes/com/clouway/http/LogOutService.class" afterPath="$PROJECT_DIR$/target/AngularBank/WEB-INF/classes/com/clouway/http/LogOutService.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/AngularBank/WEB-INF/classes/com/clouway/db/adapter/mongodb/persistent/PersistentUserRepository.class" afterPath="$PROJECT_DIR$/target/AngularBank/WEB-INF/classes/com/clouway/db/adapter/mongodb/persistent/PersistentUserRepository.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/AngularBank/WEB-INF/classes/com/clouway/http/RegistrationPage.class" afterPath="$PROJECT_DIR$/target/AngularBank/WEB-INF/classes/com/clouway/http/RegistrationPage.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/AngularBank/WEB-INF/classes/com/clouway/core/Rule.class" afterPath="$PROJECT_DIR$/target/AngularBank/WEB-INF/classes/com/clouway/core/Rule.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/AngularBank/WEB-INF/classes/com/clouway/http/SecurityFilter.class" afterPath="$PROJECT_DIR$/target/AngularBank/WEB-INF/classes/com/clouway/http/SecurityFilter.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/AngularBank/WEB-INF/classes/com/clouway/http/UserAuthenticator.class" afterPath="$PROJECT_DIR$/target/AngularBank/WEB-INF/classes/com/clouway/http/UserAuthenticator.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/AngularBank/WEB-INF/classes/com/clouway/http/UserDTO.class" afterPath="$PROJECT_DIR$/target/AngularBank/WEB-INF/classes/com/clouway/http/UserDTO.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/AngularBank/WEB-INF/classes/com/clouway/core/UserFinder.class" afterPath="$PROJECT_DIR$/target/AngularBank/WEB-INF/classes/com/clouway/core/UserFinder.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.gitignore" afterPath="$PROJECT_DIR$/.gitignore" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/clouway/http/HttpModule.java" afterPath="$PROJECT_DIR$/src/main/java/com/clouway/http/HttpModule.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/clouway/core/PropertyReader.java" afterPath="$PROJECT_DIR$/src/main/java/com/clouway/core/PropertyReader.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/AngularBank/js/bootstrap.js" afterPath="$PROJECT_DIR$/target/AngularBank/js/bootstrap.js" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/webapp/build/concat.js" afterPath="$PROJECT_DIR$/src/main/webapp/build/concat.js" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/webapp/js/concat.js" afterPath="$PROJECT_DIR$/src/main/webapp/js/concat.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/AngularBank/build/concat.js" afterPath="$PROJECT_DIR$/target/AngularBank/build/concat.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/AngularBank/js/concat.js" afterPath="$PROJECT_DIR$/target/AngularBank/js/concat.js" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/maven-status/maven-compiler-plugin/compile/default-compile/createdFiles.lst" afterPath="$PROJECT_DIR$/target/maven-status/maven-compiler-plugin/compile/default-compile/createdFiles.lst" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/maven-status/maven-compiler-plugin/compile/default-compile/inputFiles.lst" afterPath="$PROJECT_DIR$/target/maven-status/maven-compiler-plugin/compile/default-compile/inputFiles.lst" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/webapp/jquery/jquery-1.11.2.js" afterPath="$PROJECT_DIR$/src/main/webapp/jquery/jquery-1.11.2.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/AngularBank/jquery/jquery-1.11.2.js" afterPath="$PROJECT_DIR$/target/AngularBank/jquery/jquery-1.11.2.js" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/maven-archiver/pom.properties" afterPath="$PROJECT_DIR$/target/maven-archiver/pom.properties" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
@@ -90,8 +162,8 @@
       <file leaf-file-name="HttpModule.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/com/clouway/http/HttpModule.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0" vertical-offset="322" max-vertical-offset="936">
-              <caret line="44" column="3" selection-start-line="44" selection-start-column="3" selection-end-line="44" selection-end-column="3" />
+            <state vertical-scroll-proportion="0.0" vertical-offset="563" max-vertical-offset="1134">
+              <caret line="53" column="55" selection-start-line="53" selection-start-column="55" selection-end-line="53" selection-end-column="55" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -99,11 +171,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="MyMain.java" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/src/main/java/MyMain.java">
+      <file leaf-file-name="Main.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/com/clouway/core/Main.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.74509805" vertical-offset="70" max-vertical-offset="630">
-              <caret line="25" column="0" selection-start-line="25" selection-start-column="0" selection-end-line="25" selection-end-column="0" />
+            <state vertical-scroll-proportion="0.0" vertical-offset="126" max-vertical-offset="756">
+              <caret line="25" column="46" selection-start-line="25" selection-start-column="46" selection-end-line="25" selection-end-column="46" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -131,6 +203,16 @@
           </provider>
         </entry>
       </file>
+      <file leaf-file-name="pom.xml" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/pom.xml">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="2484">
+              <caret line="17" column="17" selection-start-line="17" selection-start-column="17" selection-end-line="17" selection-end-column="17" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
       <file leaf-file-name="home.html" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/webapp/home.html">
           <provider selected="true" editor-type-id="text-editor">
@@ -151,11 +233,23 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="web.xml" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/web.xml">
+      <file leaf-file-name="PropertyReader.java" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/main/java/com/clouway/core/PropertyReader.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="468">
-              <caret line="18" column="0" selection-start-line="18" selection-start-column="0" selection-end-line="18" selection-end-column="0" />
+            <state vertical-scroll-proportion="0.5962617" vertical-offset="581" max-vertical-offset="1116">
+              <caret line="50" column="69" selection-start-line="50" selection-start-column="69" selection-end-line="50" selection-end-column="69" />
+              <folding>
+                <element signature="imports" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="configuration.properties" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/configuration.properties">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="198">
+              <caret line="5" column="0" selection-start-line="5" selection-start-column="0" selection-end-line="5" selection-end-column="0" />
               <folding />
             </state>
           </provider>
@@ -190,20 +284,20 @@
         <option value="$PROJECT_DIR$/src/main/java/com/clouway/http/ClientInformation.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/clouway/core/ConfigurationPropertyProvider.java" />
         <option value="$PROJECT_DIR$/.gitignore" />
-        <option value="$PROJECT_DIR$/pom.xml" />
         <option value="$PROJECT_DIR$/src/main/test/com/clouway/core/SessionContractTest.java" />
         <option value="$PROJECT_DIR$/configuration.properties" />
         <option value="$PROJECT_DIR$/target/configuration.properties" />
-        <option value="$PROJECT_DIR$/src/main/java/Main.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/clouway/core/Main.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/clouway/core/PropertyReader.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/clouway/http/MyMain.java" />
         <option value="$PROJECT_DIR$/src/main/java/InvalidRequestServlet.java" />
         <option value="$PROJECT_DIR$/src/main/webapp/WEB-INF/web.xml" />
-        <option value="$PROJECT_DIR$/src/main/java/com/clouway/http/HttpModule.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/clouway/http/GuiceCreator.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/clouway/http/PageModule.java" />
         <option value="$PROJECT_DIR$/src/main/java/MyMain.java" />
+        <option value="$PROJECT_DIR$/src/main/java/Main.java" />
+        <option value="$PROJECT_DIR$/pom.xml" />
+        <option value="$PROJECT_DIR$/src/main/java/com/clouway/core/PropertyReader.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/clouway/core/Main.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/clouway/http/HttpModule.java" />
       </list>
     </option>
   </component>
@@ -280,118 +374,6 @@
               <option name="myItemId" value="src" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="main" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="i-bank" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="i-bank" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="src" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="main" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="java" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="i-bank" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="i-bank" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="src" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="main" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="java" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="clouway" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="validator" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="i-bank" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="i-bank" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="src" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="main" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="java" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="clouway" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="http" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="i-bank" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="i-bank" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="src" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="main" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="java" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="clouway" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
           </PATH>
         </subPane>
       </pane>
@@ -417,8 +399,9 @@
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
-      <recent name="$PROJECT_DIR$/src/main/java/com/clouway/http" />
+      <recent name="$PROJECT_DIR$/target/src/main" />
       <recent name="$PROJECT_DIR$/target" />
+      <recent name="$PROJECT_DIR$/src/main/java/com/clouway/http" />
     </key>
     <key name="CreateClassDialog.RecentsKey">
       <recent name="" />
@@ -434,7 +417,7 @@
       <recent name="$PROJECT_DIR$/src/main" />
     </key>
   </component>
-  <component name="RunManager" selected="Application.MyMain">
+  <component name="RunManager" selected="Application.Main">
     <configuration default="false" name="UserAuthenticatorAuthenticateTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea">
         <pattern>
@@ -542,9 +525,9 @@
       <ConfigurationWrapper RunnerId="Run" />
       <method />
     </configuration>
-    <configuration default="false" name="MyMain" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+    <configuration default="false" name="Main" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea" />
-      <option name="MAIN_CLASS_NAME" value="MyMain" />
+      <option name="MAIN_CLASS_NAME" value="com.clouway.core.Main" />
       <option name="VM_PARAMETERS" />
       <option name="PROGRAM_PARAMETERS" />
       <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
@@ -838,11 +821,11 @@
       <item index="2" class="java.lang.String" itemvalue="JUnit.PersistentUserRepositoryTest.happyPath" />
       <item index="3" class="java.lang.String" itemvalue="JUnit.PersistentUserRepositoryTest" />
       <item index="4" class="java.lang.String" itemvalue="Application.Main" />
-      <item index="5" class="java.lang.String" itemvalue="Application.MyMain" />
+      <item index="5" class="java.lang.String" itemvalue="Application.Main" />
     </list>
     <recent_temporary>
       <list size="5">
-        <item index="0" class="java.lang.String" itemvalue="Application.MyMain" />
+        <item index="0" class="java.lang.String" itemvalue="Application.Main" />
         <item index="1" class="java.lang.String" itemvalue="Application.Main" />
         <item index="2" class="java.lang.String" itemvalue="JUnit.PersistentUserRepositoryTest" />
         <item index="3" class="java.lang.String" itemvalue="JUnit.PersistentUserRepositoryTest.happyPath" />
@@ -865,12 +848,12 @@
       <workItem from="1433169594243" duration="1975000" />
       <workItem from="1433225234069" duration="4259000" />
       <workItem from="1433232259564" duration="469000" />
-      <workItem from="1433232737803" duration="17627000" />
+      <workItem from="1433232737803" duration="19522000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="36811000" />
+    <option name="totallyTimeSpent" value="38706000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="65" y="24" width="1855" height="1056" extended-state="0" />
@@ -880,7 +863,7 @@
       <window_info id="UI Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.35321638" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Designer" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
-      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.30607736" sideWeight="0.5" order="15" side_tool="false" content_ui="tabs" />
+      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.3756906" sideWeight="0.5" order="15" side_tool="false" content_ui="tabs" />
       <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3281768" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3291714" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
@@ -901,7 +884,7 @@
       <window_info id="Application Servers" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="11" side_tool="false" content_ui="tabs" />
       <window_info id="Mongo Explorer" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.28137094" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.36842105" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3679558" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
       <window_info id="Thumbnails" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3290461" sideWeight="0.5" order="14" side_tool="false" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
@@ -1172,14 +1155,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/pom.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="2484">
-          <caret line="12" column="16" selection-start-line="12" selection-start-column="16" selection-end-line="12" selection-end-column="16" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="jar:///usr/lib/jvm/java-7-oracle/src.zip!/java/util/Properties.java">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="1.7958333" vertical-offset="668" max-vertical-offset="19458">
@@ -1196,28 +1171,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/clouway/core/PropertyReader.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="1188">
-          <caret line="34" column="5" selection-start-line="34" selection-start-column="5" selection-end-line="34" selection-end-column="5" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="jar://$MAVEN_REPOSITORY$/com/google/inject/extensions/guice-servlet/3.0/guice-servlet-3.0.jar!/com/google/inject/servlet/GuiceFilter.class">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.1724138" vertical-offset="0" max-vertical-offset="900">
           <caret line="6" column="13" selection-start-line="6" selection-start-column="13" selection-end-line="6" selection-end-column="13" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/target/configuration.properties">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="424">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding />
         </state>
       </provider>
@@ -1246,18 +1203,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/configuration.properties">
+    <entry file="file://$PROJECT_DIR$/pom.xml">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.09642857" vertical-offset="0" max-vertical-offset="560">
-          <caret line="3" column="12" selection-start-line="3" selection-start-column="8" selection-end-line="3" selection-end-column="12" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/clouway/core/Main.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.675" vertical-offset="0" max-vertical-offset="594">
-          <caret line="25" column="0" selection-start-line="25" selection-start-column="0" selection-end-line="26" selection-end-column="0" />
+        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="2484">
+          <caret line="17" column="17" selection-start-line="17" selection-start-column="17" selection-end-line="17" selection-end-column="17" />
           <folding />
         </state>
       </provider>
@@ -1270,29 +1219,11 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/web.xml">
+    <entry file="file://$PROJECT_DIR$/configuration.properties">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="468">
-          <caret line="18" column="0" selection-start-line="18" selection-start-column="0" selection-end-line="18" selection-end-column="0" />
+        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="198">
+          <caret line="5" column="0" selection-start-line="5" selection-start-column="0" selection-end-line="5" selection-end-column="0" />
           <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/clouway/http/SecurityFilter.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="484" max-vertical-offset="1296">
-          <caret line="53" column="0" selection-start-line="53" selection-start-column="0" selection-end-line="53" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/clouway/http/HttpModule.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="268" max-vertical-offset="936">
-          <caret line="44" column="3" selection-start-line="44" selection-start-column="3" selection-end-line="44" selection-end-column="3" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -1304,10 +1235,38 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/MyMain.java">
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/clouway/core/Main.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.74509805" vertical-offset="70" max-vertical-offset="630">
-          <caret line="25" column="0" selection-start-line="25" selection-start-column="0" selection-end-line="25" selection-end-column="0" />
+        <state vertical-scroll-proportion="0.0" vertical-offset="126" max-vertical-offset="756">
+          <caret line="25" column="46" selection-start-line="25" selection-start-column="46" selection-end-line="25" selection-end-column="46" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/clouway/http/HttpModule.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="563" max-vertical-offset="1134">
+          <caret line="53" column="55" selection-start-line="53" selection-start-column="55" selection-end-line="53" selection-end-column="55" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/clouway/http/SecurityFilter.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="484" max-vertical-offset="1296">
+          <caret line="53" column="0" selection-start-line="53" selection-start-column="0" selection-end-line="53" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/clouway/core/PropertyReader.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.5962617" vertical-offset="581" max-vertical-offset="1116">
+          <caret line="50" column="69" selection-start-line="50" selection-start-column="69" selection-end-line="50" selection-end-column="69" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>

@@ -1,10 +1,9 @@
 com/clouway/core/Authenticator.class
 com/clouway/core/Session.class
-com/clouway/http/GuiceCreator.class
+com/clouway/http/HttpModule.class
 com/clouway/core/CurrentSidProvider.class
 com/clouway/core/ExistingUserException.class
 com/clouway/core/Main.class
-com/clouway/http/GuiceCreator$2.class
 com/clouway/http/StatusTransactionDTO.class
 com/clouway/validator/TransactionValidator.class
 com/clouway/core/Rule.class
@@ -19,7 +18,6 @@ com/clouway/http/BankService.class
 com/clouway/core/User.class
 com/clouway/core/SessionFinder.class
 com/clouway/core/BankTransactionManager.class
-com/clouway/http/GuiceCreator$1.class
 com/clouway/core/UserRegister.class
 com/clouway/db/adapter/mongodb/persistent/PersistentUserRepository.class
 com/clouway/http/TransactionDTO.class
@@ -28,6 +26,7 @@ com/clouway/http/UserDTO.class
 com/clouway/core/SidProvider.class
 com/clouway/http/LogOutService.class
 com/clouway/core/SessionRegister.class
+com/clouway/http/PageModule.class
 com/clouway/validator/Validator.class
 com/clouway/core/CurrentBankUser.class
 com/clouway/core/Transaction.class

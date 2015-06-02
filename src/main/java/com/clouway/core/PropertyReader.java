@@ -12,23 +12,20 @@ import java.util.Properties;
  */
 @Singleton
 public class PropertyReader {
+  private Properties properties = new Properties();
+  private FileInputStream inputStream;
 
-  private  FileInputStream in;
+  public PropertyReader(FileInputStream inputStream) {
 
-  public PropertyReader() {
-    System.out.println("FileReader is called and input stream is"+Main.prop);
-    in=Main.prop;
+    this.inputStream = inputStream;
   }
 
-  private Properties properties = new Properties();
-
   public String getStringProperty(String propertyName) {
-    if (in == null) {
-      System.out.println("FIle input stream is null!~ String");
+    if (inputStream == null) {
       setDefaultInputStream();
     }
     try {
-      properties.load(in);
+      properties.load(inputStream);
       return properties.getProperty(propertyName);
     } catch (IOException e) {
       e.printStackTrace();
@@ -37,12 +34,11 @@ public class PropertyReader {
   }
 
   public int getIntProperty(String propertyName) {
-    if (in == null) {
-      System.out.println("FIle input stream is null!~Int");
+    if (inputStream == null) {
       setDefaultInputStream();
     }
     try {
-      properties.load(in);
+      properties.load(inputStream);
       return Integer.parseInt(properties.getProperty(propertyName));
     } catch (IOException e) {
       e.printStackTrace();
@@ -52,7 +48,7 @@ public class PropertyReader {
 
   private void setDefaultInputStream() {
     try {
-      in = new FileInputStream("configuration.properties");
+      inputStream = new FileInputStream("configuration.propertieszzzz");
     } catch (FileNotFoundException e) {
       e.printStackTrace();
     }

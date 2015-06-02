@@ -8,6 +8,7 @@
 /home/clouway/workspaces/idea/i-bank/src/main/java/com/clouway/http/HomePage.java
 /home/clouway/workspaces/idea/i-bank/src/main/java/com/clouway/validator/TransactionValidator.java
 /home/clouway/workspaces/idea/i-bank/src/main/java/com/clouway/http/ClientInformation.java
+/home/clouway/workspaces/idea/i-bank/src/main/java/com/clouway/http/PageModule.java
 /home/clouway/workspaces/idea/i-bank/src/main/java/com/clouway/http/TransactionDTO.java
 /home/clouway/workspaces/idea/i-bank/src/main/java/com/clouway/core/PropertyReader.java
 /home/clouway/workspaces/idea/i-bank/src/main/java/com/clouway/validator/SimpleValidator.java
@@ -16,7 +17,6 @@
 /home/clouway/workspaces/idea/i-bank/src/main/java/com/clouway/core/Rule.java
 /home/clouway/workspaces/idea/i-bank/src/main/java/com/clouway/core/SidProvider.java
 /home/clouway/workspaces/idea/i-bank/src/main/java/com/clouway/core/TransactionManager.java
-/home/clouway/workspaces/idea/i-bank/src/main/java/com/clouway/http/GuiceCreator.java
 /home/clouway/workspaces/idea/i-bank/src/main/java/com/clouway/http/BankService.java
 /home/clouway/workspaces/idea/i-bank/src/main/java/com/clouway/http/RegistrationPage.java
 /home/clouway/workspaces/idea/i-bank/src/main/java/com/clouway/core/SessionRegister.java
@@ -28,6 +28,7 @@
 /home/clouway/workspaces/idea/i-bank/src/main/java/com/clouway/core/Authenticator.java
 /home/clouway/workspaces/idea/i-bank/src/main/java/com/clouway/core/Main.java
 /home/clouway/workspaces/idea/i-bank/src/main/java/com/clouway/core/BankTransactionManager.java
+/home/clouway/workspaces/idea/i-bank/src/main/java/com/clouway/http/HttpModule.java
 /home/clouway/workspaces/idea/i-bank/src/main/java/com/clouway/core/BankUser.java
 /home/clouway/workspaces/idea/i-bank/src/main/java/com/clouway/validator/Validator.java
 /home/clouway/workspaces/idea/i-bank/src/main/java/com/clouway/http/UserDTO.java

@@ -13,10 +13,20 @@ import com.google.inject.servlet.ServletModule;
 import com.mongodb.MongoClient;
 import com.mongodb.client.MongoDatabase;
 
+import java.io.FileInputStream;
+
 /**
  * Created byivan.genchev1989@gmail.com.
  */
 public class HttpModule extends ServletModule {
+
+  private PropertyReader reader;
+
+  public HttpModule(PropertyReader reader) {
+
+    this.reader = reader;
+  }
+
   @Override
   protected void configureServlets() {
     bind(BankUser.class).to(CurrentBankUser.class);
@@ -32,15 +42,16 @@ public class HttpModule extends ServletModule {
     filter("/home", "/login", "/info", "/bank").through(SecurityFilter.class);
   }
 
+
   @Provides
   @Singleton
-  MongoClient provideMongoClient(PropertyReader reader) {
+  MongoClient provideMongoClient() {
     MongoClient client = new MongoClient(reader.getStringProperty("db.host"), reader.getIntProperty("db.port"));
     return client;
   }
 
   @Provides
-  MongoDatabase provideMongoDatabase(MongoClient client, PropertyReader reader) {
+  MongoDatabase provideMongoDatabase(MongoClient client) {
     return client.getDatabase(reader.getStringProperty("db.name"));
   }
 }
