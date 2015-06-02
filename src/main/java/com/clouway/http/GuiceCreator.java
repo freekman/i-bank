@@ -41,14 +41,19 @@ public class GuiceCreator extends GuiceServletContextListener {
 
       @Provides
       @Singleton
-      MongoClient provideMongoClient() {
-        MongoClient client = new MongoClient();
+      MongoClient provideMongoClient(PropertyReader reader) {
+        MongoClient client = new MongoClient(reader.getStringProperty("db.host"),reader.getIntProperty("db.port"));
         return client;
       }
 
       @Provides
-      MongoDatabase provideMongoDatabase(MongoClient client) {
-        return client.getDatabase("bank");
+      PropertyReader providePropertyReader() {
+        return new PropertyReader();
+      }
+
+      @Provides
+      MongoDatabase provideMongoDatabase(MongoClient client,PropertyReader reader) {
+        return client.getDatabase(reader.getStringProperty("db.name"));
       }
     }, new SitebricksModule() {
       @Override
