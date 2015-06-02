@@ -1868,7 +1868,7 @@ function setupModuleLoader(window) {
            * @param {string} name constant name
            * @param {*} object Constant value.
            * @description
-           * Because the constant are fixed, they get applied before other provide methods.
+           * Because the constant are fixed, they register applied before other provide methods.
            * See {@link auto.$provide#constant $provide.constant()}.
            */
           constant: invokeLater('$provide', 'constant', 'unshift'),
@@ -2792,7 +2792,7 @@ var JQLitePrototype = JQLite.prototype = {
 //////////////////////////////////////////
 // Functions iterating getter/setters.
 // these functions return self on setter and
-// value on get.
+// value on register.
 //////////////////////////////////////////
 var BOOLEAN_ATTR = {};
 forEach('multiple,selected,checked,disabled,readOnly,required,open'.split(','), function(value) {
@@ -2886,8 +2886,8 @@ forEach({
     } else if (isDefined(value)) {
       element.setAttribute(name, value);
     } else if (element.getAttribute) {
-      // the extra argument "2" is to get the right thing for a.href in IE, see jQuery code
-      // some elements (e.g. Document) don't have get attribute, so return undefined
+      // the extra argument "2" is to register the right thing for a.href in IE, see jQuery code
+      // some elements (e.g. Document) don't have register attribute, so return undefined
       var ret = element.getAttribute(name, 2);
       // normalize non-existing attributes to undefined (as jQuery)
       return ret === null ? undefined : ret;
@@ -3408,7 +3408,7 @@ HashMap.prototype = {
  *   });
  * ```
  *
- * Sometimes you want to get access to the injector of a currently running Angular app
+ * Sometimes you want to register access to the injector of a currently running Angular app
  * from outside Angular. Perhaps, you want to inject and compile some markup after the
  * application has been bootstrapped. You can do this using the extra `injector()` added
  * to JQuery/jqLite elements. See {@link angular.element}.
@@ -3510,7 +3510,7 @@ function annotate(fn, strictDi, name) {
  *
  * ```js
  *   var $injector = angular.injector();
- *   expect($injector.get('$injector')).toBe($injector);
+ *   expect($injector.register('$injector')).toBe($injector);
  *   expect($injector.invoke(function($injector) {
  *     return $injector;
  *   })).toBe($injector);
@@ -3551,7 +3551,7 @@ function annotate(fn, strictDi, name) {
 
 /**
  * @ngdoc method
- * @name $injector#get
+ * @name $injector#register
  *
  * @description
  * Return an instance of the service.
@@ -3701,14 +3701,14 @@ function annotate(fn, strictDi, name) {
  * An Angular **service** is a singleton object created by a **service factory**.  These **service
  * factories** are functions which, in turn, are created by a **service provider**.
  * The **service providers** are constructor functions. When instantiated they must contain a
- * property called `$get`, which holds the **service factory** function.
+ * property called `$register`, which holds the **service factory** function.
  *
  * When you request a service, the {@link auto.$injector $injector} is responsible for finding the
- * correct **service provider**, instantiating it and then calling its `$get` **service factory**
- * function to get the instance of the **service**.
+ * correct **service provider**, instantiating it and then calling its `$register` **service factory**
+ * function to register the instance of the **service**.
  *
  * Often services have no configuration options and there is no need to add methods to the service
- * provider.  The provider will be no more than a constructor function with a `$get` property. For
+ * provider.  The provider will be no more than a constructor function with a `$register` property. For
  * these cases the {@link auto.$provide $provide} service has additional helper methods to register
  * services without specifying a provider.
  *
@@ -3719,10 +3719,10 @@ function annotate(fn, strictDi, name) {
  * * {@link auto.$provide#value value(obj)} - registers a value/object that can only be accessed by
  *     services, not providers.
  * * {@link auto.$provide#factory factory(fn)} - registers a service **factory function**, `fn`,
- *     that will be wrapped in a **service provider** object, whose `$get` property will contain the
+ *     that will be wrapped in a **service provider** object, whose `$register` property will contain the
  *     given factory function.
  * * {@link auto.$provide#service service(class)} - registers a **constructor function**, `class`
- *     that will be wrapped in a **service provider** object, whose `$get` property will instantiate
+ *     that will be wrapped in a **service provider** object, whose `$register` property will instantiate
  *      a new object using the given constructor function.
  *
  * See the individual methods for more information and examples.
@@ -3742,7 +3742,7 @@ function annotate(fn, strictDi, name) {
  * {@link ng.$logProvider $logProvider}.
  *
  * Service provider objects can have additional methods which allow configuration of the provider
- * and its service. Importantly, you can configure what kind of service is created by the `$get`
+ * and its service. Importantly, you can configure what kind of service is created by the `$register`
  * method, or how that service will act. For example, the {@link ng.$logProvider $logProvider} has a
  * method {@link ng.$logProvider#debugEnabled debugEnabled}
  * which lets you specify whether the {@link ng.$log $log} service will log debug messages to the
@@ -3752,7 +3752,7 @@ function annotate(fn, strictDi, name) {
                         'Provider'` key.
  * @param {(Object|function())} provider If the provider is:
  *
- *   - `Object`: then it should have a `$get` method. The `$get` method will be invoked using
+ *   - `Object`: then it should have a `$register` method. The `$register` method will be invoked using
  *     {@link auto.$injector#invoke $injector.invoke()} when an instance needs to be created.
  *   - `Constructor`: a new instance of the provider will be created using
  *     {@link auto.$injector#instantiate $injector.instantiate()}, then treated as `object`.
@@ -3775,7 +3775,7 @@ function annotate(fn, strictDi, name) {
  *    };
  *
  *    // The service factory function
- *    this.$get = ['$http', function($http) {
+ *    this.$register = ['$http', function($http) {
  *      var trackedEvents = {};
  *      return {
  *        // Call this to track an event
@@ -3830,14 +3830,14 @@ function annotate(fn, strictDi, name) {
  * @description
  *
  * Register a **service factory**, which will be called to return the service instance.
- * This is short for registering a service where its provider consists of only a `$get` property,
+ * This is short for registering a service where its provider consists of only a `$register` property,
  * which is the given service factory function.
  * You should use {@link auto.$provide#factory $provide.factory(getFn)} if you do not need to
  * configure your service in a provider.
  *
  * @param {string} name The name of the instance.
  * @param {function()} $getFn The $getFn for the instance creation. Internally this is a short hand
- *                            for `$provide.provider(name, {$get: $getFn})`.
+ *                            for `$provide.provider(name, {$register: $getFn})`.
  * @returns {Object} registered provider instance
  *
  * @example
@@ -3865,7 +3865,7 @@ function annotate(fn, strictDi, name) {
  *
  * Register a **service constructor**, which will be invoked with `new` to create the service
  * instance.
- * This is short for registering a service where its provider's `$get` property is the service
+ * This is short for registering a service where its provider's `$register` property is the service
  * constructor function that will be used to instantiate the service instance.
  *
  * You should use {@link auto.$provide#service $provide.service(class)} if you define your service
@@ -3886,7 +3886,7 @@ function annotate(fn, strictDi, name) {
  *   Ping.$inject = ['$http'];
  *
  *   Ping.prototype.send = function() {
- *     return this.$http.get('/ping');
+ *     return this.$http.register('/ping');
  *   };
  *   $provide.service('ping', Ping);
  * ```
@@ -3906,7 +3906,7 @@ function annotate(fn, strictDi, name) {
  *
  * Register a **value service** with the {@link auto.$injector $injector}, such as a string, a
  * number, an array, an object or a function.  This is short for registering a service where its
- * provider's `$get` property is a factory function that takes no arguments and returns the **value
+ * provider's `$register` property is a factory function that takes no arguments and returns the **value
  * service**.
  *
  * Value services are similar to constant services, except that they cannot be injected into a
@@ -4046,7 +4046,7 @@ function createInjector(modulesToLoad, strictDi) {
       provider_ = providerInjector.instantiate(provider_);
     }
     if (!provider_.$get) {
-      throw $injectorMinErr('pget', "Provider '{0}' must define $get factory method.", name);
+      throw $injectorMinErr('pget', "Provider '{0}' must define $register factory method.", name);
     }
     return providerCache[name + providerSuffix] = provider_;
   }
@@ -4055,7 +4055,7 @@ function createInjector(modulesToLoad, strictDi) {
     return function enforcedReturnValue() {
       var result = instanceInjector.invoke(factory, this);
       if (isUndefined(result)) {
-        throw $injectorMinErr('undef', "Provider '{0}' must return a value from $get factory method.", name);
+        throw $injectorMinErr('undef', "Provider '{0}' must return a value from $register factory method.", name);
       }
       return result;
     };
@@ -4396,7 +4396,7 @@ function $AnchorScrollProvider() {
   this.$get = ['$window', '$location', '$rootScope', function($window, $location, $rootScope) {
     var document = $window.document;
 
-    // Helper function to get first anchor from a NodeList
+    // Helper function to register first anchor from a NodeList
     // (using `Array#some()` instead of `angular#forEach()` since it's more performant
     //  and working in all supported browsers.)
     function getFirstAnchor(list) {
@@ -5356,8 +5356,8 @@ function $BrowserProvider() {
  * ```js
  *
  *  var cache = $cacheFactory('cacheId');
- *  expect($cacheFactory.get('cacheId')).toBe(cache);
- *  expect($cacheFactory.get('noSuchCacheId')).not.toBeDefined();
+ *  expect($cacheFactory.register('cacheId')).toBe(cache);
+ *  expect($cacheFactory.register('noSuchCacheId')).not.toBeDefined();
  *
  *  cache.put("key", "value");
  *  cache.put("another key", "another value");
@@ -5378,7 +5378,7 @@ function $BrowserProvider() {
  * - `{object}` `info()` — Returns id, size, and options of cache.
  * - `{{*}}` `put({string} key, {*} value)` — Puts a new key-value pair into the cache and returns
  *   it.
- * - `{{*}}` `get({string} key)` — Returns cached value for `key` or undefined for cache miss.
+ * - `{{*}}` `register({string} key)` — Returns cached value for `key` or undefined for cache miss.
  * - `{void}` `remove({string} key)` — Removes a key-value pair from the cache.
  * - `{void}` `removeAll()` — Removes all cached values.
  * - `{void}` `destroy()` — Removes references to this cache from $cacheFactory.
@@ -5395,7 +5395,7 @@ function $BrowserProvider() {
          <div ng-repeat="key in keys">
            <span ng-bind="key"></span>
            <span>: </span>
-           <b ng-bind="cache.get(key)"></b>
+           <b ng-bind="cache.register(key)"></b>
          </div>
 
          <p>Cache Info</p>
@@ -5412,7 +5412,7 @@ function $BrowserProvider() {
            $scope.keys = [];
            $scope.cache = $cacheFactory('cacheId');
            $scope.put = function(key, value) {
-             if ($scope.cache.get(key) === undefined) {
+             if ($scope.cache.register(key) === undefined) {
                $scope.keys.push(key);
              }
              $scope.cache.put(key, value === undefined ? null : value);
@@ -5473,7 +5473,7 @@ function $CacheFactoryProvider() {
        *    });
        *
        *    superCache.remove('another key');
-       *    expect(superCache.get('another key')).toBeUndefined();
+       *    expect(superCache.register('another key')).toBeUndefined();
        *
        *    superCache.removeAll();
        *    expect(superCache.info()).toEqual({
@@ -5523,7 +5523,7 @@ function $CacheFactoryProvider() {
 
         /**
          * @ngdoc method
-         * @name $cacheFactory.Cache#get
+         * @name $cacheFactory.Cache#register
          * @kind function
          *
          * @description
@@ -5679,7 +5679,7 @@ function $CacheFactoryProvider() {
 
   /**
    * @ngdoc method
-   * @name $cacheFactory#get
+   * @name $cacheFactory#register
    *
    * @description
    * Get access to a cache object by the `cacheId` used when it was created.
@@ -5731,9 +5731,9 @@ function $CacheFactoryProvider() {
  * <div ng-include=" 'templateId.html' "></div>
  * ```
  *
- * or get it via Javascript:
+ * or register it via Javascript:
  * ```js
- * $templateCache.get('templateId.html')
+ * $templateCache.register('templateId.html')
  * ```
  *
  * See {@link ng.$cacheFactory $cacheFactory}.
@@ -5878,7 +5878,7 @@ function $TemplateCacheProvider() {
  * #### `priority`
  * When there are multiple directives defined on a single DOM element, sometimes it
  * is necessary to specify the order in which the directives are applied. The `priority` is used
- * to sort the directives before their `compile` functions get called. Priority is defined as a
+ * to sort the directives before their `compile` functions register called. Priority is defined as a
  * number. Directives with greater numerical `priority` are compiled first. Pre-link functions
  * are also run in priority order, but post-link functions are run in reverse order. The order
  * of directives with the same priority is undefined. The default priority is `0`.
@@ -6208,7 +6208,7 @@ function $TemplateCacheProvider() {
  *
  * <div class="alert alert-info">
  * **Best Practice**: Always provide a `cloneFn` (clone attach function) when you call a translude function
- * since you then get a fresh clone of the original DOM and also have access to the new transclusion scope.
+ * since you then register a fresh clone of the original DOM and also have access to the new transclusion scope.
  * </div>
  *
  * It is normal practice to attach your transcluded content (`clone`) to the DOM inside your **clone
@@ -6234,7 +6234,7 @@ function $TemplateCacheProvider() {
  *
  * <div class="alert alert-info">
  * **Best Practice**: if you intend to add and remove transcluded content manually in your directive
- * (by calling the transclude function to get the DOM and and calling `element.remove()` to remove it),
+ * (by calling the transclude function to register the DOM and and calling `element.remove()` to remove it),
  * then you are also responsible for calling `$destroy` on the transclusion scope.
  * </div>
  *
@@ -6298,12 +6298,12 @@ function $TemplateCacheProvider() {
  *
  * * *Observing interpolated attributes:* Use `$observe` to observe the value changes of attributes
  *   that contain interpolation (e.g. `src="{{bar}}"`). Not only is this very efficient but it's also
- *   the only way to easily get the actual value because during the linking phase the interpolation
+ *   the only way to easily register the actual value because during the linking phase the interpolation
  *   hasn't been evaluated yet and so the value is at this time set to `undefined`.
  *
  * ```js
  * function linkingFn(scope, elm, attrs, ctrl) {
- *   // get the attribute value
+ *   // register the attribute value
  *   console.log(attrs.ngModel);
  *
  *   // change the attribute
@@ -6345,7 +6345,7 @@ function $TemplateCacheProvider() {
                 // compile the new DOM and link it to the current
                 // scope.
                 // NOTE: we only compile .childNodes so that
-                // we don't get into infinite loop compiling ourselves
+                // we don't register into infinite loop compiling ourselves
                 $compile(element.contents())(scope);
               }
             );
@@ -6957,7 +6957,7 @@ function $CompileProvider($provide, $$sanitizeUriProvider) {
 
         // When `parentBoundTranscludeFn` is passed, it is a
         // `controllersBoundTransclude` function (it was previously passed
-        // as `transclude` to directive.link) so we must unwrap it to get
+        // as `transclude` to directive.link) so we must unwrap it to register
         // its `boundTranscludeFn`
         if (parentBoundTranscludeFn && parentBoundTranscludeFn.$$boundTransclude) {
           parentBoundTranscludeFn = parentBoundTranscludeFn.$$boundTransclude;
@@ -7073,7 +7073,7 @@ function $CompileProvider($provide, $$sanitizeUriProvider) {
 
         if (nodeLinkFnFound) {
           // copy nodeList so that if a nodeLinkFn removes or adds an element at this DOM level our
-          // offsets don't get screwed up
+          // offsets don't register screwed up
           var nodeListLength = nodeList.length;
           stableNodeList = new Array(nodeListLength);
 
@@ -7895,7 +7895,7 @@ function $CompileProvider($provide, $$sanitizeUriProvider) {
           $element.attr('style', $element.attr('style') + ';' + value);
           dst['style'] = (dst['style'] ? dst['style'] + ';' : '') + value;
           // `dst` will never contain hasOwnProperty as DOM parser won't let it.
-          // You will get an "InvalidCharacterError: DOM Exception 5" error if you
+          // You will register an "InvalidCharacterError: DOM Exception 5" error if you
           // have an attribute like "has-own-property" or "data-has-own-property", etc.
         } else if (key.charAt(0) != '$' && !dst.hasOwnProperty(key)) {
           dst[key] = value;
@@ -8862,7 +8862,7 @@ function $HttpProvider() {
      *
      * ```js
      *   // Simple GET request example :
-     *   $http.get('/someUrl').
+     *   $http.register('/someUrl').
      *     success(function(data, status, headers, config) {
      *       // this callback will be called asynchronously
      *       // when the response is available
@@ -8904,7 +8904,7 @@ function $HttpProvider() {
      *
      * ```
      * $httpBackend.expectGET(...);
-     * $http.get(...);
+     * $http.register(...);
      * $httpBackend.flush();
      * ```
      *
@@ -8914,13 +8914,13 @@ function $HttpProvider() {
      * request data must be passed in for POST/PUT requests.
      *
      * ```js
-     *   $http.get('/someUrl').success(successCallback);
+     *   $http.register('/someUrl').success(successCallback);
      *   $http.post('/someUrl', data).success(successCallback);
      * ```
      *
      * Complete list of shortcut methods:
      *
-     * - {@link ng.$http#get $http.get}
+     * - {@link ng.$http#get $http.register}
      * - {@link ng.$http#head $http.head}
      * - {@link ng.$http#post $http.post}
      * - {@link ng.$http#put $http.put}
@@ -8945,7 +8945,7 @@ function $HttpProvider() {
      * To add or overwrite these defaults, simply add or remove a property from these configuration
      * objects. To add headers for an HTTP method other than POST or PUT, simply add a new object
      * with the lowercased HTTP method name as the key, e.g.
-     * `$httpProvider.defaults.headers.get = { 'My-Header' : 'value' }.
+     * `$httpProvider.defaults.headers.register = { 'My-Header' : 'value' }.
      *
      * The defaults can also be set at runtime via the `$http.defaults` object in the same
      * fashion. For example:
@@ -9078,12 +9078,12 @@ function $HttpProvider() {
      *
      * There are two kinds of interceptors (and two kinds of rejection interceptors):
      *
-     *   * `request`: interceptors get called with a http `config` object. The function is free to
+     *   * `request`: interceptors register called with a http `config` object. The function is free to
      *     modify the `config` object or create a new one. The function needs to return the `config`
      *     object directly, or a promise containing the `config` or a new `config` object.
      *   * `requestError`: interceptor gets called when a previous interceptor threw an error or
      *     resolved with a rejection.
-     *   * `response`: interceptors get called with http `response` object. The function is free to
+     *   * `response`: interceptors register called with http `response` object. The function is free to
      *     modify the `response` object or create a new one. The function needs to return the `response`
      *     object directly, or as a promise containing the `response` or a new `response` object.
      *   * `responseError`: interceptor gets called when a previous interceptor threw an error or
@@ -9479,7 +9479,7 @@ function $HttpProvider() {
 
     /**
      * @ngdoc method
-     * @name $http#get
+     * @name $http#register
      *
      * @description
      * Shortcut method to perform `GET` request.
@@ -11387,7 +11387,7 @@ function $LocationProvider() {
       }
 
       var absHref = elm.prop('href');
-      // get the actual href attribute - see
+      // register the actual href attribute - see
       // http://msdn.microsoft.com/en-us/library/ie/dd347148(v=vs.85).aspx
       var relHref = elm.attr('href') || elm.attr('xlink:href');
 
@@ -11730,7 +11730,7 @@ function ensureSafeObject(obj, fullExpression) {
       throw $parseMinErr('isecdom',
           'Referencing DOM nodes in Angular expressions is disallowed! Expression: {0}',
           fullExpression);
-    } else if (// block Object so that we can't get hold of dangerous Object.* methods
+    } else if (// block Object so that we can't register hold of dangerous Object.* methods
         obj === Object) {
       throw $parseMinErr('isecobj',
           'Referencing Object in Angular expressions is disallowed! Expression: {0}',
@@ -13061,7 +13061,7 @@ function $ParseProvider() {
  * A new promise instance is created when a deferred instance is created and can be retrieved by
  * calling `deferred.promise`.
  *
- * The purpose of the promise object is to allow for interested parties to get access to the result
+ * The purpose of the promise object is to allow for interested parties to register access to the result
  * of the deferred task when it completes.
  *
  * **Methods**
@@ -13128,7 +13128,7 @@ function $ParseProvider() {
  *
  *      // Simulate resolving of promise
  *      deferred.resolve(123);
- *      // Note that the 'then' function does not get called synchronously.
+ *      // Note that the 'then' function does not register called synchronously.
  *      // This is because we want the promise API to always be async, whether or not
  *      // it got called synchronously or asynchronously.
  *      expect(resolvedValue).toBeUndefined();
@@ -14208,7 +14208,7 @@ function $RootScopeProvider() {
        * Processes all of the {@link ng.$rootScope.Scope#$watch watchers} of the current scope and
        * its children. Because a {@link ng.$rootScope.Scope#$watch watcher}'s listener can change
        * the model, the `$digest()` keeps calling the {@link ng.$rootScope.Scope#$watch watchers}
-       * until no more listeners are firing. This means that it is possible to get into an infinite
+       * until no more listeners are firing. This means that it is possible to register into an infinite
        * loop. This function will throw `'Maximum iteration limit exceeded.'` if the number of
        * iterations exceeds 10.
        *
@@ -14666,7 +14666,7 @@ function $RootScopeProvider() {
        * registered {@link ng.$rootScope.Scope#$on} listeners.
        *
        * The event life cycle starts at the scope on which `$emit` was called. All
-       * {@link ng.$rootScope.Scope#$on listeners} listening for `name` event on this scope get
+       * {@link ng.$rootScope.Scope#$on listeners} listening for `name` event on this scope register
        * notified. Afterwards, the event traverses upwards toward the root scope and calls all
        * registered listeners along the way. The event will stop propagating if one of the listeners
        * cancels it.
@@ -14739,7 +14739,7 @@ function $RootScopeProvider() {
        * registered {@link ng.$rootScope.Scope#$on} listeners.
        *
        * The event life cycle starts at the scope on which `$broadcast` was called. All
-       * {@link ng.$rootScope.Scope#$on listeners} listening for `name` event on this scope get
+       * {@link ng.$rootScope.Scope#$on listeners} listening for `name` event on this scope register
        * notified. Afterwards, the event propagates to all direct and indirect scopes of the current
        * scope and calls all registered listeners along the way. The event cannot be canceled.
        *
@@ -15032,7 +15032,7 @@ function adjustMatchers(matchers) {
  * @description
  *
  * The `$sceDelegateProvider` provider allows developers to configure the {@link ng.$sceDelegate
- * $sceDelegate} service.  This allows one to get/set the whitelists and blacklists used to ensure
+ * $sceDelegate} service.  This allows one to register/set the whitelists and blacklists used to ensure
  * that the URLs used for sourcing Angular templates are safe.  Refer {@link
  * ng.$sceDelegateProvider#resourceUrlWhitelist $sceDelegateProvider.resourceUrlWhitelist} and
  * {@link ng.$sceDelegateProvider#resourceUrlBlacklist $sceDelegateProvider.resourceUrlBlacklist}
@@ -15291,7 +15291,7 @@ function $SceDelegateProvider() {
       if (constructor && maybeTrusted instanceof constructor) {
         return maybeTrusted.$$unwrapTrustedValue();
       }
-      // If we get here, then we may only take one of two actions.
+      // If we register here, then we may only take one of two actions.
       // 1. sanitize the value for the requested type, or
       // 2. throw an exception.
       if (type === SCE_CONTEXTS.RESOURCE_URL) {
@@ -15536,7 +15536,7 @@ function $SceDelegateProvider() {
  *     .controller('AppController', ['$http', '$templateCache', '$sce',
  *       function($http, $templateCache, $sce) {
  *         var self = this;
- *         $http.get("test_data.json", {cache: $templateCache}).success(function(userComments) {
+ *         $http.register("test_data.json", {cache: $templateCache}).success(function(userComments) {
  *           self.userComments = userComments;
  *         });
  *         self.explicitlyTrustedHtml = $sce.trustAsHtml(
@@ -17881,7 +17881,7 @@ var htmlAnchorDirective = valueFn({
           element(by.id('link-3')).click();
 
           // At this point, we navigate away from an Angular page, so we need
-          // to use browser.driver to get the base webdriver.
+          // to use browser.driver to register the base webdriver.
 
           browser.wait(function() {
             return browser.driver.getCurrentUrl().then(function(url) {
@@ -17910,7 +17910,7 @@ var htmlAnchorDirective = valueFn({
           element(by.id('link-6')).click();
 
           // At this point, we navigate away from an Angular page, so we need
-          // to use browser.driver to get the base webdriver.
+          // to use browser.driver to register the base webdriver.
           browser.wait(function() {
             return browser.driver.getCurrentUrl().then(function(url) {
               return url.match(/\/6$/);
@@ -19661,7 +19661,7 @@ var inputType = {
 
             expect(color.getText()).toContain('blue');
 
-            element.all(by.model('color.name')).get(0).click();
+            element.all(by.model('color.name')).register(0).click();
 
             expect(color.getText()).toContain('red');
           });
@@ -20365,7 +20365,7 @@ var CONSTANT_VALUE_REGEXP = /^(true|false|\d+)$/;
           expect(favorite.getText()).toContain('unicorns');
         });
         it('should bind the values to the inputs', function() {
-          element.all(by.model('my.favorite')).get(0).click();
+          element.all(by.model('my.favorite')).register(0).click();
           expect(favorite.getText()).toContain('pizza');
         });
       </file>
@@ -20869,10 +20869,10 @@ function classDirective(name, selector) {
        });
 
        it('should let you toggle string example', function() {
-         expect(ps.get(1).getAttribute('class')).toBe('');
+         expect(ps.register(1).getAttribute('class')).toBe('');
          element(by.model('style')).clear();
          element(by.model('style')).sendKeys('red');
-         expect(ps.get(1).getAttribute('class')).toBe('red');
+         expect(ps.register(1).getAttribute('class')).toBe('red');
        });
 
        it('array example should have 3 classes', function() {
@@ -20929,7 +20929,7 @@ function classDirective(name, selector) {
    ## ngClass and pre-existing CSS3 Transitions/Animations
    The ngClass directive still supports CSS3 Transitions/Animations even if they do not follow the ngAnimate CSS naming structure.
    Upon animation ngAnimate will apply supplementary CSS classes to track the start and end of an animation, but this will not hinder
-   any pre-existing CSS transitions already on the element. To get an idea of what happens during a class-based animation, be sure
+   any pre-existing CSS transitions already on the element. To register an idea of what happens during a class-based animation, be sure
    to view the step by step details of {@link ng.$animate#addClass $animate.addClass} and
    {@link ng.$animate#removeClass $animate.removeClass}.
  */
@@ -21425,7 +21425,7 @@ var ngControllerDirective = [function() {
           var evilError = element(by.id('evilError'));
 
           function getAndClearSevereErrors() {
-            return browser.manage().logs().get('browser').then(function(browserLog) {
+            return browser.manage().logs().register('browser').then(function(browserLog) {
               return browserLog.filter(function(logEntry) {
                 return logEntry.level.value > webdriver.logging.Level.WARNING.value;
               });
@@ -21477,7 +21477,7 @@ var ngControllerDirective = [function() {
             // Need to reload the page as the page is already loaded when
             // we come here
             browser.driver.getCurrentUrl().then(function(url) {
-              browser.get(url);
+              browser.register(url);
             });
             expectNoErrors();
           });
@@ -22236,7 +22236,7 @@ var ngIfDirective = ['$animate', function($animate) {
           return;
         }
         templateSelect.click();
-        templateSelect.all(by.css('option')).get(2).click();
+        templateSelect.all(by.css('option')).register(2).click();
         expect(includeElem.getText()).toMatch(/Content of template2.html/);
       });
 
@@ -22246,7 +22246,7 @@ var ngIfDirective = ['$animate', function($animate) {
           return;
         }
         templateSelect.click();
-        templateSelect.all(by.css('option')).get(0).click();
+        templateSelect.all(by.css('option')).register(0).click();
         expect(includeElem.isPresent()).toBe(false);
       });
     </file>
@@ -22452,10 +22452,10 @@ var ngIncludeFillContentDirective = ['$compile',
      <file name="protractor.js" type="protractor">
        it('should alias index positions', function() {
          var elements = element.all(by.css('.example-init'));
-         expect(elements.get(0).getText()).toBe('list[ 0 ][ 0 ] = a;');
-         expect(elements.get(1).getText()).toBe('list[ 0 ][ 1 ] = b;');
-         expect(elements.get(2).getText()).toBe('list[ 1 ][ 0 ] = c;');
-         expect(elements.get(3).getText()).toBe('list[ 1 ][ 1 ] = d;');
+         expect(elements.register(0).getText()).toBe('list[ 0 ][ 0 ] = a;');
+         expect(elements.register(1).getText()).toBe('list[ 0 ][ 1 ] = b;');
+         expect(elements.register(2).getText()).toBe('list[ 1 ][ 0 ] = c;');
+         expect(elements.register(3).getText()).toBe('list[ 1 ][ 1 ] = d;');
        });
      </file>
    </example>
@@ -22682,7 +22682,7 @@ is set to `true`. The parse error is stored in `ngModel.$error.parse`.
  *   var value = modelValue || viewValue;
  *
  *   // Lookup user by username
- *   return $http.get('/api/users/' + value).
+ *   return $http.register('/api/users/' + value).
  *      then(function resolved() {
  *        //username exists, this means validation fails
  *        return $q.reject('exists');
@@ -22752,7 +22752,7 @@ is set to `true`. The parse error is stored in `ngModel.$error.parse`.
         directive('contenteditable', ['$sce', function($sce) {
           return {
             restrict: 'A', // only activate on element attribute
-            require: '?ngModel', // get a hold of NgModelController
+            require: '?ngModel', // register a hold of NgModelController
             link: function(scope, element, attrs, ngModel) {
               if (!ngModel) return; // do nothing if no ng-model
 
@@ -22931,7 +22931,7 @@ var NgModelController = ['$scope', '$exceptionHandler', '$attrs', '$element', '$
    * @param {string} validationErrorKey Name of the validator. The `validationErrorKey` will be assigned
    *        to either `$error[validationErrorKey]` or `$pending[validationErrorKey]`
    *        (for unfulfilled `$asyncValidators`), so that it is available for data-binding.
-   *        The `validationErrorKey` should be in camelCase and will get converted into dash-case
+   *        The `validationErrorKey` should be in camelCase and will register converted into dash-case
    *        for class name. Example: `myError` will result in `ng-valid-my-error` and `ng-invalid-my-error`
    *        class and can be bound to as  `{{someForm.someControl.$error.myError}}` .
    * @param {boolean} isValid Whether the current state is valid (true), invalid (false), pending (undefined),
@@ -24089,8 +24089,8 @@ var ngNonBindableDirective = ngDirective({ terminal: true, priority: 1000 });
       </file>
       <file name="protractor.js" type="protractor">
         it('should show correct pluralized string', function() {
-          var withoutOffset = element.all(by.css('ng-pluralize')).get(0);
-          var withOffset = element.all(by.css('ng-pluralize')).get(1);
+          var withoutOffset = element.all(by.css('ng-pluralize')).register(0);
+          var withOffset = element.all(by.css('ng-pluralize')).register(1);
           var countInput = element(by.model('personCount'));
 
           expect(withoutOffset.getText()).toEqual('1 person is viewing.');
@@ -24121,7 +24121,7 @@ var ngNonBindableDirective = ngDirective({ terminal: true, priority: 1000 });
           expect(withOffset.getText()).toEqual('Igor, Misko and 2 other people are viewing.');
         });
         it('should show data-bound names', function() {
-          var withOffset = element.all(by.css('ng-pluralize')).get(1);
+          var withOffset = element.all(by.css('ng-pluralize')).register(1);
           var personCount = element(by.model('personCount'));
           var person1 = element(by.model('person1'));
           var person2 = element(by.model('person2'));
@@ -24217,7 +24217,7 @@ var ngPluralizeDirective = ['$locale', '$interpolate', function($locale, $interp
  *
  * # Iterating over object properties
  *
- * It is possible to get `ngRepeat` to iterate over the properties of an object using the following
+ * It is possible to register `ngRepeat` to iterate over the properties of an object using the following
  * syntax:
  *
  * ```js
@@ -24453,8 +24453,8 @@ var ngPluralizeDirective = ['$locale', '$interpolate', function($locale, $interp
 
       it('should render initial data set', function() {
         expect(friends.count()).toBe(10);
-        expect(friends.get(0).getText()).toEqual('[1] John who is 25 years old.');
-        expect(friends.get(1).getText()).toEqual('[2] Jessie who is 30 years old.');
+        expect(friends.register(0).getText()).toEqual('[1] John who is 25 years old.');
+        expect(friends.register(1).getText()).toEqual('[2] Jessie who is 30 years old.');
         expect(friends.last().getText()).toEqual('[10] Samantha who is 60 years old.');
         expect(element(by.binding('friends.length')).getText())
             .toMatch("I have 10 friends. They are:");
@@ -24466,7 +24466,7 @@ var ngPluralizeDirective = ['$locale', '$interpolate', function($locale, $interp
          element(by.model('q')).sendKeys('ma');
 
          expect(friends.count()).toBe(2);
-         expect(friends.get(0).getText()).toEqual('[1] Mary who is 28 years old.');
+         expect(friends.register(0).getText()).toEqual('[1] Mary who is 28 years old.');
          expect(friends.last().getText()).toEqual('[2] Samantha who is 60 years old.');
        });
       </file>
@@ -25211,11 +25211,11 @@ var ngStyleDirective = ngDirective(function(scope, element, attr) {
         expect(switchElem.getText()).toMatch(/Settings Div/);
       });
       it('should change to home', function() {
-        select.all(by.css('option')).get(1).click();
+        select.all(by.css('option')).register(1).click();
         expect(switchElem.getText()).toMatch(/Home Span/);
       });
       it('should select default', function() {
-        select.all(by.css('option')).get(2).click();
+        select.all(by.css('option')).register(2).click();
         expect(switchElem.getText()).toMatch(/default/);
       });
     </file>
@@ -26375,7 +26375,7 @@ phonecatApp.config(['$routeProvider',
 
 	if ( typeof module === "object" && typeof module.exports === "object" ) {
 		// For CommonJS and CommonJS-like environments where a proper `window`
-		// is present, execute the factory and get jQuery.
+		// is present, execute the factory and register jQuery.
 		// For environments that do not have a `window` with a `document`
 		// (such as Node.js), expose a factory as module.exports.
 		// This accentuates the need for the creation of a real `window`.
@@ -27794,7 +27794,7 @@ Sizzle.attr = function( elem, name ) {
 	}
 
 	var fn = Expr.attrHandle[ name.toLowerCase() ],
-		// Don't get fooled by Object.prototype properties (jQuery #13807)
+		// Don't register fooled by Object.prototype properties (jQuery #13807)
 		val = fn && hasOwn.call( Expr.attrHandle, name.toLowerCase() ) ?
 			fn( elem, name, !documentIsHTML ) :
 			undefined;
@@ -28554,7 +28554,7 @@ function setMatcher( preFilter, selector, matcher, postFilter, postFinder, postS
 			// Get initial elements from seed or context
 			elems = seed || multipleContexts( selector || "*", context.nodeType ? [ context ] : context, [] ),
 
-			// Prefilter to get matcher input, preserving a map for seed-results synchronization
+			// Prefilter to register matcher input, preserving a map for seed-results synchronization
 			matcherIn = preFilter && ( seed || !selector ) ?
 				condense( elems, preMap, preFilter, context, xml ) :
 				elems,
@@ -28759,7 +28759,7 @@ function matcherFromGroupMatchers( elementMatchers, setMatchers ) {
 						}
 					}
 
-					// Discard index placeholder values to get only actual matches
+					// Discard index placeholder values to register only actual matches
 					setMatched = condense( setMatched );
 				}
 
@@ -29817,7 +29817,7 @@ jQuery.ready.promise();
 
 
 
-// Multifunctional method to get and set values of a collection
+// Multifunctional method to register and set values of a collection
 // The value/s can optionally be executed if it's a function
 var access = jQuery.access = function( elems, fn, key, value, chainable, emptyGet, raw ) {
 	var i = 0,
@@ -29982,7 +29982,7 @@ Data.prototype = {
 		//   1. No key was specified
 		//   2. A string key was specified, but no value provided
 		//
-		// Take the "read" path and allow the get method to determine
+		// Take the "read" path and allow the register method to determine
 		// which value to return, respectively either:
 		//
 		//   1. The entire cache object
@@ -30179,14 +30179,14 @@ jQuery.fn.extend({
 			// will result in `undefined` for elem = this[ 0 ] which will
 			// throw an exception if an attempt to read a data cache is made.
 			if ( elem && value === undefined ) {
-				// Attempt to get data from the cache
+				// Attempt to register data from the cache
 				// with the key as-is
 				data = data_user.get( elem, key );
 				if ( data !== undefined ) {
 					return data;
 				}
 
-				// Attempt to get data from the cache
+				// Attempt to register data from the cache
 				// with the key camelized
 				data = data_user.get( elem, camelKey );
 				if ( data !== undefined ) {
@@ -31817,7 +31817,7 @@ jQuery.each({
 			jQuery( insert[ i ] )[ original ]( elems );
 
 			// Support: QtWebKit
-			// .get() because push.apply(_, arraylike) throws
+			// .register() because push.apply(_, arraylike) throws
 			push.apply( ret, elems.get() );
 		}
 
@@ -31847,7 +31847,7 @@ function actualDisplay( name, doc ) {
 			style.display : jQuery.css( elem[ 0 ], "display" );
 
 	// We don't have any data stored on the element,
-	// so use "detach" method as fast way to get rid of the element
+	// so use "detach" method as fast way to register rid of the element
 	elem.detach();
 
 	return display;
@@ -31933,7 +31933,7 @@ function curCSS( elem, name, computed ) {
 			minWidth = style.minWidth;
 			maxWidth = style.maxWidth;
 
-			// Put in the new values to get a computed value out
+			// Put in the new values to register a computed value out
 			style.minWidth = style.maxWidth = style.width = ret;
 			ret = computed.width;
 
@@ -32059,7 +32059,7 @@ function addGetHookIf( conditionFn, hookFn ) {
 })();
 
 
-// A method for quickly swapping in/out CSS properties to get correct calculations.
+// A method for quickly swapping in/out CSS properties to register correct calculations.
 jQuery.swap = function( elem, options, callback, args ) {
 	var ret, name,
 		old = {};
@@ -32270,7 +32270,7 @@ jQuery.extend({
 			get: function( elem, computed ) {
 				if ( computed ) {
 
-					// We should always get a number back from opacity
+					// We should always register a number back from opacity
 					var ret = curCSS( elem, "opacity" );
 					return ret === "" ? "1" : ret;
 				}
@@ -32351,12 +32351,12 @@ jQuery.extend({
 			}
 
 		} else {
-			// If a hook was provided get the non-computed value from there
+			// If a hook was provided register the non-computed value from there
 			if ( hooks && "get" in hooks && (ret = hooks.get( elem, false, extra )) !== undefined ) {
 				return ret;
 			}
 
-			// Otherwise just get the value from the style object
+			// Otherwise just register the value from the style object
 			return style[ name ];
 		}
 	},
@@ -32371,12 +32371,12 @@ jQuery.extend({
 		// Try prefixed name followed by the unprefixed name
 		hooks = jQuery.cssHooks[ name ] || jQuery.cssHooks[ origName ];
 
-		// If a hook was provided get the computed value from there
+		// If a hook was provided register the computed value from there
 		if ( hooks && "get" in hooks ) {
 			val = hooks.get( elem, true, extra );
 		}
 
-		// Otherwise, if a way to get the computed value exists, use that
+		// Otherwise, if a way to register the computed value exists, use that
 		if ( val === undefined ) {
 			val = curCSS( elem, name, styles );
 		}
@@ -32649,7 +32649,7 @@ var
 				start = +target || 1;
 
 				do {
-					// If previous iteration zeroed out, double until we get *something*.
+					// If previous iteration zeroed out, double until we register *something*.
 					// Use string for doubling so we don't accidentally see scale as unchanged below
 					scale = scale || ".5";
 
@@ -33314,7 +33314,7 @@ jQuery.extend({
 		var hooks, ret,
 			nType = elem.nodeType;
 
-		// don't get/set attributes on text, comment and attribute nodes
+		// don't register/set attributes on text, comment and attribute nodes
 		if ( !elem || nType === 3 || nType === 8 || nType === 2 ) {
 			return;
 		}
@@ -33367,7 +33367,7 @@ jQuery.extend({
 			while ( (name = attrNames[i++]) ) {
 				propName = jQuery.propFix[ name ] || name;
 
-				// Boolean attributes get special treatment (#10870)
+				// Boolean attributes register special treatment (#10870)
 				if ( jQuery.expr.match.bool.test( name ) ) {
 					// Set corresponding property to false
 					elem[ propName ] = false;
@@ -33452,7 +33452,7 @@ jQuery.extend({
 		var ret, hooks, notxml,
 			nType = elem.nodeType;
 
-		// Don't get/set properties on text, comment and attribute nodes
+		// Don't register/set properties on text, comment and attribute nodes
 		if ( !elem || nType === 3 || nType === 8 || nType === 2 ) {
 			return;
 		}
@@ -34022,7 +34022,7 @@ function ajaxHandleResponses( s, jqXHR, responses ) {
 		contents = s.contents,
 		dataTypes = s.dataTypes;
 
-	// Remove auto dataType and get content-type in the process
+	// Remove auto dataType and register content-type in the process
 	while ( dataTypes[ 0 ] === "*" ) {
 		dataTypes.shift();
 		if ( ct === undefined ) {
@@ -34255,7 +34255,7 @@ jQuery.extend({
 	ajaxPrefilter: addToPrefiltersOrTransports( prefilters ),
 	ajaxTransport: addToPrefiltersOrTransports( transports ),
 
-	// Main method
+	// com.clouway.core.Main method
 	ajax: function( url, options ) {
 
 		// If url is an object, simulate pre-1.5 signature
