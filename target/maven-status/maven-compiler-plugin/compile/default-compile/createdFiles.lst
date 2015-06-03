@@ -15,6 +15,7 @@ com/clouway/http/UserAuthenticator.class
 com/clouway/core/BankUser.class
 com/clouway/http/HomePage.class
 com/clouway/http/BankService.class
+com/clouway/core/Main$1.class
 com/clouway/core/User.class
 com/clouway/core/SessionFinder.class
 com/clouway/core/BankTransactionManager.class

@@ -3,13 +3,16 @@ package com.clouway.core;
 import com.clouway.http.HttpModule;
 import com.clouway.http.PageModule;
 import com.google.inject.Guice;
+import com.google.inject.Injector;
 import com.google.inject.servlet.GuiceFilter;
+import com.google.inject.servlet.GuiceServletContextListener;
 import org.eclipse.jetty.server.Server;
 import org.eclipse.jetty.servlet.DefaultServlet;
 import org.eclipse.jetty.servlet.ServletContextHandler;
+
 import javax.servlet.DispatcherType;
 import java.io.FileInputStream;
-import static java.util.EnumSet.allOf;
+import java.util.EnumSet;
 
 /**
  * Created byivan.genchev1989@gmail.com.
@@ -20,12 +23,19 @@ public class Main {
     if (args.length > 0) {
       inputStream = new FileInputStream(args[0]);
     }
-    PropertyReader reader = new PropertyReader(inputStream);
-    Guice.createInjector(new HttpModule(reader), new PageModule());
+    final PropertyReader reader = new PropertyReader(inputStream);
+
 
     Server server = new Server(reader.getIntProperty("jetty.port"));
     ServletContextHandler handler = new ServletContextHandler(server, "/", ServletContextHandler.SESSIONS);
-    handler.addFilter(GuiceFilter.class, "/*", allOf(DispatcherType.class));
+    handler.addFilter(GuiceFilter.class, "/*", EnumSet.of(DispatcherType.REQUEST));
+    handler.addEventListener(new GuiceServletContextListener() {
+                               @Override
+                               protected Injector getInjector() {
+                                 return Guice.createInjector(new HttpModule(reader), new PageModule());
+                               }
+                             }
+    );
     handler.setResourceBase("frontend");
     handler.addServlet(DefaultServlet.class, "/");
 
@@ -33,3 +43,4 @@ public class Main {
     server.start();
   }
 }
+
