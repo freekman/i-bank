@@ -1,18 +1,14 @@
 package com.clouway.db.adapter.mongodb.persistent;
 
+import com.clouway.core.ExistingUserException;
 import com.clouway.core.Session;
 import com.clouway.core.User;
-import com.clouway.core.ExistingUserException;
 import com.clouway.core.UserFinder;
 import com.clouway.core.UserRegister;
 import com.google.inject.Inject;
 import com.mongodb.MongoWriteException;
-import com.mongodb.client.FindIterable;
 import com.mongodb.client.MongoDatabase;
 import org.bson.Document;
-
-import java.util.ArrayList;
-import java.util.List;
 
 import static com.mongodb.client.model.Filters.eq;
 
@@ -30,7 +26,9 @@ public class PersistentUserRepository implements UserRegister, UserFinder {
 
   @Override
   public void register(User user) {
-    try {
+    if(findByName(user.getName())!=null){
+      throw new ExistingUserException();
+    }else{
       db.getCollection("user").insertOne(new Document()
               .append("name", user.getName())
               .append("password", user.getPassword())
@@ -39,8 +37,7 @@ public class PersistentUserRepository implements UserRegister, UserFinder {
                       new Document()
                               .append("sid", user.getSession().getSessionId())
                               .append("timeOut", user.getSession().getSessionTimeCreated())));
-    } catch (MongoWriteException e) {
-      throw new ExistingUserException();
+
     }
   }
 
