@@ -7,10 +7,8 @@ import com.google.inject.servlet.GuiceFilter;
 import org.eclipse.jetty.server.Server;
 import org.eclipse.jetty.servlet.DefaultServlet;
 import org.eclipse.jetty.servlet.ServletContextHandler;
-
 import javax.servlet.DispatcherType;
 import java.io.FileInputStream;
-
 import static java.util.EnumSet.allOf;
 
 /**
@@ -28,7 +26,7 @@ public class Main {
     Server server = new Server(reader.getIntProperty("jetty.port"));
     ServletContextHandler handler = new ServletContextHandler(server, "/", ServletContextHandler.SESSIONS);
     handler.addFilter(GuiceFilter.class, "/*", allOf(DispatcherType.class));
-    handler.setResourceBase("src/main/webapp");
+    handler.setResourceBase("frontend");
     handler.addServlet(DefaultServlet.class, "/");
 
     server.setHandler(handler);

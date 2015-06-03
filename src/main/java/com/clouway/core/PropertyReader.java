@@ -48,7 +48,7 @@ public class PropertyReader {
 
   private void setDefaultInputStream() {
     try {
-      inputStream = new FileInputStream("configuration.propertieszzzz");
+      inputStream = new FileInputStream("configuration.properties");
     } catch (FileNotFoundException e) {
       e.printStackTrace();
     }
