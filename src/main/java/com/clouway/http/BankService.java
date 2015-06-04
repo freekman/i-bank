@@ -29,10 +29,10 @@ public class BankService {
   @Post
   public Reply<?> executeTransaction(Request request) {
     TransactionDTO dto = request.read(TransactionDTO.class).as(Json.class);
-    if (null == dto) {
-      return Reply.with("Transaction did not occur").status(400);
+    Transaction transaction=null;
+    if (null != dto && null != dto.amount) {
+      transaction = new Transaction(dto.amount, dto.transactionType);
     }
-    Transaction transaction = new Transaction(dto.getAmount(), dto.transactionType);
     Transaction result = null;
     boolean transactionIsValid = transactionValidator.isValid(transaction);
     if (transactionIsValid && dto.getTransactionType().equals("deposit")) {

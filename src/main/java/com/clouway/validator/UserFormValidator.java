@@ -12,11 +12,11 @@ public class UserFormValidator implements Validator<User> {
 
   private List<String> list = new ArrayList<>();
 
-  public List<String> validate(User userDTO) {
-    if (!userDTO.getName().matches("[a-zA-z0-9]{2,20}")) {
+  public List<String> validate(User user) {
+    if (!user.getName().matches("[a-zA-z0-9]{2,20}")) {
       list.add("The name size must be from 2-20 only letters and numbers!");
     }
-    if (!userDTO.getPassword().matches("\\^S|[a-zA-z0-9@!.?-]{2,20}")) {
+    if (!user.getPassword().matches("\\^S|[a-zA-z0-9@!.?-]{2,20}")) {
       list.add("The password size must be from 2-20,without any white space!");
     }
     return list;

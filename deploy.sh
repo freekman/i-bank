@@ -10,9 +10,9 @@ if [[ $rc != 0 ]] ; then
 fi
 #Using rsync to copy the files to testDir
 destination=clouway@dev.telcong.com:/opt/telcong/incubator/i-bank/
-rsync target/AngularBank-jar-with-dependencies.jar $destination
+scp target/AngularBank-jar-with-dependencies.jar $destination
 rsync -vr src/main/webapp/ $destination/frontend/
-rsync configuration.properties $destination
+scp configuration.properties $destination
 #stop server
 ssh clouway@dev.telcong.com sudo stop upstibank
 #Start server

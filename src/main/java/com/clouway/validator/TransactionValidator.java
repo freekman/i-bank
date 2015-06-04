@@ -19,6 +19,9 @@ public class TransactionValidator implements SimpleValidator<Transaction> {
   @Override
   public boolean isValid(Transaction transaction) {
     User current = currentUser.get();
+    if (transaction == null) {
+      return false;
+    }
     if (transaction.getTransactionType().equals("deposit") && transaction.getAmount() < 0) {
       return false;
     }
