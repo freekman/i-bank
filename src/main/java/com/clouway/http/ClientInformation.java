@@ -1,6 +1,6 @@
 package com.clouway.http;
 
-import com.clouway.core.BankUser;
+import com.clouway.core.CurrentUser;
 import com.clouway.core.User;
 import com.google.inject.Inject;
 import com.google.sitebricks.At;
@@ -17,17 +17,17 @@ import com.google.sitebricks.http.Post;
 public class ClientInformation {
 
 
-  private BankUser bankUser;
+  private CurrentUser currentUser;
 
   @Inject
-  public ClientInformation(BankUser bankUser) {
+  public ClientInformation(CurrentUser currentUser) {
 
-    this.bankUser = bankUser;
+    this.currentUser = currentUser;
   }
 
   @Post
   public Reply<?> sendInfo() {
-    User currentUser = bankUser.get();
+    User currentUser = this.currentUser.get();
     if (null != currentUser) {
       return Reply.with(new UserDTO(currentUser.getName(), currentUser.getPassword(), currentUser.getAmount())).as(Json.class).status(200);
     }

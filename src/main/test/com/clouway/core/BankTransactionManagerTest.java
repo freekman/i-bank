@@ -11,7 +11,7 @@ import static org.hamcrest.MatcherAssert.assertThat;
 public class BankTransactionManagerTest {
 
   private BankTransactionManager manager;
-  private BankUser bankUser;
+  private CurrentUser currentUser;
   private UserRegister userRegister;
   @Rule
   public JUnitRuleMockery context = new JUnitRuleMockery();
@@ -19,8 +19,8 @@ public class BankTransactionManagerTest {
   @Before
   public void setUp() throws Exception {
     userRegister = context.mock(UserRegister.class);
-    bankUser = context.mock(BankUser.class);
-    manager = new BankTransactionManager(bankUser, userRegister);
+    currentUser = context.mock(CurrentUser.class);
+    manager = new BankTransactionManager(currentUser, userRegister);
   }
 
   @Test
@@ -28,10 +28,10 @@ public class BankTransactionManagerTest {
     final User user = new User("ivan", "qwe", 22.0, new Session("abc", "ivan", 12l));
     final User afterTransaction = new User("ivan", "qwe", 32.0, new Session("abc", "ivan", 12l));
     context.checking(new Expectations() {{
-      oneOf(bankUser).get();
+      oneOf(currentUser).get();
       will(returnValue(user));
       oneOf(userRegister).updateAmount(user.getSession().getSessionId(), 32.0);
-      oneOf(bankUser).get();will(returnValue(afterTransaction));
+      oneOf(currentUser).get();will(returnValue(afterTransaction));
     }});
     Transaction transaction=manager.deposit(10.0);
     assertThat(transaction.getAmount(),is(32.0));
@@ -42,10 +42,10 @@ public class BankTransactionManagerTest {
     final User user = new User("ivan", "qwe", 22.0, new Session("abc", "ivan", 12l));
     final User aftherTransaction = new User("ivan", "qwe", 12.0, new Session("abc", "ivan", 12l));
     context.checking(new Expectations() {{
-      oneOf(bankUser).get();
+      oneOf(currentUser).get();
       will(returnValue(user));
       oneOf(userRegister).updateAmount(user.getSession().getSessionId(), 12.0);
-      oneOf(bankUser).get();will(returnValue(aftherTransaction));
+      oneOf(currentUser).get();will(returnValue(aftherTransaction));
     }});
     Transaction transaction=manager.withdraw(10.0);
     assertThat(transaction.getAmount(),is(12.0));

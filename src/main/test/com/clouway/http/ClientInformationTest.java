@@ -1,6 +1,6 @@
 package com.clouway.http;
 
-import com.clouway.core.BankUser;
+import com.clouway.core.CurrentUser;
 import com.clouway.core.Session;
 import com.clouway.core.User;
 import com.google.sitebricks.headless.Reply;
@@ -18,22 +18,22 @@ import static org.hamcrest.MatcherAssert.assertThat;
 public class ClientInformationTest {
 
   private ClientInformation info;
-  private BankUser bankUser;
+  private CurrentUser currentUser;
 
   @Rule
   public JUnitRuleMockery context = new JUnitRuleMockery();
 
   @Before
   public void setUp() throws Exception {
-    bankUser = context.mock(BankUser.class);
-    info = new ClientInformation(bankUser);
+    currentUser = context.mock(CurrentUser.class);
+    info = new ClientInformation(currentUser);
 
   }
 
   @Test
   public void deposit() throws Exception {
     context.checking(new Expectations() {{
-      oneOf(bankUser).get();
+      oneOf(currentUser).get();
       will(returnValue(new User("Ivan", "qqq", 12.00, new Session("asd", "Ivan", 0l))));
     }});
     Reply<?> reply = info.sendInfo();
@@ -44,7 +44,7 @@ public class ClientInformationTest {
   @Test
   public void sidNotFound() throws Exception {
     context.checking(new Expectations() {{
-      oneOf(bankUser).get();
+      oneOf(currentUser).get();
       will(returnValue(null));
     }});
     Reply<?> reply = info.sendInfo();

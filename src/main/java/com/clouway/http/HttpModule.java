@@ -13,8 +13,6 @@ import com.google.inject.servlet.ServletModule;
 import com.mongodb.MongoClient;
 import com.mongodb.client.MongoDatabase;
 
-import java.io.FileInputStream;
-
 /**
  * Created byivan.genchev1989@gmail.com.
  */
@@ -29,7 +27,7 @@ public class HttpModule extends ServletModule {
 
   @Override
   protected void configureServlets() {
-    bind(BankUser.class).to(CurrentBankUser.class);
+    bind(CurrentUser.class).to(CurrentCurrentUser.class);
     bind(TransactionManager.class).to(BankTransactionManager.class);
     bind(SimpleValidator.class).to(TransactionValidator.class);
     bind(SidProvider.class).to(CurrentSidProvider.class);

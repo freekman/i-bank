@@ -1,6 +1,6 @@
 package com.clouway.http;
 
-import com.clouway.core.BankUser;
+import com.clouway.core.CurrentUser;
 import com.clouway.core.Session;
 import com.clouway.core.Transaction;
 import com.clouway.core.User;
@@ -16,14 +16,14 @@ import static org.junit.Assert.*;
 
 public class TransactionValidatorTest {
   private TransactionValidator validator;
-  private BankUser bankUser;
+  private CurrentUser currentUser;
   @Rule
   public JUnitRuleMockery context = new JUnitRuleMockery();
 
   @Before
   public void setUp() throws Exception {
-    bankUser = context.mock(BankUser.class);
-    validator = new TransactionValidator(bankUser);
+    currentUser = context.mock(CurrentUser.class);
+    validator = new TransactionValidator(currentUser);
   }
 
   @Test
@@ -65,7 +65,7 @@ public class TransactionValidatorTest {
   private void currentUserExpectations() {
     final User user = new User("Ivan", "", 50.0, new Session("", "", 1l));
     context.checking(new Expectations() {{
-      oneOf(bankUser).get();
+      oneOf(currentUser).get();
       will(returnValue(user));
     }});
   }

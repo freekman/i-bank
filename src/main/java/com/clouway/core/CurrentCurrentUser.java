@@ -5,13 +5,13 @@ import com.google.inject.Inject;
 /**
  * Created byivan.genchev1989@gmail.com.
  */
-public class CurrentBankUser implements BankUser {
+public class CurrentCurrentUser implements CurrentUser {
 
   private UserFinder userFinder;
   private SidProvider sidProvider;
 
   @Inject
-  public CurrentBankUser(UserFinder userFinder, SidProvider sidProvider) {
+  public CurrentCurrentUser(UserFinder userFinder, SidProvider sidProvider) {
     this.userFinder = userFinder;
     this.sidProvider = sidProvider;
   }
