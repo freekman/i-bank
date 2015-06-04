@@ -27,6 +27,13 @@ public class TransactionValidatorTest {
   }
 
   @Test
+  public void validateMissingTransaction() throws Exception {
+    currentUserExpectations();
+    boolean isValid = validator.isValid(null);
+    assertThat(isValid, is(false));
+  }
+
+  @Test
   public void withdrawAmountGreaterTheBalance() throws Exception {
     currentUserExpectations();
     boolean isValid = validator.isValid(new Transaction(60.0, "withdraw"));

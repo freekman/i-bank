@@ -1,7 +1,7 @@
 package com.clouway.http;
 
-import com.clouway.core.TransactionHandler;
 import com.clouway.core.Transaction;
+import com.clouway.core.TransactionHandler;
 import com.clouway.validator.SimpleValidator;
 import com.google.sitebricks.client.Transport;
 import com.google.sitebricks.headless.Reply;
@@ -15,7 +15,6 @@ import org.junit.Test;
 
 import static com.clouway.matshers.ReplyContainsObject.contains;
 import static com.clouway.matshers.ReplyStatus.statusIs;
-import static org.hamcrest.CoreMatchers.is;
 import static org.hamcrest.MatcherAssert.assertThat;
 
 public class BankServiceDepositTest {
@@ -51,8 +50,25 @@ public class BankServiceDepositTest {
       will(returnValue(new Transaction(10.0, "ok")));
     }});
     Reply replay = bankService.executeTransaction(request);
-    assertThat(replay, is(contains(new Transaction(10.0, "ok"))));
-    assertThat(replay, is(statusIs(200)));
+    assertThat(replay, contains(new Transaction(10.0, "ok")));
+    assertThat(replay, statusIs(200));
+  }
+
+  @Test
+  public void transactionDTOWithNullAmount() throws Exception {
+    context.checking(new Expectations() {{
+      oneOf(request).read(TransactionDTO.class);
+      will(returnValue(new RequestRead<TransactionDTO>() {
+        @Override
+        public TransactionDTO as(Class<? extends Transport> transport) {
+          return new TransactionDTO(null, "deposit");
+        }
+      }));
+      oneOf(validator).isValid(null);
+      will(returnValue(false));
+    }});
+    Reply replay = bankService.executeTransaction(request);
+    assertThat(replay,statusIs(400));
   }
 
 }

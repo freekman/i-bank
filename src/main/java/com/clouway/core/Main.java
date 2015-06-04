@@ -36,7 +36,7 @@ public class Main {
                                }
                              }
     );
-    handler.setResourceBase("src/main/webapp");
+    handler.setResourceBase("frontend");
     handler.addServlet(DefaultServlet.class, "/");
 
     server.setHandler(handler);
