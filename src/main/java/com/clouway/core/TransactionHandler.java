@@ -3,7 +3,7 @@ package com.clouway.core;
 /**
  * Created byivan.genchev1989@gmail.com.
  */
-public interface TransactionManager {
+public interface TransactionHandler {
 
   Transaction withdraw(Double amount);
 
