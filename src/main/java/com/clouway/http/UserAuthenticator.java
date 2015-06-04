@@ -46,7 +46,7 @@ public class UserAuthenticator implements Authenticator<User> {
     return false;
   }
 
-  public void createAndSaveSession(User user) {
+  public void registerSession(User user) {
     String sid = new CurrentSidProvider(requestProvider.get()).get();
     if (sid == null) {
       UUID uuid = new UUID(10, 5);

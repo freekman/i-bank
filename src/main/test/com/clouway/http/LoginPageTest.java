@@ -33,7 +33,7 @@ public class LoginPageTest {
       User user = new User("asa", "asa", 0.0,new Session("","",0l));
       oneOf(authenticator).authenticate(user);
       will(returnValue(true));
-      oneOf(authenticator).createAndSaveSession(user);
+      oneOf(authenticator).registerSession(user);
     }});
     String redirectTo = loginPage.login();
     assertThat(redirectTo, is("index.html#/welcome"));
@@ -47,7 +47,7 @@ public class LoginPageTest {
       User user = new User("asa", "asa", 0.0,new Session("","",0l));
       oneOf(authenticator).authenticate(user);
       will(returnValue(false));
-      never(authenticator).createAndSaveSession(user);
+      never(authenticator).registerSession(user);
     }});
     String redirectTo = loginPage.login();
     assertThat(redirectTo, is("/home"));

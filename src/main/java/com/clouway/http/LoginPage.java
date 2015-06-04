@@ -27,7 +27,7 @@ public class LoginPage {
   public String login() {
     User user = new User(uName, pwd, 0.0, new Session("", "", 0));
     if (userAuthenticator.authenticate(user)) {
-      userAuthenticator.createAndSaveSession(user);
+      userAuthenticator.registerSession(user);
       return "index.html#/welcome";
     }
     return "/home";

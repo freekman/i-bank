@@ -7,5 +7,5 @@ public interface Authenticator<T> {
 
   boolean authenticate(T t);
 
-  void createAndSaveSession(T t);
+  void registerSession(T t);
 }
