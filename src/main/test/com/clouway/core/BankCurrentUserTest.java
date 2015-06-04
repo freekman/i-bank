@@ -8,9 +8,9 @@ import org.junit.Rule;
 import static org.hamcrest.CoreMatchers.is;
 import static org.junit.Assert.*;
 
-public class CurrentCurrentUserTest {
+public class BankCurrentUserTest {
 
-  private CurrentCurrentUser currentUser;
+  private BankCurrentUser currentUser;
   private UserFinder userFinder;
   private SidProvider sidProvider;
   @Rule
@@ -20,7 +20,7 @@ public class CurrentCurrentUserTest {
   public void setUp() throws Exception {
     sidProvider = context.mock(SidProvider.class);
     userFinder = context.mock(UserFinder.class);
-    currentUser = new CurrentCurrentUser(userFinder,sidProvider);
+    currentUser = new BankCurrentUser(userFinder,sidProvider);
   }
 
   @Test

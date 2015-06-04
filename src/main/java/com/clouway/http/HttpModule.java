@@ -27,7 +27,7 @@ public class HttpModule extends ServletModule {
 
   @Override
   protected void configureServlets() {
-    bind(CurrentUser.class).to(CurrentCurrentUser.class);
+    bind(CurrentUser.class).to(BankCurrentUser.class);
     bind(TransactionHandler.class).to(BankTransactionHandler.class);
     bind(SimpleValidator.class).to(TransactionValidator.class);
     bind(SidProvider.class).to(CurrentSidProvider.class);
