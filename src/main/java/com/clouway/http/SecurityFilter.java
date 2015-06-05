@@ -53,7 +53,7 @@ public class SecurityFilter implements Filter {
       currentSession = session;
     }
     if (currentSession != null) {
-      isActive = sessionRegister.refreshSession(currentSession.getSessionId(), Calendar.getInstance().getTimeInMillis());
+      isActive = sessionRegister.refreshSession(currentSession. sessionId, Calendar.getInstance().getTimeInMillis());
     }
     if (currentSession == null && (destination.equals("home") || destination.equals("login"))) {
       chain.doFilter(request, response);

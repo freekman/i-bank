@@ -36,8 +36,8 @@ public class PersistentUserRepository implements UserRegister, UserFinder {
               .append("amount", 0.0)
               .append("session",
                       new Document()
-                              .append("sid", user.session.getSessionId())
-                              .append("timeOut", user.session.getSessionTimeCreated())));
+                              .append("sid", user.session.sessionId)
+                              .append("timeOut", user.session.sessionTimeCreated)));
 
     }
   }

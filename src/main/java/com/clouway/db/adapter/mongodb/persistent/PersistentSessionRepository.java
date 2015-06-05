@@ -83,8 +83,8 @@ public class PersistentSessionRepository implements SessionRegister, SessionFind
 
   private boolean isValid(Session userSession, int lifeTimeInMinutes) {
     long lifeTimeInMilliseconds = lifeTimeInMinutes * 60000;
-    if (Calendar.getInstance().getTimeInMillis() - userSession.getSessionTimeCreated() > lifeTimeInMilliseconds) {
-      clearSession(userSession.getSessionId());
+    if (Calendar.getInstance().getTimeInMillis() - userSession.sessionTimeCreated > lifeTimeInMilliseconds) {
+      clearSession(userSession.sessionId);
       return false;
     }
     return true;

@@ -9,15 +9,15 @@ import javax.servlet.http.HttpServletRequest;
  * @author Ivan Genchev (ivan.genchev1989@gmail.com)
  */
 public class CurrentSidProvider implements SidProvider {
-  private HttpServletRequest req;
+  private HttpServletRequest request;
   @Inject
-  public CurrentSidProvider(HttpServletRequest req) {
-    this.req = req;
+  public CurrentSidProvider(HttpServletRequest request) {
+    this.request = request;
   }
 
   @Override
   public Optional<String> get() {
-    Cookie[] cookies = req.getCookies();
+    Cookie[] cookies = request.getCookies();
     if (cookies == null) {
       return Optional.absent();
     }

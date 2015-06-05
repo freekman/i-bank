@@ -4,9 +4,9 @@ package com.clouway.core;
  * Created byivan.genchev1989@gmail.com.
  */
 public class Session {
-  private String sessionId;
-  private String userName;
-  private long sessionTimeCreated;
+  public final String sessionId;
+  public final String userName;
+  public   final long sessionTimeCreated;
 
   public Session(String sessionId, String userName, long sessionTimeOut) {
     this.sessionId = sessionId;
@@ -14,17 +14,6 @@ public class Session {
     this.sessionTimeCreated = sessionTimeOut;
   }
 
-  public String getSessionId() {
-    return sessionId;
-  }
-
-  public String getUserName() {
-    return userName;
-  }
-
-  public long getSessionTimeCreated() {
-    return sessionTimeCreated;
-  }
 
   @Override
   public boolean equals(Object o) {

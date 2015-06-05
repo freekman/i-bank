@@ -32,8 +32,8 @@ public class PersistentSessionRepositoryTest {
     repository.createSession("asd", "ivan", 123l);
     List<Session> result = repository.findAll();
     assertThat(result.size(), is(1));
-    assertThat(result.get(0).getSessionId(), is("asd"));
-    assertThat(result.get(0).getSessionTimeCreated(), is(123l));
+    assertThat(result.get(0).sessionId, is("asd"));
+    assertThat(result.get(0).sessionTimeCreated, is(123l));
   }
 
 
@@ -44,8 +44,8 @@ public class PersistentSessionRepositoryTest {
     repository.clearSession("asd");
     List<Session> result = repository.findAll();
     assertThat(result.size(), is(1));
-    assertThat(result.get(0).getSessionId(), is(""));
-    assertThat(result.get(0).getSessionTimeCreated(), is(0l));
+    assertThat(result.get(0).sessionId, is(""));
+    assertThat(result.get(0).sessionTimeCreated, is(0l));
   }
 
   @Test
