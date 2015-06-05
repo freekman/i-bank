@@ -3,6 +3,7 @@ package com.clouway.http;
 import com.clouway.core.SessionRegister;
 
 import com.clouway.core.SidProvider;
+import com.google.common.base.Optional;
 import com.google.inject.Provider;
 import com.google.sitebricks.headless.Reply;
 import org.jmock.Expectations;
@@ -42,7 +43,7 @@ public class LogOutServiceTest {
   public void happyPath() throws Exception {
     context.checking(new Expectations() {{
       oneOf(sidProvider).get();
-      will(returnValue("asd"));
+      will(returnValue(Optional.of("asd")));
       oneOf(sessionRegister).clearSession("asd");
       oneOf(resp).get();
       will(returnValue(httpServletResponse));

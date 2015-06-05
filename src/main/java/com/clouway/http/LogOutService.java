@@ -2,6 +2,7 @@ package com.clouway.http;
 
 import com.clouway.core.SessionRegister;
 import com.clouway.core.SidProvider;
+import com.google.common.base.Optional;
 import com.google.inject.Inject;
 import com.google.inject.Provider;
 import com.google.sitebricks.At;
@@ -33,10 +34,9 @@ public class LogOutService {
 
   @Get
   public Reply<?> get() {
-    String sid = sidProvider.get();
-
-    if (null != sid) {
-      sessionRegister.clearSession(sid);
+    Optional<String> sid = sidProvider.get();
+    if (sid.isPresent()) {
+      sessionRegister.clearSession(sid.get());
     }
     removeCookie();
     return Reply.saying().redirect("/home");

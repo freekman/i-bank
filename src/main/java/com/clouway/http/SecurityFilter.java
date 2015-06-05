@@ -1,9 +1,10 @@
 package com.clouway.http;
 
+import com.clouway.core.CurrentSidProvider;
 import com.clouway.core.Session;
 import com.clouway.core.SessionFinder;
 import com.clouway.core.SessionRegister;
-import com.clouway.core.CurrentSidProvider;
+import com.google.common.base.Optional;
 import com.google.inject.Inject;
 import com.google.inject.Singleton;
 
@@ -26,11 +27,13 @@ import java.util.Calendar;
 public class SecurityFilter implements Filter {
   private SessionFinder sessionFinder;
   private SessionRegister sessionRegister;
+
   @Inject
   public SecurityFilter(SessionFinder sessionFinder, SessionRegister sessionRegister) {
     this.sessionFinder = sessionFinder;
     this.sessionRegister = sessionRegister;
   }
+
   @Override
   public void init(FilterConfig filterConfig) throws ServletException {
   }
@@ -40,9 +43,11 @@ public class SecurityFilter implements Filter {
     boolean isActive = false;
     String reqURI = ((HttpServletRequest) request).getRequestURI();
     String destination = getDestination(reqURI);
-    String sessionId = new CurrentSidProvider((HttpServletRequest) request).get();
-    Session session = sessionFinder.findBySid(sessionId);
-
+    Optional<String> sessionId = new CurrentSidProvider((HttpServletRequest) request).get();
+    Session session=null;
+    if (sessionId.isPresent()) {
+      session = sessionFinder.findBySid(sessionId.get());
+    }
     Session currentSession = null;
     if (null != session) {
       currentSession = session;

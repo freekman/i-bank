@@ -1,7 +1,7 @@
 package com.clouway.core;
 
+import com.google.common.base.Optional;
 import com.google.inject.Inject;
-
 import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletRequest;
 
@@ -10,24 +10,23 @@ import javax.servlet.http.HttpServletRequest;
  */
 public class CurrentSidProvider implements SidProvider {
   private HttpServletRequest req;
-
   @Inject
   public CurrentSidProvider(HttpServletRequest req) {
     this.req = req;
   }
 
   @Override
-  public String get() {
+  public Optional<String> get() {
     Cookie[] cookies = req.getCookies();
     if (cookies == null) {
-      return null;
+      return Optional.absent();
     }
     for (Cookie cookie : cookies) {
       if (cookie.getName().equalsIgnoreCase("sid")) {
-        return cookie.getValue();
+        return Optional.of(cookie.getValue());
       }
     }
-    return null;
+    return Optional.absent();
   }
 
 }

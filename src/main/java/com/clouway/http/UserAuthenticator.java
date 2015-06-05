@@ -47,7 +47,7 @@ public class UserAuthenticator implements Authenticator<User> {
   }
 
   public void registerSession(User user) {
-    String sid = new CurrentSidProvider(requestProvider.get()).get();
+    String sid = new CurrentSidProvider(requestProvider.get()).get().get();
     if (sid == null) {
       UUID uuid = new UUID(10, 5);
       String randomValue = "vankaBanka" + uuid.randomUUID().toString();

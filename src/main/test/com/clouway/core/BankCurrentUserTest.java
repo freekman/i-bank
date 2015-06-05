@@ -1,5 +1,6 @@
 package com.clouway.core;
 
+import com.google.common.base.Optional;
 import org.jmock.Expectations;
 import org.jmock.integration.junit4.JUnitRuleMockery;
 import org.junit.*;
@@ -27,7 +28,7 @@ public class BankCurrentUserTest {
   public void happyPath() throws Exception {
     final User result = new User("ivan", "qwe", 22.0, new Session("abc", "ivan", 12l));
     context.checking(new Expectations() {{
-      oneOf(sidProvider).get();will(returnValue("abc"));
+      oneOf(sidProvider).get();will(returnValue(Optional.of("abc")));
       oneOf(userFinder).findBySidIfExist("abc");
       will(returnValue(result));
     }});
@@ -37,7 +38,8 @@ public class BankCurrentUserTest {
   @Test
   public void missingSid() throws Exception {
     context.checking(new Expectations() {{
-      oneOf(sidProvider).get();will(returnValue(null));
+      oneOf(sidProvider).get();will(returnValue(Optional.absent()));
+      never(userFinder).findBySidIfExist(null);will(returnValue(null));
     }});
     User dto= currentUser.get();
    assertNull(dto);

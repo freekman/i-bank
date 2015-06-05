@@ -1,5 +1,6 @@
 package com.clouway.core;
 
+import com.google.common.base.Optional;
 import com.google.inject.Inject;
 
 /**
@@ -18,11 +19,19 @@ public class BankCurrentUser implements CurrentUser {
 
   @Override
   public User get() {
-    String sid = provider.get();
-    if (null != sid) {
-       return finder.findBySidIfExist(sid);
+    Optional<String> sid = provider.get();
+    if (sid.isPresent()) {
+      return finder.findBySidIfExist(sid.get());
     }
     return null;
   }
 
+//  @Override
+//  public User get() {
+//    String sid = provider.get();
+//    //if (null != sid) {
+//       return finder.findBySidIfExist(sid);
+//    //}
+//    //return null;
+//  }
 }
