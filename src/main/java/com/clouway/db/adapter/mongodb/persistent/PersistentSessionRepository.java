@@ -28,7 +28,7 @@ public class PersistentSessionRepository implements SessionRegister, SessionFind
   }
 
   @Override
-  public void createSession(String sid, String userName, Long timeOut) {
+  public void create(String sid, String userName, Long timeOut) {
     MongoUserCollection().updateOne(new Document("name", userName), new Document("$set",
             new Document("session"
                     , new Document().append("sid", sid).append("timeOut", timeOut))));
@@ -36,14 +36,14 @@ public class PersistentSessionRepository implements SessionRegister, SessionFind
 
 
   @Override
-  public void clearSession(String sid) {
+  public void clear(String sid) {
     MongoUserCollection().updateOne(new Document("session.sid", sid), new Document("$set",
             new Document("session"
                     , new Document().append("sid", "").append("timeOut", 0L))));
   }
 
   @Override
-  public boolean refreshSession(String sid, Long newTime) {
+  public boolean refresh(String sid, Long newTime) {
     Session currentSession = findBySid(sid);
     if (null != currentSession && isValid(currentSession, 30)) {
       MongoUserCollection().updateOne(new Document("session.sid", sid), new Document("$set", new Document("session.timeOut", newTime)));
@@ -86,7 +86,7 @@ public class PersistentSessionRepository implements SessionRegister, SessionFind
   private boolean isValid(Session userSession, int lifeTimeInMinutes) {
     long lifeTimeInMilliseconds = lifeTimeInMinutes * 60000;
     if (Calendar.getInstance().getTimeInMillis() - userSession.sessionTimeCreated > lifeTimeInMilliseconds) {
-      clearSession(userSession.sessionId);
+      clear(userSession.sessionId);
       return false;
     }
     return true;

@@ -1,4 +1,4 @@
-package com.clouway.matshers;
+package com.clouway.matchers;
 
 import com.google.sitebricks.headless.Reply;
 import org.hamcrest.Description;

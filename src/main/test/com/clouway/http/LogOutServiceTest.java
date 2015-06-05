@@ -16,7 +16,7 @@ import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletResponse;
 
 
-import static com.clouway.matshers.ReplyRedirectsTo.redirectsTo;
+import static com.clouway.matchers.ReplyRedirectsTo.redirectsTo;
 import static org.hamcrest.CoreMatchers.is;
 import static org.junit.Assert.assertThat;
 
@@ -44,7 +44,7 @@ public class LogOutServiceTest {
     context.checking(new Expectations() {{
       oneOf(sidProvider).get();
       will(returnValue(Optional.of("asd")));
-      oneOf(sessionRegister).clearSession("asd");
+      oneOf(sessionRegister).clear("asd");
       oneOf(resp).get();
       will(returnValue(httpServletResponse));
       oneOf(httpServletResponse).addCookie(with(any(Cookie.class)));

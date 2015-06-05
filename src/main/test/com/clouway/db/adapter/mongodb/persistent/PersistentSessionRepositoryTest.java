@@ -29,7 +29,7 @@ public class PersistentSessionRepositoryTest {
   @Test
   public void happyPath() throws Exception {
     insertFakeUser("ivan", "qwe", 0.0, "", 0l);
-    repository.createSession("asd", "ivan", 123l);
+    repository.create("asd", "ivan", 123l);
     List<Session> result = repository.findAll();
     assertThat(result.size(), is(1));
     assertThat(result.get(0).sessionId, is("asd"));
@@ -40,8 +40,8 @@ public class PersistentSessionRepositoryTest {
   @Test
   public void resetUserSession() throws Exception {
     insertFakeUser("ivan", "qwe", 0.0, "", 0l);
-    repository.createSession("asd", "ivan", 123l);
-    repository.clearSession("asd");
+    repository.create("asd", "ivan", 123l);
+    repository.clear("asd");
     List<Session> result = repository.findAll();
     assertThat(result.size(), is(1));
     assertThat(result.get(0).sessionId, is(""));
@@ -71,7 +71,7 @@ public class PersistentSessionRepositoryTest {
   @Test
   public void pretendWeHaveRegisteredUSer() throws Exception {
     insertFakeUser("ivan", "qqq", 0.0, "asd", getDate(2015, 6, 27, 10, 10));
-    boolean result = repository.refreshSession("asd", getDate(2015, 6, 27, 10, 20));
+    boolean result = repository.refresh("asd", getDate(2015, 6, 27, 10, 20));
     assertThat(result, is(true));
   }
   private void insertFakeUser(String name, String password, Double balance, String sid, Long timeOut) {

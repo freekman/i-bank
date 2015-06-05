@@ -36,7 +36,7 @@ public class LogOutService {
   public Reply<?> get() {
     Optional<String> sid = sidProvider.get();
     if (sid.isPresent()) {
-      sessionRegister.clearSession(sid.get());
+      sessionRegister.clear(sid.get());
     }
     removeCookie();
     return Reply.saying().redirect("/home");

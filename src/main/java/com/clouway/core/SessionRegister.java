@@ -5,10 +5,10 @@ package com.clouway.core;
  */
 public interface SessionRegister {
 
-  void createSession(String sid, String userName, Long timeOut);
+  void create(String sid, String userName, Long timeOut);
 
-  void clearSession(String sid);
+  void clear(String sid);
 
-  boolean refreshSession(String sid, Long newTime);
+  boolean refresh(String sid, Long newTime);
 
 }

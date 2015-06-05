@@ -13,8 +13,8 @@ import org.junit.Before;
 import org.junit.Rule;
 import org.junit.Test;
 
-import static com.clouway.matshers.ReplyContainsObject.contains;
-import static com.clouway.matshers.ReplyStatus.statusIs;
+import static com.clouway.matchers.ReplyContainsObject.contains;
+import static com.clouway.matchers.ReplyStatus.statusIs;
 import static org.hamcrest.MatcherAssert.assertThat;
 
 public class BankServiceDepositTest {

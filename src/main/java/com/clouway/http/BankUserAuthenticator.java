@@ -57,7 +57,7 @@ public class BankUserAuthenticator implements UserAuthenticator {
       String randomValue = "vankaBanka" + uuid.randomUUID().toString();
       String newSid = sha1(randomValue);
       responseProvider.get().addCookie(new Cookie("sid", newSid));
-      sessionRegister.createSession(newSid, user.name, Calendar.getInstance().getTimeInMillis());
+      sessionRegister.create(newSid, user.name, Calendar.getInstance().getTimeInMillis());
     }
   }
 
