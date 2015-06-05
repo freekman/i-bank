@@ -11,7 +11,6 @@ import com.google.sitebricks.At;
 import com.google.sitebricks.Show;
 import com.google.sitebricks.http.Post;
 
-import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -21,8 +20,8 @@ import java.util.List;
 @Show("register.html")
 public class RegistrationPage {
 
-  public String uName = "";
-  public String pwd = "";
+  public String userName = "";
+  public String password = "";
   private List<String> messages;
   private UserRegister userRegistry;
   private Validator<User> validator;
@@ -39,7 +38,7 @@ public class RegistrationPage {
 
   @Post
   public void register() {
-    UserDTO userDTO = new UserDTO(uName, pwd, 0.0);
+    UserDTO userDTO = new UserDTO(userName, password, 0.0);
     User user = new User(userDTO.name, userDTO.password, userDTO.amount, new Session("", userDTO.name, 0));
     messages = validator.validate(user);
     if (messages.isEmpty()) {

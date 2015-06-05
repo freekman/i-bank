@@ -14,8 +14,8 @@ import com.google.sitebricks.http.Post;
 @At("/login")
 @Show("login.html")
 public class LoginPage {
-  public String uName = "";
-  public String pwd = "";
+  public String userName = "";
+  public String password = "";
   private UserAuthenticator userUserAuthenticator;
 
   @Inject
@@ -25,7 +25,7 @@ public class LoginPage {
 
   @Post
   public String login() {
-    User user = new User(uName, pwd, 0.0, new Session("", "", 0));
+    User user = new User(userName, password, 0.0, new Session("", "", 0));
     if (userUserAuthenticator.authenticate(user)) {
       userUserAuthenticator.registerSession(user);
       return "index.html#/welcome";

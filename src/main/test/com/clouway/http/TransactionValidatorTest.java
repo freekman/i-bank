@@ -16,10 +16,12 @@ import static org.hamcrest.CoreMatchers.is;
 import static org.junit.Assert.*;
 
 public class TransactionValidatorTest {
-  private TransactionValidator validator;
-  private CurrentUser currentUser;
   @Rule
   public JUnitRuleMockery context = new JUnitRuleMockery();
+
+  private TransactionValidator validator;
+  private CurrentUser currentUser;
+
 
   @Before
   public void setUp() throws Exception {

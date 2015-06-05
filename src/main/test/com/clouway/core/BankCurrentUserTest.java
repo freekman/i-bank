@@ -12,11 +12,12 @@ import static org.junit.Assert.*;
 
 public class BankCurrentUserTest {
 
+  @Rule
+  public JUnitRuleMockery context = new JUnitRuleMockery();
+
   private BankCurrentUser currentUser;
   private UserFinder userFinder;
   private SidProvider sidProvider;
-  @Rule
-  public JUnitRuleMockery context = new JUnitRuleMockery();
 
   @Before
   public void setUp() throws Exception {

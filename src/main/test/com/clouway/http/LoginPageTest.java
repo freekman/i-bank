@@ -14,10 +14,11 @@ import static org.junit.Assert.*;
 
 public class LoginPageTest {
 
-  private LoginPage loginPage;
-  private UserAuthenticator userAuthenticator;
   @Rule
   public JUnitRuleMockery context = new JUnitRuleMockery();
+
+  private LoginPage loginPage;
+  private UserAuthenticator userAuthenticator;
 
   @Before
   public void setUp() throws Exception {
@@ -27,8 +28,8 @@ public class LoginPageTest {
 
   @Test
   public void happyPath() throws Exception {
-    loginPage.uName = "asa";
-    loginPage.pwd = "asa";
+    loginPage.userName = "asa";
+    loginPage.password = "asa";
     context.checking(new Expectations() {{
       User user = new User("asa", "asa", 0.0,new Session("","",0l));
       oneOf(userAuthenticator).authenticate(user);
@@ -41,8 +42,8 @@ public class LoginPageTest {
 
   @Test
   public void userNotAuthenticated() throws Exception {
-    loginPage.uName = "asa";
-    loginPage.pwd = "asa";
+    loginPage.userName = "asa";
+    loginPage.password = "asa";
     context.checking(new Expectations() {{
       User user = new User("asa", "asa", 0.0,new Session("","",0l));
       oneOf(userAuthenticator).authenticate(user);

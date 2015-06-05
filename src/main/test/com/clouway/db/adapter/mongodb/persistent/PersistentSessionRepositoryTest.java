@@ -15,10 +15,11 @@ import static org.junit.Assert.*;
 
 public class PersistentSessionRepositoryTest {
 
-  private PersistentSessionRepository repository;
-  private FakeBankMongoDatabase database;
   @Rule
   public FongoRule fongoRule = new FongoRule();
+
+  private PersistentSessionRepository repository;
+  private FakeBankMongoDatabase database;
 
   @Before
   public void setUp() throws Exception {

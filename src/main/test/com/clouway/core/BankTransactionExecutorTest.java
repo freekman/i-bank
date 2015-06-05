@@ -12,11 +12,12 @@ import static org.hamcrest.MatcherAssert.assertThat;
 
 public class BankTransactionExecutorTest {
 
+  @Rule
+  public JUnitRuleMockery context = new JUnitRuleMockery();
+
   private BankTransactionExecutor manager;
   private CurrentUser currentUser;
   private AccountRegister accountRegister;
-  @Rule
-  public JUnitRuleMockery context = new JUnitRuleMockery();
 
   @Before
   public void setUp() throws Exception {

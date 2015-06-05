@@ -19,12 +19,13 @@ import static org.hamcrest.MatcherAssert.assertThat;
 
 public class BankServiceDepositTest {
 
+  @Rule
+  public JUnitRuleMockery context = new JUnitRuleMockery();
+
   private BankService bankService;
   private SimpleValidator<Transaction> validator;
   private TransactionExecutor transactionExecutor;
   private Request request;
-  @Rule
-  public JUnitRuleMockery context = new JUnitRuleMockery();
 
   @Before
   public void setUp() throws Exception {

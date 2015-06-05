@@ -18,11 +18,11 @@ import static org.hamcrest.MatcherAssert.assertThat;
 
 public class ClientInformationTest {
 
-  private ClientInformation info;
-  private CurrentUser currentUser;
-
   @Rule
   public JUnitRuleMockery context = new JUnitRuleMockery();
+
+  private ClientInformation info;
+  private CurrentUser currentUser;
 
   @Before
   public void setUp() throws Exception {

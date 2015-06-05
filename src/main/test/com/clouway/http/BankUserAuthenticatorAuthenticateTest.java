@@ -16,12 +16,13 @@ import static org.junit.Assert.*;
 
 public class BankUserAuthenticatorAuthenticateTest {
 
+  @Rule
+  public JUnitRuleMockery context = new JUnitRuleMockery();
+
   private BankUserAuthenticator bankUserAuthenticator;
   private UserFinder userFinder;
   private SessionRegister sessionRegister;
   private Provider prov;
-  @Rule
-  public JUnitRuleMockery context = new JUnitRuleMockery();
 
   @Before
   public void setUp() throws Exception {

@@ -18,10 +18,11 @@ import static org.hamcrest.MatcherAssert.assertThat;
 
 public class PersistentUserRepositoryTest {
 
-  private PersistentUserRepository repository;
-  private FakeBankMongoDatabase fakeBankMongoDatabase;
   @Rule
   public FongoRule fongoRule = new FongoRule("bank");
+
+  private PersistentUserRepository repository;
+  private FakeBankMongoDatabase fakeBankMongoDatabase;
 
   @Before
   public void setUp() throws Exception {

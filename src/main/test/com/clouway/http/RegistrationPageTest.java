@@ -34,8 +34,8 @@ public class RegistrationPageTest {
 
   @Test
   public void deposit() throws Exception {
-    page.uName = "Ivan";
-    page.pwd = "qwert";
+    page.userName = "Ivan";
+    page.password = "qwert";
     final List<String> erList = new ArrayList<>();
     context.checking(new Expectations() {{
       oneOf(validator).validate(getUser());
@@ -49,8 +49,8 @@ public class RegistrationPageTest {
 
   @Test
   public void registerUserTwice() throws Exception {
-    page.uName = "Ivan";
-    page.pwd = "qwert";
+    page.userName = "Ivan";
+    page.password = "qwert";
     final List<String> erList = new ArrayList<>();
     context.checking(new Expectations() {{
       oneOf(validator).validate(getUser());
