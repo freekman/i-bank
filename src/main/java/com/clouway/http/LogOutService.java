@@ -22,14 +22,14 @@ public class LogOutService {
 
   private final SessionRegister sessionRegister;
   private SidProvider sidProvider;
-  private Provider<HttpServletResponse> resp;
+  private Provider<HttpServletResponse> response;
 
 
   @Inject
-  public LogOutService(SessionRegister sessionRegister, SidProvider sidProvider, Provider<HttpServletResponse> resp) {
+  public LogOutService(SessionRegister sessionRegister, SidProvider sidProvider, Provider<HttpServletResponse> response) {
     this.sessionRegister = sessionRegister;
     this.sidProvider = sidProvider;
-    this.resp = resp;
+    this.response = response;
   }
 
   @Get
@@ -45,6 +45,6 @@ public class LogOutService {
   private void removeCookie() {
     Cookie cookie = new Cookie("sid", null);
     cookie.setMaxAge(0);
-    resp.get().addCookie(cookie);
+    response.get().addCookie(cookie);
   }
 }

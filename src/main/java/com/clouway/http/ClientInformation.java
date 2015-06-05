@@ -16,7 +16,6 @@ import com.google.sitebricks.http.Post;
 @At("/info")
 @Service
 public class ClientInformation {
-
   private CurrentUser currentUser;
   @Inject
   public ClientInformation(CurrentUser currentUser) {
@@ -29,6 +28,6 @@ public class ClientInformation {
     if (user.isPresent()) {
       return Reply.with(new UserDTO(user.get().name, user.get().password, user.get().getAmount())).as(Json.class).status(200);
     }
-    return Reply.with("Sid not found!").status(404);
+    return Reply.saying().status(404);
   }
 }

@@ -16,14 +16,6 @@ class TransactionDTO {
     this.transactionType = transactionType;
   }
 
-  public Double getAmount() {
-    return amount;
-  }
-
-  public String getTransactionType() {
-    return transactionType;
-  }
-
   @Override
   public boolean equals(Object o) {
     if (this == o) return true;

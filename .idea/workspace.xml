@@ -2,14 +2,11 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="e7a84ea4-d6f3-45eb-8cd6-8d225d0af739" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/java/com/clouway/core/AccountRegister.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/com/clouway/db/adapter/mongodb/persistent/PersistentUserRepository.class" afterPath="$PROJECT_DIR$/target/classes/com/clouway/db/adapter/mongodb/persistent/PersistentUserRepository.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/com/clouway/core/UserRegister.class" afterPath="$PROJECT_DIR$/target/classes/com/clouway/core/UserRegister.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/clouway/core/BankTransactionExecutor.java" afterPath="$PROJECT_DIR$/src/main/java/com/clouway/core/BankTransactionExecutor.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/test/com/clouway/core/BankTransactionExecutorTest.java" afterPath="$PROJECT_DIR$/src/main/test/com/clouway/core/BankTransactionExecutorTest.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/clouway/http/HttpModule.java" afterPath="$PROJECT_DIR$/src/main/java/com/clouway/http/HttpModule.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/clouway/db/adapter/mongodb/persistent/PersistentUserRepository.java" afterPath="$PROJECT_DIR$/src/main/java/com/clouway/db/adapter/mongodb/persistent/PersistentUserRepository.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/clouway/core/UserRegister.java" afterPath="$PROJECT_DIR$/src/main/java/com/clouway/core/UserRegister.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/clouway/http/BankService.java" afterPath="$PROJECT_DIR$/src/main/java/com/clouway/http/BankService.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/clouway/http/ClientInformation.java" afterPath="$PROJECT_DIR$/src/main/java/com/clouway/http/ClientInformation.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/test/com/clouway/http/ClientInformationTest.java" afterPath="$PROJECT_DIR$/src/main/test/com/clouway/http/ClientInformationTest.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/clouway/http/LogOutService.java" afterPath="$PROJECT_DIR$/src/main/java/com/clouway/http/LogOutService.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/clouway/http/TransactionDTO.java" afterPath="$PROJECT_DIR$/src/main/java/com/clouway/http/TransactionDTO.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path="i-bank.iws" />
@@ -42,73 +39,31 @@
   </component>
   <component name="FileEditorManager">
     <leaf>
-      <file leaf-file-name="BankTransactionExecutor.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/com/clouway/core/BankTransactionExecutor.java">
+      <file leaf-file-name="LogOutService.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/com/clouway/http/LogOutService.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.0" vertical-offset="244" max-vertical-offset="810">
+              <caret line="24" column="48" selection-start-line="24" selection-start-column="48" selection-end-line="24" selection-end-column="48" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="TransactionDTO.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/com/clouway/http/TransactionDTO.java">
           <provider selected="true" editor-type-id="text-editor">
             <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="810">
-              <caret line="14" column="82" selection-start-line="14" selection-start-column="82" selection-end-line="14" selection-end-column="82" />
-              <folding>
-                <element signature="imports" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="BankTransactionExecutorTest.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/test/com/clouway/core/BankTransactionExecutorTest.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0" vertical-offset="115" max-vertical-offset="990">
-              <caret line="49" column="27" selection-start-line="49" selection-start-column="27" selection-end-line="49" selection-end-column="27" />
+              <caret line="17" column="0" selection-start-line="17" selection-start-column="0" selection-end-line="17" selection-end-column="0" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="HttpModule.java" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/src/main/java/com/clouway/http/HttpModule.java">
+      <file leaf-file-name="BankService.java" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/main/java/com/clouway/http/BankService.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.65284973" vertical-offset="180" max-vertical-offset="918">
-              <caret line="42" column="0" selection-start-line="42" selection-start-column="0" selection-end-line="42" selection-end-column="0" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="UserRegister.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/com/clouway/core/UserRegister.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="288">
-              <caret line="8" column="0" selection-start-line="8" selection-start-column="0" selection-end-line="8" selection-end-column="0" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="AccountRegister.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/com/clouway/core/AccountRegister.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="252">
-              <caret line="5" column="21" selection-start-line="5" selection-start-column="21" selection-end-line="5" selection-end-column="21" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="PersistentUserRepository.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/com/clouway/db/adapter/mongodb/persistent/PersistentUserRepository.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0" vertical-offset="702" max-vertical-offset="1440">
-              <caret line="19" column="89" selection-start-line="19" selection-start-column="89" selection-end-line="19" selection-end-column="89" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="Main.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/com/clouway/core/Main.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="882">
-              <caret line="4" column="0" selection-start-line="4" selection-start-column="0" selection-end-line="4" selection-end-column="0" />
+            <state vertical-scroll-proportion="0.9222615" vertical-offset="0" max-vertical-offset="756">
+              <caret line="38" column="74" selection-start-line="38" selection-start-column="74" selection-end-line="38" selection-end-column="74" />
               <folding />
             </state>
           </provider>
@@ -122,7 +77,6 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/src/main/test/java/com/clouway/matshers/ReplyRedirectsTo.java" />
         <option value="$PROJECT_DIR$/src/main/test/java/com/clouway/db/adapter/mongodb/persistent/PersistentUserRepositoryTest.java" />
         <option value="$PROJECT_DIR$/src/main/test/java/com/clouway/http/ClientInformationTest.java" />
         <option value="$PROJECT_DIR$/src/test/java/com/clouway/http/BankServiceWithdrawTest.java" />
@@ -132,9 +86,7 @@
         <option value="$PROJECT_DIR$/configuration.properties" />
         <option value="$PROJECT_DIR$/src/main/java/com/clouway/core/SidProvider.java" />
         <option value="$PROJECT_DIR$/src/main/test/com/clouway/http/LogOutServiceTest.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/clouway/http/LogOutService.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/clouway/core/CurrentUser.java" />
-        <option value="$PROJECT_DIR$/src/main/test/com/clouway/http/ClientInformationTest.java" />
         <option value="$PROJECT_DIR$/src/main/test/com/clouway/http/TransactionValidatorTest.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/clouway/http/UserAuthenticator.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/clouway/validator/TransactionValidator.java" />
@@ -144,13 +96,11 @@
         <option value="$PROJECT_DIR$/src/main/java/com/clouway/core/BankTransactionHandler.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/clouway/core/TransactionHandler.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/clouway/core/TransactionExecutor.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/clouway/http/BankService.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/clouway/http/LoginPage.java" />
         <option value="$PROJECT_DIR$/src/main/test/com/clouway/http/LoginPageTest.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/clouway/core/Authenticator.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/clouway/core/UserAuthenticator.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/clouway/core/User.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/clouway/http/ClientInformation.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/clouway/validator/UserFormValidator.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/clouway/core/UserFinder.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/clouway/core/BankCurrentUser.java" />
@@ -165,7 +115,6 @@
         <option value="$PROJECT_DIR$/src/main/java/com/clouway/http/SecurityFilter.java" />
         <option value="$PROJECT_DIR$/src/main/test/com/clouway/db/adapter/mongodb/persistent/PersistentSessionRepositoryTest.java" />
         <option value="$PROJECT_DIR$/.gitignore" />
-        <option value="$PROJECT_DIR$/src/main/java/com/clouway/db/adapter/mongodb/persistent/PersistentSessionRepository.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/clouway/core/AmountRegister.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/clouway/core/UserRegister.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/clouway/db/adapter/mongodb/persistent/PersistentUserRepository.java" />
@@ -173,6 +122,12 @@
         <option value="$PROJECT_DIR$/src/main/java/com/clouway/core/BankTransactionExecutor.java" />
         <option value="$PROJECT_DIR$/src/main/test/com/clouway/core/BankTransactionExecutorTest.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/clouway/http/HttpModule.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/clouway/db/adapter/mongodb/persistent/PersistentSessionRepository.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/clouway/http/ClientInformation.java" />
+        <option value="$PROJECT_DIR$/src/main/test/com/clouway/http/ClientInformationTest.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/clouway/http/LogOutService.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/clouway/http/TransactionDTO.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/clouway/http/BankService.java" />
       </list>
     </option>
   </component>
@@ -187,9 +142,9 @@
     </option>
   </component>
   <component name="ProjectFrameBounds">
-    <option name="x" value="65" />
+    <option name="x" value="992" />
     <option name="y" value="52" />
-    <option name="width" value="1855" />
+    <option name="width" value="927" />
     <option name="height" value="1028" />
   </component>
   <component name="ProjectLevelVcsManager" settingsEditedManually="false">
@@ -963,16 +918,16 @@
       <workItem from="1433397992047" duration="2526000" />
       <workItem from="1433415314129" duration="5171000" />
       <workItem from="1433423713707" duration="3542000" />
-      <workItem from="1433483928345" duration="14121000" />
+      <workItem from="1433483928345" duration="14737000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="78392000" />
+    <option name="totallyTimeSpent" value="79008000" />
   </component>
   <component name="ToolWindowManager">
-    <frame x="65" y="52" width="1855" height="1028" extended-state="0" />
-    <editor active="true" />
+    <frame x="992" y="52" width="927" height="1028" extended-state="4" />
+    <editor active="false" />
     <layout>
       <window_info id="UI Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Palette&#9;" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
@@ -987,8 +942,8 @@
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Mongo Explorer" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="Application Servers" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="11" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.25317854" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.32707182" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.34733257" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Run" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.32707182" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Designer" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
       <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.38563535" sideWeight="0.5" order="15" side_tool="false" content_ui="tabs" />
@@ -1077,14 +1032,6 @@
     <option name="FILTER_TARGETS" value="false" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/src/main/test/com/clouway/matshers/ReplyStatus.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.14617169" vertical-offset="0" max-vertical-offset="862">
-          <caret line="12" column="13" selection-start-line="12" selection-start-column="13" selection-end-line="12" selection-end-column="13" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/configuration.properties">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.12857144" vertical-offset="0" max-vertical-offset="420">
@@ -1165,26 +1112,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/clouway/http/LogOutService.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="1.0132891" vertical-offset="217" max-vertical-offset="810">
-          <caret line="40" column="19" selection-start-line="40" selection-start-column="19" selection-end-line="40" selection-end-column="19" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/com/clouway/core/CurrentUser.java">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.538206" vertical-offset="0" max-vertical-offset="324">
           <caret line="9" column="15" selection-start-line="9" selection-start-column="15" selection-end-line="9" selection-end-column="15" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/test/com/clouway/http/ClientInformationTest.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="294" max-vertical-offset="846">
-          <caret line="43" column="0" selection-start-line="43" selection-start-column="0" selection-end-line="43" selection-end-column="0" />
           <folding />
         </state>
       </provider>
@@ -1255,14 +1186,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/clouway/http/BankService.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.4746377" vertical-offset="170" max-vertical-offset="756">
-          <caret line="33" column="40" selection-start-line="33" selection-start-column="40" selection-end-line="33" selection-end-column="40" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/test/com/clouway/http/LoginPageTest.java">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.22826087" vertical-offset="0" max-vertical-offset="918">
@@ -1307,14 +1230,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.5263158" vertical-offset="0" max-vertical-offset="513">
           <caret line="18" column="22" selection-start-line="18" selection-start-column="22" selection-end-line="18" selection-end-column="22" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/clouway/http/ClientInformation.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="540">
-          <caret line="29" column="63" selection-start-line="29" selection-start-column="63" selection-end-line="29" selection-end-column="63" />
           <folding />
         </state>
       </provider>
@@ -1441,17 +1356,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/clouway/db/adapter/mongodb/persistent/PersistentSessionRepository.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="1602">
-          <caret line="36" column="0" selection-start-line="36" selection-start-column="0" selection-end-line="36" selection-end-column="0" />
-          <folding>
-            <element signature="e#3135#3136#0" expanded="true" />
-            <element signature="e#3176#3177#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/com/clouway/core/Session.java">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="810">
@@ -1468,9 +1372,51 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/clouway/http/HttpModule.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="378" max-vertical-offset="1116">
+          <caret line="21" column="0" selection-start-line="21" selection-start-column="0" selection-end-line="21" selection-end-column="0" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/clouway/db/adapter/mongodb/persistent/PersistentSessionRepository.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="1566">
+          <caret line="20" column="6" selection-start-line="20" selection-start-column="0" selection-end-line="20" selection-end-column="6" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/test/com/clouway/http/ClientInformationTest.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="262" max-vertical-offset="828">
+          <caret line="50" column="37" selection-start-line="50" selection-start-column="37" selection-end-line="50" selection-end-column="37" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/clouway/http/ClientInformation.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.6360424" vertical-offset="0" max-vertical-offset="566">
+          <caret line="30" column="25" selection-start-line="30" selection-start-column="25" selection-end-line="30" selection-end-column="25" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/test/com/clouway/core/BankTransactionExecutorTest.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="1.0759931" vertical-offset="115" max-vertical-offset="990">
+          <caret line="49" column="27" selection-start-line="49" selection-start-column="27" selection-end-line="49" selection-end-column="27" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/com/clouway/core/BankTransactionExecutor.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="810">
+        <state vertical-scroll-proportion="0.43523315" vertical-offset="0" max-vertical-offset="810">
           <caret line="14" column="82" selection-start-line="14" selection-start-column="82" selection-end-line="14" selection-end-column="82" />
           <folding>
             <element signature="imports" expanded="true" />
@@ -1478,18 +1424,26 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/test/com/clouway/core/BankTransactionExecutorTest.java">
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/clouway/http/LogOutService.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="115" max-vertical-offset="990">
-          <caret line="49" column="27" selection-start-line="49" selection-start-column="27" selection-end-line="49" selection-end-column="27" />
+        <state vertical-scroll-proportion="0.0" vertical-offset="244" max-vertical-offset="810">
+          <caret line="24" column="48" selection-start-line="24" selection-start-column="48" selection-end-line="24" selection-end-column="48" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/clouway/http/HttpModule.java">
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/clouway/http/TransactionDTO.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.65284973" vertical-offset="180" max-vertical-offset="918">
-          <caret line="42" column="0" selection-start-line="42" selection-start-column="0" selection-end-line="42" selection-end-column="0" />
+        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="810">
+          <caret line="17" column="0" selection-start-line="17" selection-start-column="0" selection-end-line="17" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/clouway/http/BankService.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.9222615" vertical-offset="0" max-vertical-offset="756">
+          <caret line="38" column="74" selection-start-line="38" selection-start-column="74" selection-end-line="38" selection-end-column="74" />
           <folding />
         </state>
       </provider>

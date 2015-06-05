@@ -49,7 +49,6 @@ public class ClientInformationTest {
       will(returnValue(Optional.absent()));
     }});
     Reply<?> reply = info.sendInfo();
-    assertThat(reply, is(contains("Sid not found!")));
     assertThat(reply, is(statusIs(404)));
   }
 

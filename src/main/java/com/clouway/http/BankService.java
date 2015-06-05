@@ -36,7 +36,7 @@ public class BankService {
     Transaction result = null;
     boolean transactionIsValid = transactionValidator.isValid(transaction);
     if (transactionIsValid) {
-      result = transactionExecutor.execute(dto.getAmount(), dto.getTransactionType());
+      result = transactionExecutor.execute(dto.amount, dto.transactionType);
       return Reply.with(result).as(Json.class).status(200);
     }
     return Reply.with("Transaction did not occur").status(400);
