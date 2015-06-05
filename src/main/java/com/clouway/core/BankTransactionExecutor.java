@@ -26,17 +26,12 @@ public class BankTransactionExecutor implements TransactionExecutor {
 
       userRegister.updateAmount(user.get().session.getSessionId(), newAmount);
 
-      User userAfterTransaction = currentUser.get().get();
-
-      return new Transaction(userAfterTransaction.getAmount(), "Withdraw");
+      return new Transaction(newAmount, "Withdraw");
     } else if (user.isPresent() && query.equals("deposit")) {
       Double newAmount = amount + user.get().getAmount();
-
       userRegister.updateAmount(user.get().session.getSessionId(), newAmount);
 
-      User userAfterTransaction = currentUser.get().get();
-
-      return new Transaction(userAfterTransaction.getAmount(), "Deposit");
+      return new Transaction(newAmount, "Deposit");
     }
     return null;
   }

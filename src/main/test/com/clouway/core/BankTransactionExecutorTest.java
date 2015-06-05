@@ -28,13 +28,12 @@ public class BankTransactionExecutorTest {
   @Test
   public void deposit() throws Exception {
     final User user = new User("ivan", "qwe", 22.0, new Session("abc", "ivan", 12l));
-    final User afterTransaction = new User("ivan", "qwe", 32.0, new Session("abc", "ivan", 12l));
+
     context.checking(new Expectations() {{
       oneOf(currentUser).get();
       will(returnValue(Optional.of(user)));
       oneOf(userRegister).updateAmount(user.session.getSessionId(), 32.0);
-      oneOf(currentUser).get();
-      will(returnValue(Optional.of(afterTransaction)));
+
     }});
     Transaction transaction = manager.execute(10.0, "deposit");
     assertThat(transaction.getAmount(), is(32.0));
@@ -44,13 +43,12 @@ public class BankTransactionExecutorTest {
   @Test
   public void withdraw() throws Exception {
     final User user = new User("ivan", "qwe", 22.0, new Session("abc", "ivan", 12l));
-    final User aftherTransaction = new User("ivan", "qwe", 12.0, new Session("abc", "ivan", 12l));
+
     context.checking(new Expectations() {{
       oneOf(currentUser).get();
       will(returnValue(Optional.of(user)));
       oneOf(userRegister).updateAmount(user.session.getSessionId(), 12.0);
-      oneOf(currentUser).get();
-      will(returnValue(Optional.of(aftherTransaction)));
+
     }});
     Transaction transaction = manager.execute(10.0, "withdraw");
     assertThat(transaction.getAmount(), is(12.0));
