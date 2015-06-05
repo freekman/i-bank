@@ -5,6 +5,7 @@ import com.clouway.core.Session;
 import com.clouway.core.Transaction;
 import com.clouway.core.User;
 import com.clouway.validator.TransactionValidator;
+import com.google.common.base.Optional;
 import org.jmock.Expectations;
 import org.jmock.integration.junit4.JUnitRuleMockery;
 import org.junit.Before;
@@ -73,7 +74,8 @@ public class TransactionValidatorTest {
     final User user = new User("Ivan", "", 50.0, new Session("", "", 1l));
     context.checking(new Expectations() {{
       oneOf(currentUser).get();
-      will(returnValue(user));
+      will(returnValue(Optional.of(user)));
     }});
   }
+
 }

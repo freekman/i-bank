@@ -3,6 +3,7 @@ package com.clouway.validator;
 import com.clouway.core.CurrentUser;
 import com.clouway.core.Transaction;
 import com.clouway.core.User;
+import com.google.common.base.Optional;
 import com.google.inject.Inject;
 
 /**
@@ -18,7 +19,8 @@ public class TransactionValidator implements SimpleValidator<Transaction> {
 
   @Override
   public boolean isValid(Transaction transaction) {
-    User current = currentUser.get();
+    Optional<User> current = currentUser.get();
+
     if (transaction == null) {
       return false;
     }
@@ -28,7 +30,7 @@ public class TransactionValidator implements SimpleValidator<Transaction> {
     if (transaction.getTransactionType().equals("withdraw") && transaction.getAmount() < 0) {
       return false;
     }
-    if (transaction.getTransactionType().equals("withdraw") && ((current.getAmount() - transaction.getAmount()) <= 0)) {
+    if (transaction.getTransactionType().equals("withdraw") && ((current.get().getAmount() - transaction.getAmount()) <= 0)) {
       return false;
     }
     return true;

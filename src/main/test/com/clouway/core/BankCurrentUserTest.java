@@ -32,8 +32,8 @@ public class BankCurrentUserTest {
       oneOf(userFinder).findBySidIfExist("abc");
       will(returnValue(result));
     }});
-    User user= currentUser.get();
-    assertThat(user,is(result));
+    Optional<User> user= currentUser.get();
+    assertThat(user.get(),is(result));
   }
   @Test
   public void missingSid() throws Exception {
@@ -41,8 +41,8 @@ public class BankCurrentUserTest {
       oneOf(sidProvider).get();will(returnValue(Optional.absent()));
       never(userFinder).findBySidIfExist(null);will(returnValue(null));
     }});
-    User dto= currentUser.get();
-   assertNull(dto);
+    Optional<User> dto= currentUser.get();
+   assertThat(dto.isPresent(),is(false));
   }
 
 }

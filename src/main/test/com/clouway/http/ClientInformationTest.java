@@ -3,6 +3,7 @@ package com.clouway.http;
 import com.clouway.core.CurrentUser;
 import com.clouway.core.Session;
 import com.clouway.core.User;
+import com.google.common.base.Optional;
 import com.google.sitebricks.headless.Reply;
 import org.jmock.Expectations;
 import org.jmock.integration.junit4.JUnitRuleMockery;
@@ -34,7 +35,7 @@ public class ClientInformationTest {
   public void deposit() throws Exception {
     context.checking(new Expectations() {{
       oneOf(currentUser).get();
-      will(returnValue(new User("Ivan", "qqq", 12.00, new Session("asd", "Ivan", 0l))));
+      will(returnValue(Optional.of(new User("Ivan", "qqq", 12.00, new Session("asd", "Ivan", 0l)))));
     }});
     Reply<?> reply = info.sendInfo();
     assertThat(reply, is(contains(new UserDTO("Ivan", "qqq", 12.00))));
@@ -45,7 +46,7 @@ public class ClientInformationTest {
   public void sidNotFound() throws Exception {
     context.checking(new Expectations() {{
       oneOf(currentUser).get();
-      will(returnValue(null));
+      will(returnValue(Optional.absent()));
     }});
     Reply<?> reply = info.sendInfo();
     assertThat(reply, is(contains("Sid not found!")));

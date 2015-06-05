@@ -1,5 +1,6 @@
 package com.clouway.core;
 
+import com.google.common.base.Optional;
 import com.google.inject.Inject;
 
 /**
@@ -18,11 +19,11 @@ public class BankTransactionHandler implements TransactionHandler {
 
   @Override
   public Transaction withdraw(Double amount) {
-    User user = currentUser.get();
-    if (null != user) {
-      Double newAmount = user.getAmount() - amount;
-      userRegister.updateAmount(user.getSession().getSessionId(), newAmount);
-      User userAfterTransaction = currentUser.get();
+    Optional<User> user = currentUser.get();
+    if (user.isPresent()) {
+      Double newAmount = user.get().getAmount() - amount;
+      userRegister.updateAmount(user.get().getSession().getSessionId(), newAmount);
+      User userAfterTransaction = currentUser.get().get();
       return new Transaction(userAfterTransaction.getAmount(), "Withdraw");
     }
     return null;
@@ -30,11 +31,11 @@ public class BankTransactionHandler implements TransactionHandler {
 
   @Override
   public Transaction deposit(Double amount) {
-    User user = currentUser.get();
-    if (null != user) {
-      Double newAmount = amount + user.getAmount();
-      userRegister.updateAmount(user.getSession().getSessionId(), newAmount);
-      User userAfterTransaction = currentUser.get();
+    Optional<User> user = currentUser.get();
+    if (user.isPresent()) {
+      Double newAmount = amount + user.get().getAmount();
+      userRegister.updateAmount(user.get().getSession().getSessionId(), newAmount);
+      User userAfterTransaction = currentUser.get().get();
       return new Transaction(userAfterTransaction.getAmount(), "Deposit");
     }
     return null;

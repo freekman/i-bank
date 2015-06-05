@@ -17,20 +17,17 @@ import com.google.sitebricks.http.Post;
 @Service
 public class ClientInformation {
 
-
   private CurrentUser currentUser;
-
   @Inject
   public ClientInformation(CurrentUser currentUser) {
-
     this.currentUser = currentUser;
   }
 
   @Post
   public Reply<?> sendInfo() {
-    User currentUser = this.currentUser.get();
-    if (null != currentUser) {
-      return Reply.with(new UserDTO(currentUser.getName(), currentUser.getPassword(), currentUser.getAmount())).as(Json.class).status(200);
+    Optional<User> user = this.currentUser.get();
+    if (user.isPresent()) {
+      return Reply.with(new UserDTO(user.get().getName(), user.get().getPassword(), user.get().getAmount())).as(Json.class).status(200);
     }
     return Reply.with("Sid not found!").status(404);
   }

@@ -18,20 +18,11 @@ public class BankCurrentUser implements CurrentUser {
   }
 
   @Override
-  public User get() {
+  public Optional<User> get() {
     Optional<String> sid = provider.get();
     if (sid.isPresent()) {
-      return finder.findBySidIfExist(sid.get());
+      return Optional.of(finder.findBySidIfExist(sid.get()));
     }
-    return null;
+    return Optional.absent();
   }
-
-//  @Override
-//  public User get() {
-//    String sid = provider.get();
-//    //if (null != sid) {
-//       return finder.findBySidIfExist(sid);
-//    //}
-//    //return null;
-//  }
 }

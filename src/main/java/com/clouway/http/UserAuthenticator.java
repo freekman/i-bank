@@ -1,10 +1,11 @@
 package com.clouway.http;
 
 import com.clouway.core.Authenticator;
+import com.clouway.core.CurrentSidProvider;
 import com.clouway.core.SessionRegister;
 import com.clouway.core.User;
 import com.clouway.core.UserFinder;
-import com.clouway.core.CurrentSidProvider;
+import com.google.common.base.Optional;
 import com.google.inject.Inject;
 import com.google.inject.Provider;
 import com.google.sitebricks.At;
@@ -47,14 +48,14 @@ public class UserAuthenticator implements Authenticator<User> {
   }
 
   public void registerSession(User user) {
-    String sid = new CurrentSidProvider(requestProvider.get()).get().get();
-    if (sid == null) {
+    Optional<String> sid = new CurrentSidProvider(requestProvider.get()).get();
+    if (!sid.isPresent()) {
       UUID uuid = new UUID(10, 5);
       String randomValue = "vankaBanka" + uuid.randomUUID().toString();
-      sid = sha1(randomValue);
-      responseProvider.get().addCookie(new Cookie("sid", sid));
+      String newSid = sha1(randomValue);
+      responseProvider.get().addCookie(new Cookie("sid", newSid));
+      sessionRegister.createSession(newSid, user.getName(), Calendar.getInstance().getTimeInMillis());
     }
-    sessionRegister.createSession(sid, user.getName(), Calendar.getInstance().getTimeInMillis());
   }
 
   private String sha1(String input) {

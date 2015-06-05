@@ -7,6 +7,6 @@ import com.google.common.base.Optional;
  */
 public interface CurrentUser {
 
-  User get();
+  Optional<User> get();
 
 }
