@@ -6,33 +6,26 @@ import com.google.inject.Inject;
 /**
  * Created byivan.genchev1989@gmail.com.
  */
-public class BankTransactionHandler implements TransactionHandler {
+public class BankTransactionExecutor implements TransactionExecutor {
 
   private final CurrentUser currentUser;
   private final UserRegister userRegister;
 
   @Inject
-  public BankTransactionHandler(CurrentUser currentUser, UserRegister userRegister) {
+  public BankTransactionExecutor(CurrentUser currentUser, UserRegister userRegister) {
     this.currentUser = currentUser;
     this.userRegister = userRegister;
   }
 
   @Override
-  public Transaction withdraw(Double amount) {
+  public Transaction execute(Double amount, String query) {
     Optional<User> user = currentUser.get();
-    if (user.isPresent()) {
+    if (user.isPresent() && query.equals("withdraw")) {
       Double newAmount = user.get().getAmount() - amount;
       userRegister.updateAmount(user.get().getSession().getSessionId(), newAmount);
       User userAfterTransaction = currentUser.get().get();
       return new Transaction(userAfterTransaction.getAmount(), "Withdraw");
-    }
-    return null;
-  }
-
-  @Override
-  public Transaction deposit(Double amount) {
-    Optional<User> user = currentUser.get();
-    if (user.isPresent()) {
+    } else if (user.isPresent() && query.equals("deposit")) {
       Double newAmount = amount + user.get().getAmount();
       userRegister.updateAmount(user.get().getSession().getSessionId(), newAmount);
       User userAfterTransaction = currentUser.get().get();

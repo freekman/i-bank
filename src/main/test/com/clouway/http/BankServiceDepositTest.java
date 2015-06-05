@@ -1,7 +1,7 @@
 package com.clouway.http;
 
 import com.clouway.core.Transaction;
-import com.clouway.core.TransactionHandler;
+import com.clouway.core.TransactionExecutor;
 import com.clouway.validator.SimpleValidator;
 import com.google.sitebricks.client.Transport;
 import com.google.sitebricks.headless.Reply;
@@ -21,7 +21,7 @@ public class BankServiceDepositTest {
 
   private BankService bankService;
   private SimpleValidator<Transaction> validator;
-  private TransactionHandler transactionHandler;
+  private TransactionExecutor transactionExecutor;
   private Request request;
   @Rule
   public JUnitRuleMockery context = new JUnitRuleMockery();
@@ -29,9 +29,9 @@ public class BankServiceDepositTest {
   @Before
   public void setUp() throws Exception {
     validator = context.mock(SimpleValidator.class);
-    transactionHandler = context.mock(TransactionHandler.class);
+    transactionExecutor = context.mock(TransactionExecutor.class);
     request = context.mock(Request.class);
-    bankService = new BankService(validator, transactionHandler);
+    bankService = new BankService(validator, transactionExecutor);
   }
 
   @Test
@@ -46,7 +46,7 @@ public class BankServiceDepositTest {
       }));
       oneOf(validator).isValid(new Transaction(10.0, "deposit"));
       will(returnValue(true));
-      oneOf(transactionHandler).deposit(10.0);
+      oneOf(transactionExecutor).execute(10.0, "deposit");
       will(returnValue(new Transaction(10.0, "ok")));
     }});
     Reply replay = bankService.executeTransaction(request);

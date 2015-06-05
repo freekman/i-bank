@@ -20,7 +20,9 @@ public class TransactionValidator implements SimpleValidator<Transaction> {
   @Override
   public boolean isValid(Transaction transaction) {
     Optional<User> current = currentUser.get();
-
+    if (!current.isPresent()) {
+      return false;
+    }
     if (transaction == null) {
       return false;
     }

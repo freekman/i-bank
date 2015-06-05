@@ -10,9 +10,9 @@ import org.junit.Test;
 import static org.hamcrest.CoreMatchers.is;
 import static org.hamcrest.MatcherAssert.assertThat;
 
-public class BankTransactionHandlerTest {
+public class BankTransactionExecutorTest {
 
-  private BankTransactionHandler manager;
+  private BankTransactionExecutor manager;
   private CurrentUser currentUser;
   private UserRegister userRegister;
   @Rule
@@ -22,7 +22,7 @@ public class BankTransactionHandlerTest {
   public void setUp() throws Exception {
     userRegister = context.mock(UserRegister.class);
     currentUser = context.mock(CurrentUser.class);
-    manager = new BankTransactionHandler(currentUser, userRegister);
+    manager = new BankTransactionExecutor(currentUser, userRegister);
   }
 
   @Test
@@ -36,7 +36,7 @@ public class BankTransactionHandlerTest {
       oneOf(currentUser).get();
       will(returnValue(Optional.of(afterTransaction)));
     }});
-    Transaction transaction = manager.deposit(10.0);
+    Transaction transaction = manager.execute(10.0, "deposit");
     assertThat(transaction.getAmount(), is(32.0));
     assertThat(transaction.getTransactionType(), is("Deposit"));
   }
@@ -52,7 +52,7 @@ public class BankTransactionHandlerTest {
       oneOf(currentUser).get();
       will(returnValue(Optional.of(aftherTransaction)));
     }});
-    Transaction transaction = manager.withdraw(10.0);
+    Transaction transaction = manager.execute(10.0, "withdraw");
     assertThat(transaction.getAmount(), is(12.0));
     assertThat(transaction.getTransactionType(), is("Withdraw"));
   }
