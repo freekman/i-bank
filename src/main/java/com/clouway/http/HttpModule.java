@@ -33,7 +33,7 @@ public class HttpModule extends ServletModule {
     bind(SidProvider.class).to(CurrentSidProvider.class);
     bind(SessionFinder.class).to(PersistentSessionRepository.class);
     bind(SessionRegister.class).to(PersistentSessionRepository.class);
-    bind(Authenticator.class).to(UserAuthenticator.class);
+    bind(UserAuthenticator.class).to(BankUserAuthenticator.class);
     bind(Validator.class).to(UserFormValidator.class);
     bind(UserFinder.class).to(PersistentUserRepository.class);
     bind(UserRegister.class).to(PersistentUserRepository.class);

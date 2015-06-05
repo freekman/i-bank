@@ -7,7 +7,6 @@ import com.google.inject.Inject;
  * Created byivan.genchev1989@gmail.com.
  */
 public class BankCurrentUser implements CurrentUser {
-
   private UserFinder finder;
   private SidProvider provider;
 

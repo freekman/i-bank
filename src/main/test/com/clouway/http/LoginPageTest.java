@@ -1,6 +1,6 @@
 package com.clouway.http;
 
-import com.clouway.core.Authenticator;
+import com.clouway.core.UserAuthenticator;
 import com.clouway.core.Session;
 import com.clouway.core.User;
 import org.jmock.Expectations;
@@ -15,14 +15,14 @@ import static org.junit.Assert.*;
 public class LoginPageTest {
 
   private LoginPage loginPage;
-  private Authenticator<User> authenticator;
+  private UserAuthenticator userAuthenticator;
   @Rule
   public JUnitRuleMockery context = new JUnitRuleMockery();
 
   @Before
   public void setUp() throws Exception {
-    authenticator = context.mock(Authenticator.class);
-    loginPage = new LoginPage(authenticator);
+    userAuthenticator = context.mock(UserAuthenticator.class);
+    loginPage = new LoginPage(userAuthenticator);
   }
 
   @Test
@@ -31,9 +31,9 @@ public class LoginPageTest {
     loginPage.pwd = "asa";
     context.checking(new Expectations() {{
       User user = new User("asa", "asa", 0.0,new Session("","",0l));
-      oneOf(authenticator).authenticate(user);
+      oneOf(userAuthenticator).authenticate(user);
       will(returnValue(true));
-      oneOf(authenticator).registerSession(user);
+      oneOf(userAuthenticator).registerSession(user);
     }});
     String redirectTo = loginPage.login();
     assertThat(redirectTo, is("index.html#/welcome"));
@@ -45,9 +45,9 @@ public class LoginPageTest {
     loginPage.pwd = "asa";
     context.checking(new Expectations() {{
       User user = new User("asa", "asa", 0.0,new Session("","",0l));
-      oneOf(authenticator).authenticate(user);
+      oneOf(userAuthenticator).authenticate(user);
       will(returnValue(false));
-      never(authenticator).registerSession(user);
+      never(userAuthenticator).registerSession(user);
     }});
     String redirectTo = loginPage.login();
     assertThat(redirectTo, is("/home"));

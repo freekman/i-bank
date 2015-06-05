@@ -20,15 +20,22 @@ public class BankTransactionExecutor implements TransactionExecutor {
   @Override
   public Transaction execute(Double amount, String query) {
     Optional<User> user = currentUser.get();
+
     if (user.isPresent() && query.equals("withdraw")) {
       Double newAmount = user.get().getAmount() - amount;
+
       userRegister.updateAmount(user.get().getSession().getSessionId(), newAmount);
+
       User userAfterTransaction = currentUser.get().get();
+
       return new Transaction(userAfterTransaction.getAmount(), "Withdraw");
     } else if (user.isPresent() && query.equals("deposit")) {
       Double newAmount = amount + user.get().getAmount();
+
       userRegister.updateAmount(user.get().getSession().getSessionId(), newAmount);
+
       User userAfterTransaction = currentUser.get().get();
+
       return new Transaction(userAfterTransaction.getAmount(), "Deposit");
     }
     return null;

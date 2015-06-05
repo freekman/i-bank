@@ -1,6 +1,6 @@
 package com.clouway.http;
 
-import com.clouway.core.Authenticator;
+import com.clouway.core.UserAuthenticator;
 import com.clouway.core.Session;
 import com.clouway.core.User;
 import com.google.inject.Inject;
@@ -16,18 +16,18 @@ import com.google.sitebricks.http.Post;
 public class LoginPage {
   public String uName = "";
   public String pwd = "";
-  private Authenticator<User> userAuthenticator;
+  private UserAuthenticator userUserAuthenticator;
 
   @Inject
-  public LoginPage(Authenticator userAuthenticator) {
-    this.userAuthenticator = userAuthenticator;
+  public LoginPage(UserAuthenticator userUserAuthenticator) {
+    this.userUserAuthenticator = userUserAuthenticator;
   }
 
   @Post
   public String login() {
     User user = new User(uName, pwd, 0.0, new Session("", "", 0));
-    if (userAuthenticator.authenticate(user)) {
-      userAuthenticator.registerSession(user);
+    if (userUserAuthenticator.authenticate(user)) {
+      userUserAuthenticator.registerSession(user);
       return "index.html#/welcome";
     }
     return "/home";

@@ -1,6 +1,6 @@
 package com.clouway.http;
 
-import com.clouway.core.Authenticator;
+import com.clouway.core.UserAuthenticator;
 import com.clouway.core.CurrentSidProvider;
 import com.clouway.core.SessionRegister;
 import com.clouway.core.User;
@@ -24,7 +24,7 @@ import java.util.UUID;
  */
 @At("/authenticator")
 @Show("login.html")
-public class UserAuthenticator implements Authenticator<User> {
+public class BankUserAuthenticator implements UserAuthenticator {
 
   private final UserFinder userFinder;
   private final SessionRegister sessionRegister;
@@ -32,7 +32,7 @@ public class UserAuthenticator implements Authenticator<User> {
   private final Provider<HttpServletResponse> responseProvider;
 
   @Inject
-  public UserAuthenticator(UserFinder userFinder, SessionRegister sessionRegister, Provider<HttpServletRequest> requestProvider, Provider<HttpServletResponse> responseProvider) {
+  public BankUserAuthenticator(UserFinder userFinder, SessionRegister sessionRegister, Provider<HttpServletRequest> requestProvider, Provider<HttpServletResponse> responseProvider) {
     this.userFinder = userFinder;
     this.sessionRegister = sessionRegister;
     this.requestProvider = requestProvider;

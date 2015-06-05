@@ -13,9 +13,9 @@ import org.junit.Test;
 
 import static org.junit.Assert.*;
 
-public class UserAuthenticatorAuthenticateTest {
+public class BankUserAuthenticatorAuthenticateTest {
 
-  private UserAuthenticator userAuthenticator;
+  private BankUserAuthenticator bankUserAuthenticator;
   private UserFinder userFinder;
   private SessionRegister sessionRegister;
   private Provider prov;
@@ -26,7 +26,7 @@ public class UserAuthenticatorAuthenticateTest {
   public void setUp() throws Exception {
     userFinder = context.mock(UserFinder.class);
     sessionRegister = context.mock(SessionRegister.class);
-    userAuthenticator = new UserAuthenticator(userFinder, sessionRegister, prov, prov);
+    bankUserAuthenticator = new BankUserAuthenticator(userFinder, sessionRegister, prov, prov);
 
   }
 
@@ -37,7 +37,7 @@ public class UserAuthenticatorAuthenticateTest {
       oneOf(userFinder).findByName("Ivan");
       will(returnValue(user));
     }});
-    boolean result = userAuthenticator.authenticate(user);
+    boolean result = bankUserAuthenticator.authenticate(user);
     assertTrue(result);
   }
 
@@ -48,7 +48,7 @@ public class UserAuthenticatorAuthenticateTest {
       oneOf(userFinder).findByName("Ivan");
       will(returnValue(user));
     }});
-    boolean result = userAuthenticator.authenticate(new User("Ivan", "qwerty", 0.0, new Session("", "Ivan", 0l)));
+    boolean result = bankUserAuthenticator.authenticate(new User("Ivan", "qwerty", 0.0, new Session("", "Ivan", 0l)));
     assertFalse(result);
   }
 
@@ -59,7 +59,7 @@ public class UserAuthenticatorAuthenticateTest {
       oneOf(userFinder).findByName("Ivan");
       will(returnValue(user));
     }});
-    boolean result = userAuthenticator.authenticate(new User("Ivan", "qwerty", 0.0, new Session("", "Ivan", 0l)));
+    boolean result = bankUserAuthenticator.authenticate(new User("Ivan", "qwerty", 0.0, new Session("", "Ivan", 0l)));
     assertFalse(result);
   }
 
