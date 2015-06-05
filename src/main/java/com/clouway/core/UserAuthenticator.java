@@ -7,6 +7,9 @@ package com.clouway.core;
 public interface UserAuthenticator {
 
   boolean authenticate(User user);
-  //If user does not have sid a new sid will bee assigned to him
+  /**
+   * If user does not have sid a new sid will bee assigned to him
+   * @param user
+   */
   void registerSession(User user);
 }

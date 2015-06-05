@@ -4,6 +4,7 @@ import com.clouway.core.Session;
 import com.clouway.core.SessionRegister;
 import com.clouway.core.User;
 import com.clouway.core.UserFinder;
+import com.google.common.base.Optional;
 import com.google.inject.Provider;
 import org.jmock.Expectations;
 import org.jmock.integration.junit4.JUnitRuleMockery;
@@ -35,7 +36,7 @@ public class BankUserAuthenticatorAuthenticateTest {
     final User user = new User("Ivan", "qwerty", 0.0, new Session("", "Ivan", 0l));
     context.checking(new Expectations() {{
       oneOf(userFinder).findByName("Ivan");
-      will(returnValue(user));
+      will(returnValue(Optional.of(user)));
     }});
     boolean result = bankUserAuthenticator.authenticate(user);
     assertTrue(result);
@@ -46,7 +47,7 @@ public class BankUserAuthenticatorAuthenticateTest {
     final User user = new User("Iva", "qwerty", 0.0, new Session("", "Ivan", 0l));
     context.checking(new Expectations() {{
       oneOf(userFinder).findByName("Ivan");
-      will(returnValue(user));
+      will(returnValue(Optional.of(user)));
     }});
     boolean result = bankUserAuthenticator.authenticate(new User("Ivan", "qwerty", 0.0, new Session("", "Ivan", 0l)));
     assertFalse(result);
@@ -57,7 +58,7 @@ public class BankUserAuthenticatorAuthenticateTest {
     final User user = new User("Ivan", "qwe", 0.0, new Session("", "Ivan", 0l));
     context.checking(new Expectations() {{
       oneOf(userFinder).findByName("Ivan");
-      will(returnValue(user));
+      will(returnValue(Optional.of(user)));
     }});
     boolean result = bankUserAuthenticator.authenticate(new User("Ivan", "qwerty", 0.0, new Session("", "Ivan", 0l)));
     assertFalse(result);

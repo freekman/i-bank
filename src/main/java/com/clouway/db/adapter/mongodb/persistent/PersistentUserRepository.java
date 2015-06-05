@@ -5,6 +5,7 @@ import com.clouway.core.Session;
 import com.clouway.core.User;
 import com.clouway.core.UserFinder;
 import com.clouway.core.UserRegister;
+import com.google.common.base.Optional;
 import com.google.inject.Inject;
 import com.mongodb.MongoWriteException;
 import com.mongodb.client.MongoDatabase;
@@ -26,17 +27,17 @@ public class PersistentUserRepository implements UserRegister, UserFinder {
 
   @Override
   public void register(User user) {
-    if(findByName(user.getName())!=null){
+    if(findByName(user.name).isPresent()){
       throw new ExistingUserException();
     }else{
       db.getCollection("user").insertOne(new Document()
-              .append("name", user.getName())
-              .append("password", user.getPassword())
+              .append("name", user.name)
+              .append("password", user.password)
               .append("amount", 0.0)
               .append("session",
                       new Document()
-                              .append("sid", user.getSession().getSessionId())
-                              .append("timeOut", user.getSession().getSessionTimeCreated())));
+                              .append("sid", user.session.getSessionId())
+                              .append("timeOut", user.session.getSessionTimeCreated())));
 
     }
   }
@@ -53,7 +54,7 @@ public class PersistentUserRepository implements UserRegister, UserFinder {
   }
 
   @Override
-  public User findByName(String userName) {
+  public Optional<User> findByName(String userName) {
     Document result = db.getCollection("user").find(eq("name", userName)).first();
     if (null != result) {
       String name = (String) result.get("name");
@@ -62,13 +63,13 @@ public class PersistentUserRepository implements UserRegister, UserFinder {
       Document session = (Document) result.get("session");
       String sessionId = session.getString("sid");
       Long time = session.getLong("timeOut");
-      return new User(name, pwd, amount, new Session(sessionId, name, time));
+      return Optional.of(new User(name, pwd, amount, new Session(sessionId, name, time)));
     }
-    return null;
+    return Optional.absent();
   }
 
   @Override
-  public User findBySidIfExist(String sid) {
+  public Optional<User> findBySidIfExist(String sid) {
 
     Document result = db.getCollection("user").find(eq("session.sid", sid)).first();
     if (null != result) {
@@ -78,9 +79,9 @@ public class PersistentUserRepository implements UserRegister, UserFinder {
       Document session = (Document) result.get("session");
       String sessionId = session.getString("sid");
       Long time = session.getLong("timeOut");
-      return new User(name, pwd, amount, new Session(sessionId, name, time));
+      return Optional.of(new User(name, pwd, amount, new Session(sessionId, name, time)));
     }
-    return null;
+    return Optional.absent();
   }
 
 }

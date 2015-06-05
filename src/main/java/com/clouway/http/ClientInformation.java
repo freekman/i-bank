@@ -27,7 +27,7 @@ public class ClientInformation {
   public Reply<?> sendInfo() {
     Optional<User> user = this.currentUser.get();
     if (user.isPresent()) {
-      return Reply.with(new UserDTO(user.get().getName(), user.get().getPassword(), user.get().getAmount())).as(Json.class).status(200);
+      return Reply.with(new UserDTO(user.get().name, user.get().password, user.get().getAmount())).as(Json.class).status(200);
     }
     return Reply.with("Sid not found!").status(404);
   }

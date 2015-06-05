@@ -3,6 +3,7 @@ package com.clouway.db.adapter.mongodb.persistent;
 import com.clouway.core.Session;
 import com.clouway.core.User;
 import com.github.fakemongo.junit.FongoRule;
+import com.google.common.base.Optional;
 import com.mongodb.client.FindIterable;
 import org.bson.Document;
 import org.junit.Before;
@@ -31,10 +32,10 @@ public class PersistentUserRepositoryTest {
   @Test
   public void happyPath() throws Exception {
     repository.register(new User("Ivan", "qwerty", 0.0, new Session("", "Ivan", 0l)));
-    User user = repository.findByName("Ivan");
-    assertThat(user.getName(), is("Ivan"));
-    assertThat(user.getPassword(), is("qwerty"));
-    assertThat(user.getAmount(), is(0d));
+    Optional<User> user = repository.findByName("Ivan");
+    assertThat(user.get().name, is("Ivan"));
+    assertThat(user.get().password, is("qwerty"));
+    assertThat(user.get().getAmount(), is(0d));
   }
 
   @Test
@@ -45,9 +46,9 @@ public class PersistentUserRepositoryTest {
 
     List<User> users = findAll();
     assertThat(users.size(), is(3));
-    assertThat(users.get(0).getName(), is("Ivan"));
+    assertThat(users.get(0).name, is("Ivan"));
     assertThat(users.get(0).getAmount(), is(0.0));
-    assertThat(users.get(2).getName(), is("DSA"));
+    assertThat(users.get(2).name, is("DSA"));
   }
 
   @Test
@@ -63,8 +64,8 @@ public class PersistentUserRepositoryTest {
     repository.register(new User("Ivan", "qwerty", 0.0, new Session("abc", "Ivan", 0l)));
     repository.register(new User("ASD", "qwerty", 0.0, new Session("abc", "Ivan", 0l)));
     repository.register(new User("QWERTY", "qwerty", 0.0, new Session("abc", "Ivan", 0l)));
-    User result = repository.findByName("Ivan");
-    assertThat(result, is(new User("Ivan", "qwerty", 0.0, new Session("abc", "Ivan", 0l))));
+    Optional<User> result = repository.findByName("Ivan");
+    assertThat(result.get(), is(new User("Ivan", "qwerty", 0.0, new Session("abc", "Ivan", 0l))));
   }
 
   @Test
@@ -72,8 +73,8 @@ public class PersistentUserRepositoryTest {
     repository.register(new User("Ivan", "qwerty", 0.0, new Session("asd", "Ivan", 0l)));
     repository.register(new User("ASD", "qwerty", 0.0, new Session("sss", "Ivan", 0l)));
     repository.register(new User("QWERTY", "qwerty", 0.0, new Session("ddd", "Ivan", 0l)));
-    User result = repository.findBySidIfExist("asd");
-    assertThat(result, is(new User("Ivan", "qwerty", 0.0, new Session("asd", "Ivan", 0l))));
+    Optional<User> result = repository.findBySidIfExist("asd");
+    assertThat(result.get(), is(new User("Ivan", "qwerty", 0.0, new Session("asd", "Ivan", 0l))));
   }
 
   private List<User> findAll() {

@@ -24,7 +24,7 @@ public class BankTransactionExecutor implements TransactionExecutor {
     if (user.isPresent() && query.equals("withdraw")) {
       Double newAmount = user.get().getAmount() - amount;
 
-      userRegister.updateAmount(user.get().getSession().getSessionId(), newAmount);
+      userRegister.updateAmount(user.get().session.getSessionId(), newAmount);
 
       User userAfterTransaction = currentUser.get().get();
 
@@ -32,7 +32,7 @@ public class BankTransactionExecutor implements TransactionExecutor {
     } else if (user.isPresent() && query.equals("deposit")) {
       Double newAmount = amount + user.get().getAmount();
 
-      userRegister.updateAmount(user.get().getSession().getSessionId(), newAmount);
+      userRegister.updateAmount(user.get().session.getSessionId(), newAmount);
 
       User userAfterTransaction = currentUser.get().get();
 

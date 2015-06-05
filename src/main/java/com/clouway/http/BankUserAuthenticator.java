@@ -40,8 +40,11 @@ public class BankUserAuthenticator implements UserAuthenticator {
   }
 
   public boolean authenticate(User user) {
-    User foundUser = userFinder.findByName(user.getName());
-    if ((null != foundUser && foundUser.getName().equals(user.getName())) && foundUser.getPassword().equals(user.getPassword())) {
+    Optional<User> foundUser = userFinder.findByName(user.name);
+    if(!foundUser.isPresent()){
+      return false;
+    }
+    if (foundUser.get().name.equals(user.name) && foundUser.get().password.equals(user.password)) {
       return true;
     }
     return false;
@@ -54,7 +57,7 @@ public class BankUserAuthenticator implements UserAuthenticator {
       String randomValue = "vankaBanka" + uuid.randomUUID().toString();
       String newSid = sha1(randomValue);
       responseProvider.get().addCookie(new Cookie("sid", newSid));
-      sessionRegister.createSession(newSid, user.getName(), Calendar.getInstance().getTimeInMillis());
+      sessionRegister.createSession(newSid, user.name, Calendar.getInstance().getTimeInMillis());
     }
   }
 

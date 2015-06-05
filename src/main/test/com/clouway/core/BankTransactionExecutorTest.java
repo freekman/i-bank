@@ -32,7 +32,7 @@ public class BankTransactionExecutorTest {
     context.checking(new Expectations() {{
       oneOf(currentUser).get();
       will(returnValue(Optional.of(user)));
-      oneOf(userRegister).updateAmount(user.getSession().getSessionId(), 32.0);
+      oneOf(userRegister).updateAmount(user.session.getSessionId(), 32.0);
       oneOf(currentUser).get();
       will(returnValue(Optional.of(afterTransaction)));
     }});
@@ -48,7 +48,7 @@ public class BankTransactionExecutorTest {
     context.checking(new Expectations() {{
       oneOf(currentUser).get();
       will(returnValue(Optional.of(user)));
-      oneOf(userRegister).updateAmount(user.getSession().getSessionId(), 12.0);
+      oneOf(userRegister).updateAmount(user.session.getSessionId(), 12.0);
       oneOf(currentUser).get();
       will(returnValue(Optional.of(aftherTransaction)));
     }});

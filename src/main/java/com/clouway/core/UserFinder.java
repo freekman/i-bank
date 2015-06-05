@@ -1,11 +1,13 @@
 package com.clouway.core;
 
+import com.google.common.base.Optional;
+
 /**
  * Created byivan.genchev1989@gmail.com.
  */
 public interface UserFinder {
 
-  User findByName(String name);
+  Optional<User> findByName(String name);
 
-  User findBySidIfExist(String sid);
+  Optional<User> findBySidIfExist(String sid);
 }

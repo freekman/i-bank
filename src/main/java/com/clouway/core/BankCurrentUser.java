@@ -20,7 +20,7 @@ public class BankCurrentUser implements CurrentUser {
   public Optional<User> get() {
     Optional<String> sid = provider.get();
     if (sid.isPresent()) {
-      return Optional.of(finder.findBySidIfExist(sid.get()));
+      return Optional.of(finder.findBySidIfExist(sid.get()).get());
     }
     return Optional.absent();
   }
