@@ -7,5 +7,4 @@ public interface UserRegister {
 
   void register(User user);
 
-  void updateAmount(String sid, Double newAmount);
 }

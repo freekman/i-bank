@@ -37,6 +37,7 @@ public class HttpModule extends ServletModule {
     bind(Validator.class).to(UserFormValidator.class);
     bind(UserFinder.class).to(PersistentUserRepository.class);
     bind(UserRegister.class).to(PersistentUserRepository.class);
+    bind(AccountRegister.class).to(PersistentUserRepository.class);
     filter("/home", "/login", "/info", "/bank").through(SecurityFilter.class);
   }
 

@@ -14,15 +14,15 @@ public class BankTransactionExecutorTest {
 
   private BankTransactionExecutor manager;
   private CurrentUser currentUser;
-  private UserRegister userRegister;
+  private AccountRegister accountRegister;
   @Rule
   public JUnitRuleMockery context = new JUnitRuleMockery();
 
   @Before
   public void setUp() throws Exception {
-    userRegister = context.mock(UserRegister.class);
+    accountRegister = context.mock(AccountRegister.class);
     currentUser = context.mock(CurrentUser.class);
-    manager = new BankTransactionExecutor(currentUser, userRegister);
+    manager = new BankTransactionExecutor(currentUser, accountRegister);
   }
 
   @Test
@@ -32,7 +32,7 @@ public class BankTransactionExecutorTest {
     context.checking(new Expectations() {{
       oneOf(currentUser).get();
       will(returnValue(Optional.of(user)));
-      oneOf(userRegister).updateAmount(user.session.sessionId, 32.0);
+      oneOf(accountRegister).updateAmount(user.session.sessionId, 32.0);
 
     }});
     Transaction transaction = manager.execute(10.0, "deposit");
@@ -47,7 +47,7 @@ public class BankTransactionExecutorTest {
     context.checking(new Expectations() {{
       oneOf(currentUser).get();
       will(returnValue(Optional.of(user)));
-      oneOf(userRegister).updateAmount(user.session.sessionId, 12.0);
+      oneOf(accountRegister).updateAmount(user.session.sessionId, 12.0);
 
     }});
     Transaction transaction = manager.execute(10.0, "withdraw");

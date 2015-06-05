@@ -1,5 +1,6 @@
 package com.clouway.db.adapter.mongodb.persistent;
 
+import com.clouway.core.AccountRegister;
 import com.clouway.core.ExistingUserException;
 import com.clouway.core.Session;
 import com.clouway.core.User;
@@ -16,7 +17,7 @@ import static com.mongodb.client.model.Filters.eq;
 /**
  * Created byivan.genchev1989@gmail.com.
  */
-public class PersistentUserRepository implements UserRegister, UserFinder {
+public class PersistentUserRepository implements UserRegister, UserFinder,AccountRegister {
 
   private MongoDatabase db;
 

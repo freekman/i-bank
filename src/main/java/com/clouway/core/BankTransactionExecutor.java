@@ -9,10 +9,10 @@ import com.google.inject.Inject;
 public class BankTransactionExecutor implements TransactionExecutor {
 
   private final CurrentUser currentUser;
-  private final UserRegister userRegister;
+  private AccountRegister userRegister;
 
   @Inject
-  public BankTransactionExecutor(CurrentUser currentUser, UserRegister userRegister) {
+  public BankTransactionExecutor(CurrentUser currentUser, AccountRegister userRegister) {
     this.currentUser = currentUser;
     this.userRegister = userRegister;
   }
