@@ -39,7 +39,7 @@ public class PersistentSessionRepository implements SessionRegister, SessionFind
   public void clearSession(String sid) {
     MongoUserCollection().updateOne(new Document("session.sid", sid), new Document("$set",
             new Document("session"
-                    , new Document().append("sid", "").append("timeOut", 0l))));
+                    , new Document().append("sid", "").append("timeOut", 0L))));
   }
 
   @Override
