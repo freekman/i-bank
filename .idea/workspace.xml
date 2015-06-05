@@ -2,17 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="e7a84ea4-d6f3-45eb-8cd6-8d225d0af739" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.gitignore" afterPath="$PROJECT_DIR$/.gitignore" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/clouway/core/BankTransactionExecutor.java" afterPath="$PROJECT_DIR$/src/main/java/com/clouway/core/BankTransactionExecutor.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/test/com/clouway/core/BankTransactionExecutorTest.java" afterPath="$PROJECT_DIR$/src/main/test/com/clouway/core/BankTransactionExecutorTest.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/clouway/core/CurrentSidProvider.java" afterPath="$PROJECT_DIR$/src/main/java/com/clouway/core/CurrentSidProvider.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/clouway/db/adapter/mongodb/persistent/PersistentSessionRepository.java" afterPath="$PROJECT_DIR$/src/main/java/com/clouway/db/adapter/mongodb/persistent/PersistentSessionRepository.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/test/com/clouway/db/adapter/mongodb/persistent/PersistentSessionRepositoryTest.java" afterPath="$PROJECT_DIR$/src/main/test/com/clouway/db/adapter/mongodb/persistent/PersistentSessionRepositoryTest.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/clouway/db/adapter/mongodb/persistent/PersistentUserRepository.java" afterPath="$PROJECT_DIR$/src/main/java/com/clouway/db/adapter/mongodb/persistent/PersistentUserRepository.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/clouway/core/PropertyReader.java" afterPath="$PROJECT_DIR$/src/main/java/com/clouway/core/PropertyReader.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/clouway/http/SecurityFilter.java" afterPath="$PROJECT_DIR$/src/main/java/com/clouway/http/SecurityFilter.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/clouway/core/Session.java" afterPath="$PROJECT_DIR$/src/main/java/com/clouway/core/Session.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path="i-bank.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -44,11 +34,11 @@
   </component>
   <component name="FileEditorManager">
     <leaf>
-      <file leaf-file-name=".gitignore" pinned="false" current-in-tab="true">
+      <file leaf-file-name=".gitignore" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/.gitignore">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="579">
-              <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+            <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="126">
+              <caret line="1" column="5" selection-start-line="1" selection-start-column="5" selection-end-line="1" selection-end-column="5" />
               <folding />
             </state>
           </provider>
@@ -136,12 +126,15 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="PersistentSessionRepository.java" pinned="false" current-in-tab="false">
+      <file leaf-file-name="PersistentSessionRepository.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/main/java/com/clouway/db/adapter/mongodb/persistent/PersistentSessionRepository.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0" vertical-offset="944" max-vertical-offset="1530">
-              <caret line="86" column="30" selection-start-line="86" selection-start-column="30" selection-end-line="86" selection-end-column="30" />
-              <folding />
+            <state vertical-scroll-proportion="0.83215547" vertical-offset="987" max-vertical-offset="1602">
+              <caret line="96" column="3" selection-start-line="96" selection-start-column="3" selection-end-line="96" selection-end-column="3" />
+              <folding>
+                <element signature="e#3135#3136#0" expanded="true" />
+                <element signature="e#3176#3177#0" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -219,12 +212,12 @@
         <option value="$PROJECT_DIR$/src/main/java/com/clouway/core/PropertyReader.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/clouway/core/Session.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/clouway/http/SecurityFilter.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/clouway/db/adapter/mongodb/persistent/PersistentSessionRepository.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/clouway/db/adapter/mongodb/persistent/PersistentUserRepository.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/clouway/core/BankTransactionExecutor.java" />
         <option value="$PROJECT_DIR$/src/main/test/com/clouway/db/adapter/mongodb/persistent/PersistentSessionRepositoryTest.java" />
         <option value="$PROJECT_DIR$/src/main/test/com/clouway/core/BankTransactionExecutorTest.java" />
         <option value="$PROJECT_DIR$/.gitignore" />
+        <option value="$PROJECT_DIR$/src/main/java/com/clouway/db/adapter/mongodb/persistent/PersistentSessionRepository.java" />
       </list>
     </option>
   </component>
@@ -959,16 +952,16 @@
       <workItem from="1433397992047" duration="2526000" />
       <workItem from="1433415314129" duration="5171000" />
       <workItem from="1433423713707" duration="3542000" />
-      <workItem from="1433483928345" duration="13073000" />
+      <workItem from="1433483928345" duration="13299000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="77344000" />
+    <option name="totallyTimeSpent" value="77570000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="992" y="52" width="927" height="1028" extended-state="4" />
-    <editor active="true" />
+    <editor active="false" />
     <layout>
       <window_info id="Palette&#9;" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="UI Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
@@ -994,7 +987,7 @@
       <window_info id="Application Servers" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="11" side_tool="false" content_ui="tabs" />
       <window_info id="Mongo Explorer" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.35300794" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.32707182" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.32707182" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
       <window_info id="Thumbnails" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3290461" sideWeight="0.5" order="14" side_tool="false" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
@@ -1436,14 +1429,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/clouway/db/adapter/mongodb/persistent/PersistentSessionRepository.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="944" max-vertical-offset="1530">
-          <caret line="86" column="30" selection-start-line="86" selection-start-column="30" selection-end-line="86" selection-end-column="30" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/com/clouway/db/adapter/mongodb/persistent/PersistentUserRepository.java">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0" vertical-offset="565" max-vertical-offset="1440">
@@ -1480,9 +1465,20 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/.gitignore">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="579">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="126">
+          <caret line="1" column="5" selection-start-line="1" selection-start-column="5" selection-end-line="1" selection-end-column="5" />
           <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/clouway/db/adapter/mongodb/persistent/PersistentSessionRepository.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.83215547" vertical-offset="987" max-vertical-offset="1602">
+          <caret line="96" column="3" selection-start-line="96" selection-start-column="3" selection-end-line="96" selection-end-column="3" />
+          <folding>
+            <element signature="e#3135#3136#0" expanded="true" />
+            <element signature="e#3176#3177#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>

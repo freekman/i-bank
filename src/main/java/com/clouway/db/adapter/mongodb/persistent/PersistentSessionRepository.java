@@ -5,6 +5,7 @@ import com.clouway.core.SessionFinder;
 import com.clouway.core.SessionRegister;
 import com.google.inject.Inject;
 import com.mongodb.client.FindIterable;
+import com.mongodb.client.MongoCollection;
 import com.mongodb.client.MongoDatabase;
 import org.bson.Document;
 
@@ -28,14 +29,15 @@ public class PersistentSessionRepository implements SessionRegister, SessionFind
 
   @Override
   public void createSession(String sid, String userName, Long timeOut) {
-    db.getCollection("user").updateOne(new Document("name", userName), new Document("$set",
+    MongoUserCollection().updateOne(new Document("name", userName), new Document("$set",
             new Document("session"
                     , new Document().append("sid", sid).append("timeOut", timeOut))));
   }
 
+
   @Override
   public void clearSession(String sid) {
-    db.getCollection("user").updateOne(new Document("session.sid", sid), new Document("$set",
+    MongoUserCollection().updateOne(new Document("session.sid", sid), new Document("$set",
             new Document("session"
                     , new Document().append("sid", "").append("timeOut", 0l))));
   }
@@ -44,7 +46,7 @@ public class PersistentSessionRepository implements SessionRegister, SessionFind
   public boolean refreshSession(String sid, Long newTime) {
     Session currentSession = findBySid(sid);
     if (null != currentSession && isValid(currentSession, 30)) {
-      db.getCollection("user").updateOne(new Document("session.sid", sid), new Document("$set", new Document("session.timeOut", newTime)));
+      MongoUserCollection().updateOne(new Document("session.sid", sid), new Document("$set", new Document("session.timeOut", newTime)));
       return true;
     }
     return false;
@@ -53,7 +55,7 @@ public class PersistentSessionRepository implements SessionRegister, SessionFind
   @Override
   public List<Session> findAll() {
     List<Session> list = new ArrayList<>();
-    FindIterable<Document> result = db.getCollection("user").find();
+    FindIterable<Document> result = MongoUserCollection().find();
     for (Document doc : result) {
       String userNAme = (String) doc.get("name");
       Document session = (Document) doc.get("session");
@@ -70,7 +72,7 @@ public class PersistentSessionRepository implements SessionRegister, SessionFind
 
   @Override
   public Session findBySid(String sid) {
-    Document result = db.getCollection("user").find(eq("session.sid", sid)).first();
+    Document result = MongoUserCollection().find(eq("session.sid", sid)).first();
     if (null != result) {
       String userNAme = (String) result.get("name");
       Document session = (Document) result.get("session");
@@ -90,4 +92,7 @@ public class PersistentSessionRepository implements SessionRegister, SessionFind
     return true;
   }
 
+  private MongoCollection<Document> MongoUserCollection() {
+    return db.getCollection("user");
+  }
 }
