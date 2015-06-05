@@ -15,7 +15,6 @@ import org.junit.Test;
 import static org.junit.Assert.*;
 
 public class BankUserAuthenticatorAuthenticateTest {
-
   @Rule
   public JUnitRuleMockery context = new JUnitRuleMockery();
 

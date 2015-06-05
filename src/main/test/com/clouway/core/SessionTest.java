@@ -4,7 +4,7 @@ import org.junit.Test;
 
 import static org.junit.Assert.*;
 
-public class SessionContractTest {
+public class SessionTest {
   @Test
   public void happyPath() throws Exception {
     Session session1=new Session("aaa","Ivan",12l);

@@ -4,7 +4,7 @@ import org.junit.Test;
 
 import static org.junit.Assert.*;
 
-public class UserContractTest {
+public class UserTest {
   @Test
   public void equalObjects() throws Exception {
     User user1 = new User("name","pass",0.0,new Session("sid","name",0l));

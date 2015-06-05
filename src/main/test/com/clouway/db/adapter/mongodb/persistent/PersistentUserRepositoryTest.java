@@ -17,7 +17,6 @@ import static org.hamcrest.CoreMatchers.is;
 import static org.hamcrest.MatcherAssert.assertThat;
 
 public class PersistentUserRepositoryTest {
-
   @Rule
   public FongoRule fongoRule = new FongoRule("bank");
 

@@ -18,7 +18,6 @@ import static org.hamcrest.CoreMatchers.is;
 import static org.junit.Assert.*;
 
 public class RegistrationPageTest {
-
   @Rule
   public JUnitRuleMockery context = new JUnitRuleMockery();
   private RegistrationPage page;

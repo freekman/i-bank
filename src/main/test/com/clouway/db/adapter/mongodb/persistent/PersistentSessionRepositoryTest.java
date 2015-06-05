@@ -14,7 +14,6 @@ import static org.hamcrest.CoreMatchers.is;
 import static org.junit.Assert.*;
 
 public class PersistentSessionRepositoryTest {
-
   @Rule
   public FongoRule fongoRule = new FongoRule();
 
@@ -70,12 +69,11 @@ public class PersistentSessionRepositoryTest {
   }
 
   @Test
-  public void activeSession() throws Exception {
+  public void pretendWeHaveRegisteredUSer() throws Exception {
     insertFakeUser("ivan", "qqq", 0.0, "asd", getDate(2015, 6, 27, 10, 10));
     boolean result = repository.refreshSession("asd", getDate(2015, 6, 27, 10, 20));
     assertThat(result, is(true));
   }
-
   private void insertFakeUser(String name, String password, Double balance, String sid, Long timeOut) {
     database.get().getCollection("user").insertOne(new Document()
             .append("name", name)
