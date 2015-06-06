@@ -13,6 +13,8 @@ import org.junit.Before;
 import org.junit.Rule;
 import org.junit.Test;
 
+import java.math.BigDecimal;
+
 import static com.clouway.matchers.ReplyContainsObject.contains;
 import static com.clouway.matchers.ReplyStatus.statusIs;
 import static org.hamcrest.MatcherAssert.assertThat;
@@ -42,16 +44,16 @@ public class BankServiceDepositTest {
       will(returnValue(new RequestRead<TransactionDTO>() {
         @Override
         public TransactionDTO as(Class<? extends Transport> transport) {
-          return new TransactionDTO(10.00, "deposit");
+          return new TransactionDTO(new BigDecimal(10), "deposit");
         }
       }));
-      oneOf(validator).isValid(new Transaction(10.0, "deposit"));
+      oneOf(validator).isValid(new Transaction(new BigDecimal(10), "deposit"));
       will(returnValue(true));
-      oneOf(transactionExecutor).execute(10.0, "deposit");
-      will(returnValue(new Transaction(10.0, "ok")));
+      oneOf(transactionExecutor).execute(new BigDecimal(10), "deposit");
+      will(returnValue(new Transaction(new BigDecimal(10), "ok")));
     }});
     Reply replay = bankService.executeTransaction(request);
-    assertThat(replay, contains(new Transaction(10.0, "ok")));
+    assertThat(replay, contains(new Transaction(new BigDecimal(10), "ok")));
     assertThat(replay, statusIs(200));
   }
 

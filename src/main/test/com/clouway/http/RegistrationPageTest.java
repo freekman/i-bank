@@ -11,6 +11,7 @@ import org.junit.Before;
 import org.junit.Rule;
 import org.junit.Test;
 
+import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -63,7 +64,7 @@ public class RegistrationPageTest {
   }
 
   private User getUser() {
-    return new User("Ivan", "qwert", 0.0, new Session("", "Ivan", 0));
+    return new User("Ivan", "qwert", new BigDecimal(0), new Session("", "Ivan", 0));
   }
 
 }

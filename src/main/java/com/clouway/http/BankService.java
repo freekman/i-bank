@@ -2,6 +2,7 @@ package com.clouway.http;
 
 import com.clouway.core.Transaction;
 import com.clouway.core.TransactionExecutor;
+import com.clouway.core.TransactionTypes;
 import com.clouway.validator.SimpleValidator;
 import com.google.inject.Inject;
 import com.google.sitebricks.At;
@@ -10,6 +11,9 @@ import com.google.sitebricks.headless.Reply;
 import com.google.sitebricks.headless.Request;
 import com.google.sitebricks.headless.Service;
 import com.google.sitebricks.http.Post;
+
+import java.util.HashMap;
+import java.util.Map;
 
 /**
  * Created byivan.genchev1989@gmail.com.
@@ -41,5 +45,4 @@ public class BankService {
     }
     return Reply.with("Transaction did not occur").status(400);
   }
-
 }

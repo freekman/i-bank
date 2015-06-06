@@ -12,6 +12,8 @@ import org.junit.Before;
 import org.junit.Rule;
 import org.junit.Test;
 
+import java.math.BigDecimal;
+
 import static org.hamcrest.CoreMatchers.is;
 import static org.junit.Assert.*;
 
@@ -39,7 +41,7 @@ public class TransactionValidatorTest {
   @Test
   public void withdrawAmountGreaterTheBalance() throws Exception {
     currentUserExpectations();
-    boolean isValid = validator.isValid(new Transaction(60.0, "withdraw"));
+    boolean isValid = validator.isValid(new Transaction(new BigDecimal(60), "withdraw"));
     assertThat(isValid, is(false));
   }
 
@@ -47,33 +49,33 @@ public class TransactionValidatorTest {
   @Test
   public void depositWithPositiveAmount() throws Exception {
     currentUserExpectations();
-    boolean isValid = validator.isValid(new Transaction(12.0, "deposit"));
+    boolean isValid = validator.isValid(new Transaction(new BigDecimal(12), "deposit"));
     assertTrue(isValid);
   }
 
   @Test
   public void depositWithNegativeAmount() throws Exception {
     currentUserExpectations();
-    boolean isValid = validator.isValid(new Transaction(-12.0, "deposit"));
+    boolean isValid = validator.isValid(new Transaction(new BigDecimal(-12), "deposit"));
     assertFalse(isValid);
   }
 
   @Test
   public void withdrawWithPositiveAmount() throws Exception {
     currentUserExpectations();
-    boolean isValid = validator.isValid(new Transaction(12.0, "withdraw"));
+    boolean isValid = validator.isValid(new Transaction(new BigDecimal(12), "withdraw"));
     assertTrue(isValid);
   }
 
   @Test
   public void withdrawWithNegativeAmount() throws Exception {
     currentUserExpectations();
-    boolean isValid = validator.isValid(new Transaction(-112.0, "withdraw"));
+    boolean isValid = validator.isValid(new Transaction(new BigDecimal(-112), "withdraw"));
     assertFalse(isValid);
   }
 
   private void currentUserExpectations() {
-    final User user = new User("Ivan", "", 50.0, new Session("", "", 1l));
+    final User user = new User("Ivan", "", new BigDecimal(50), new Session("", "", 1l));
     context.checking(new Expectations() {{
       oneOf(currentUser).get();
       will(returnValue(Optional.of(user)));

@@ -12,6 +12,8 @@ import org.junit.Before;
 import org.junit.Rule;
 import org.junit.Test;
 
+import java.math.BigDecimal;
+
 import static org.junit.Assert.*;
 
 public class BankUserAuthenticatorAuthenticateTest {
@@ -33,7 +35,7 @@ public class BankUserAuthenticatorAuthenticateTest {
 
   @Test
   public void happyPath() throws Exception {
-    final User user = new User("Ivan", "qwerty", 0.0, new Session("", "Ivan", 0l));
+    final User user = new User("Ivan", "qwerty", new BigDecimal(0), new Session("", "Ivan", 0l));
     context.checking(new Expectations() {{
       oneOf(userFinder).findByName("Ivan");
       will(returnValue(Optional.of(user)));
@@ -44,23 +46,23 @@ public class BankUserAuthenticatorAuthenticateTest {
 
   @Test
   public void wrongName() throws Exception {
-    final User user = new User("Iva", "qwerty", 0.0, new Session("", "Ivan", 0l));
+    final User user = new User("Iva", "qwerty", new BigDecimal(0), new Session("", "Ivan", 0l));
     context.checking(new Expectations() {{
       oneOf(userFinder).findByName("Ivan");
       will(returnValue(Optional.of(user)));
     }});
-    boolean result = bankUserAuthenticator.authenticate(new User("Ivan", "qwerty", 0.0, new Session("", "Ivan", 0l)));
+    boolean result = bankUserAuthenticator.authenticate(new User("Ivan", "qwerty", new BigDecimal(0), new Session("", "Ivan", 0l)));
     assertFalse(result);
   }
 
   @Test
   public void wrongPassword() throws Exception {
-    final User user = new User("Ivan", "qwe", 0.0, new Session("", "Ivan", 0l));
+    final User user = new User("Ivan", "qwe", new BigDecimal(0), new Session("", "Ivan", 0l));
     context.checking(new Expectations() {{
       oneOf(userFinder).findByName("Ivan");
       will(returnValue(Optional.of(user)));
     }});
-    boolean result = bankUserAuthenticator.authenticate(new User("Ivan", "qwerty", 0.0, new Session("", "Ivan", 0l)));
+    boolean result = bankUserAuthenticator.authenticate(new User("Ivan", "qwerty", new BigDecimal(0), new Session("", "Ivan", 0l)));
     assertFalse(result);
   }
 

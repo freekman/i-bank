@@ -5,6 +5,7 @@ import com.clouway.core.User;
 import org.junit.Before;
 import org.junit.Test;
 
+import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -26,14 +27,14 @@ public class UserFormValidatorTest {
 
   @Test
   public void happyPath() throws Exception {
-    User user = new User("aaa", "aaa", 0.0, new Session("", "", 0));
+    User user = new User("aaa", "aaa", new BigDecimal(0), new Session("", "", 0));
     List<String> errors = validator.validate(user);
     assertThat(errors.size(), is(0));
   }
 
   @Test
   public void missingName() throws Exception {
-    User user = new User("", "aaa", 0.0, new Session("", "", 0));
+    User user = new User("", "aaa", new BigDecimal(0), new Session("", "", 0));
     List<String> errors = validator.validate(user);
     assertThat(errors.size(), is(1));
     assertEquals(errors.get(0), expectedErrors.get(0));
@@ -41,7 +42,7 @@ public class UserFormValidatorTest {
 
   @Test
   public void missingPassword() throws Exception {
-    User user = new User("aaa", "", 0.0, new Session("", "", 0));
+    User user = new User("aaa", "", new BigDecimal(0), new Session("", "", 0));
     List<String> errors = validator.validate(user);
     assertThat(errors.size(), is(1));
     assertEquals(errors.get(0), expectedErrors.get(1));
@@ -49,7 +50,7 @@ public class UserFormValidatorTest {
 
   @Test
   public void nameWithSpaces() throws Exception {
-    User user = new User("aaa  xxx", "aaa", 0.0, new Session("", "", 0));
+    User user = new User("aaa  xxx", "aaa", new BigDecimal(0), new Session("", "", 0));
     List<String> errors = validator.validate(user);
     assertThat(errors.size(), is(1));
     assertEquals(errors.get(0), expectedErrors.get(0));
@@ -57,7 +58,7 @@ public class UserFormValidatorTest {
 
   @Test
   public void passwordWithSpaces() throws Exception {
-    User user = new User("aaa", "a a a", 0.0, new Session("", "", 0));
+    User user = new User("aaa", "a a a", new BigDecimal(0), new Session("", "", 0));
     List<String> errors = validator.validate(user);
     assertThat(errors.size(), is(1));
     assertEquals(errors.get(0), expectedErrors.get(1));
@@ -65,7 +66,7 @@ public class UserFormValidatorTest {
 
   @Test
   public void missingCredentials() throws Exception {
-    User user = new User("", "", 0.0, new Session("", "", 0));
+    User user = new User("", "", new BigDecimal(0), new Session("", "", 0));
     List<String> errors = validator.validate(user);
     assertThat(errors.size(), is(2));
     assertEquals(errors, expectedErrors);

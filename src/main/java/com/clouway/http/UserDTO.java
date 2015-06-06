@@ -1,5 +1,7 @@
 package com.clouway.http;
 
+import java.math.BigDecimal;
+
 /**
  * Created byivan.genchev1989@gmail.com.
  */
@@ -7,12 +9,12 @@ class UserDTO {
 
   public String name;
   public String password;
-  public Double amount;
+  public BigDecimal amount;
 
   public UserDTO() {
   }
 
-  public UserDTO(String name, String password, Double amount) {
+  public UserDTO(String name, String password, BigDecimal amount) {
     this.name = name;
     this.password = password;
     this.amount = amount;

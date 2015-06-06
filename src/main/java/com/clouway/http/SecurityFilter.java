@@ -46,7 +46,7 @@ public class SecurityFilter implements Filter {
     Optional<String> sessionId = new CurrentSidProvider((HttpServletRequest) request).get();
     Session session=null;
     if (sessionId.isPresent()) {
-      session = sessionFinder.findBySid(sessionId.get());
+      session = sessionFinder.findBySid(sessionId.get()).get();
     }
     Session currentSession = null;
     if (null != session) {

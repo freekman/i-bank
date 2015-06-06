@@ -9,6 +9,8 @@ import org.junit.Before;
 import org.junit.Rule;
 import org.junit.Test;
 
+import java.math.BigDecimal;
+
 import static org.hamcrest.CoreMatchers.is;
 import static org.junit.Assert.*;
 
@@ -31,7 +33,7 @@ public class LoginPageTest {
     loginPage.userName = "asa";
     loginPage.password = "asa";
     context.checking(new Expectations() {{
-      User user = new User("asa", "asa", 0.0,new Session("","",0l));
+      User user = new User("asa", "asa", new BigDecimal(0),new Session("","",0l));
       oneOf(userAuthenticator).authenticate(user);
       will(returnValue(true));
       oneOf(userAuthenticator).registerSession(user);
@@ -45,7 +47,7 @@ public class LoginPageTest {
     loginPage.userName = "asa";
     loginPage.password = "asa";
     context.checking(new Expectations() {{
-      User user = new User("asa", "asa", 0.0,new Session("","",0l));
+      User user = new User("asa", "asa", new BigDecimal(0),new Session("","",0l));
       oneOf(userAuthenticator).authenticate(user);
       will(returnValue(false));
       never(userAuthenticator).registerSession(user);

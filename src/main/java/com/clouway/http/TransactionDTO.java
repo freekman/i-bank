@@ -1,17 +1,26 @@
 package com.clouway.http;
 
+import org.hibernate.validator.constraints.NotBlank;
+
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Pattern;
+import java.math.BigDecimal;
+
 /**
  * Created byivan.genchev1989@gmail.com.
  */
 class TransactionDTO {
 
-  public Double amount;
+  @NotNull
+  @Pattern(regexp = "/^[1-9]\\d*$/", message = "Invalid number")
+  public BigDecimal amount;
+  @NotBlank
   public String transactionType;
 
   public TransactionDTO() {
   }
 
-  public TransactionDTO(Double amount, String transactionType) {
+  public TransactionDTO(BigDecimal amount, String transactionType) {
     this.amount = amount;
     this.transactionType = transactionType;
   }

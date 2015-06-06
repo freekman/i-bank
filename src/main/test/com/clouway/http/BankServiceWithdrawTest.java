@@ -13,6 +13,8 @@ import org.junit.Before;
 import org.junit.Rule;
 import org.junit.Test;
 
+import java.math.BigDecimal;
+
 import static com.clouway.matchers.ReplyContainsObject.contains;
 import static com.clouway.matchers.ReplyStatus.statusIs;
 import static org.hamcrest.CoreMatchers.is;
@@ -43,16 +45,16 @@ public class BankServiceWithdrawTest {
       will(returnValue(new RequestRead<TransactionDTO>() {
         @Override
         public TransactionDTO as(Class<? extends Transport> transport) {
-          return new TransactionDTO(10.00, "withdraw");
+          return new TransactionDTO(new BigDecimal(10), "withdraw");
         }
       }));
-      oneOf(validator).isValid(new Transaction(10.0, "withdraw"));
+      oneOf(validator).isValid(new Transaction(new BigDecimal(10), "withdraw"));
       will(returnValue(true));
-      oneOf(transactionExecutor).execute(10.0, "withdraw");
-      will(returnValue(new Transaction(10.0, "OK")));
+      oneOf(transactionExecutor).execute(new BigDecimal(10), "withdraw");
+      will(returnValue(new Transaction(new BigDecimal(10), "OK")));
     }});
     Reply replay = bankService.executeTransaction(rq);
-    assertThat(replay, is(contains(new Transaction(10.0, "OK"))));
+    assertThat(replay, is(contains(new Transaction(new BigDecimal(10), "OK"))));
     assertThat(replay, is(statusIs(200)));
   }
 
@@ -63,10 +65,10 @@ public class BankServiceWithdrawTest {
       will(returnValue(new RequestRead<TransactionDTO>() {
         @Override
         public TransactionDTO as(Class<? extends Transport> transport) {
-          return new TransactionDTO(10.00, "withdraw");
+          return new TransactionDTO(new BigDecimal(10), "withdraw");
         }
       }));
-      oneOf(validator).isValid(new Transaction(10.0, "withdraw"));
+      oneOf(validator).isValid(new Transaction(new BigDecimal(10), "withdraw"));
       will(returnValue(false));
     }});
     Reply replay = bankService.executeTransaction(rq);

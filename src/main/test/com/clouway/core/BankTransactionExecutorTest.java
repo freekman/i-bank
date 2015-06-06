@@ -7,6 +7,8 @@ import org.junit.Before;
 import org.junit.Rule;
 import org.junit.Test;
 
+import java.math.BigDecimal;
+
 import static org.hamcrest.CoreMatchers.is;
 import static org.hamcrest.MatcherAssert.assertThat;
 
@@ -27,7 +29,7 @@ public class BankTransactionExecutorTest {
 
   @Test
   public void deposit() throws Exception {
-    final User user = new User("ivan", "qwe", 22.0, new Session("abc", "ivan", 12l));
+    final User user = new User("ivan", "qwe", new BigDecimal(22), new Session("abc", "ivan", 12l));
 
     context.checking(new Expectations() {{
       oneOf(currentUser).get();
@@ -35,14 +37,14 @@ public class BankTransactionExecutorTest {
       oneOf(accountRegister).updateAmount(user.session.sessionId, 32.0);
 
     }});
-    Transaction transaction = manager.execute(10.0, "deposit");
-    assertThat(transaction.getAmount(), is(32.0));
+    Transaction transaction = manager.execute(new BigDecimal(10), "deposit");
+    assertThat(transaction.getAmount(), is(new BigDecimal(32)));
     assertThat(transaction.getTransactionType(), is("Deposit"));
   }
 
   @Test
   public void withdraw() throws Exception {
-    final User user = new User("ivan", "qwe", 22.0, new Session("abc", "ivan", 12l));
+    final User user = new User("ivan", "qwe", new BigDecimal(22), new Session("abc", "ivan", 12l));
 
     context.checking(new Expectations() {{
       oneOf(currentUser).get();
@@ -50,8 +52,8 @@ public class BankTransactionExecutorTest {
       oneOf(accountRegister).updateAmount(user.session.sessionId, 12.0);
 
     }});
-    Transaction transaction = manager.execute(10.0, "withdraw");
-    assertThat(transaction.getAmount(), is(12.0));
+    Transaction transaction = manager.execute(new BigDecimal(10), "withdraw");
+    assertThat(transaction.getAmount(), is(new BigDecimal(12)));
     assertThat(transaction.getTransactionType(), is("Withdraw"));
   }
 

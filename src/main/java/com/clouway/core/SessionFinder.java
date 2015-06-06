@@ -1,5 +1,7 @@
 package com.clouway.core;
 
+import com.google.common.base.Optional;
+
 import java.util.List;
 
 /**
@@ -7,7 +9,7 @@ import java.util.List;
  */
 public interface SessionFinder {
 
-  List<Session> findAll();
+  Optional<List<Session>> findAll();
 
-  Session findBySid(String sid);
+  Optional<Session> findBySid(String sid);
 }

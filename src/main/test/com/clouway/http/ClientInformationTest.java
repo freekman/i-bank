@@ -11,6 +11,8 @@ import org.junit.Before;
 import org.junit.Rule;
 import org.junit.Test;
 
+import java.math.BigDecimal;
+
 import static com.clouway.matchers.ReplyContainsObject.contains;
 import static com.clouway.matchers.ReplyStatus.statusIs;
 import static org.hamcrest.CoreMatchers.is;
@@ -34,10 +36,10 @@ public class ClientInformationTest {
   public void deposit() throws Exception {
     context.checking(new Expectations() {{
       oneOf(currentUser).get();
-      will(returnValue(Optional.of(new User("Ivan", "qqq", 12.00, new Session("asd", "Ivan", 0l)))));
+      will(returnValue(Optional.of(new User("Ivan", "qqq", new BigDecimal(12), new Session("asd", "Ivan", 0l)))));
     }});
     Reply<?> reply = info.sendInfo();
-    assertThat(reply, is(contains(new UserDTO("Ivan", "qqq", 12.00))));
+    assertThat(reply, is(contains(new UserDTO("Ivan", "qqq", new BigDecimal(12)))));
     assertThat(reply, is(statusIs(200)));
   }
 

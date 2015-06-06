@@ -26,13 +26,13 @@ public class TransactionValidator implements SimpleValidator<Transaction> {
     if (transaction == null) {
       return false;
     }
-    if (transaction.getTransactionType().equals("deposit") && transaction.getAmount() < 0) {
+    if (transaction.getTransactionType().equals("deposit") && transaction.getAmount().doubleValue() < 0) {
       return false;
     }
-    if (transaction.getTransactionType().equals("withdraw") && transaction.getAmount() < 0) {
+    if (transaction.getTransactionType().equals("withdraw") && transaction.getAmount().doubleValue() < 0) {
       return false;
     }
-    if (transaction.getTransactionType().equals("withdraw") && ((current.get().getAmount() - transaction.getAmount()) <= 0)) {
+    if (transaction.getTransactionType().equals("withdraw") && ((current.get().getAmount().subtract(transaction.getAmount())).doubleValue() <= 0)) {
       return false;
     }
     return true;

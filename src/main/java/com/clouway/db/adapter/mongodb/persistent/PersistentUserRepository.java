@@ -12,12 +12,14 @@ import com.mongodb.MongoWriteException;
 import com.mongodb.client.MongoDatabase;
 import org.bson.Document;
 
+import java.math.BigDecimal;
+
 import static com.mongodb.client.model.Filters.eq;
 
 /**
  * Created byivan.genchev1989@gmail.com.
  */
-public class PersistentUserRepository implements UserRegister, UserFinder,AccountRegister {
+public class PersistentUserRepository implements UserRegister, UserFinder, AccountRegister {
 
   private MongoDatabase db;
 
@@ -28,9 +30,9 @@ public class PersistentUserRepository implements UserRegister, UserFinder,Accoun
 
   @Override
   public void register(User user) {
-    if(findByName(user.name).isPresent()){
+    if (findByName(user.name).isPresent()) {
       throw new ExistingUserException();
-    }else{
+    } else {
       db.getCollection("user").insertOne(new Document()
               .append("name", user.name)
               .append("password", user.password)
@@ -48,7 +50,6 @@ public class PersistentUserRepository implements UserRegister, UserFinder,Accoun
     try {
       db.getCollection("user").updateOne(new Document("session.sid", sid),
               new Document("$set", new Document("amount", newAmount)));
-      System.out.println(db.toString());
     } catch (MongoWriteException e) {
       throw new ExistingUserException();
     }
@@ -59,12 +60,12 @@ public class PersistentUserRepository implements UserRegister, UserFinder,Accoun
     Document result = db.getCollection("user").find(eq("name", userName)).first();
     if (null != result) {
       String name = (String) result.get("name");
-      String pwd = (String) result.get("password");
+      String password = (String) result.get("password");
       Double amount = (Double) result.get("amount");
       Document session = (Document) result.get("session");
       String sessionId = session.getString("sid");
       Long time = session.getLong("timeOut");
-      return Optional.of(new User(name, pwd, amount, new Session(sessionId, name, time)));
+      return Optional.of(new User(name, password, new BigDecimal(amount), new Session(sessionId, name, time)));
     }
     return Optional.absent();
   }
@@ -75,12 +76,12 @@ public class PersistentUserRepository implements UserRegister, UserFinder,Accoun
     Document result = db.getCollection("user").find(eq("session.sid", sid)).first();
     if (null != result) {
       String name = (String) result.get("name");
-      String pwd = (String) result.get("password");
+      String password = (String) result.get("password");
       Double amount = (Double) result.get("amount");
       Document session = (Document) result.get("session");
       String sessionId = session.getString("sid");
       Long time = session.getLong("timeOut");
-      return Optional.of(new User(name, pwd, amount, new Session(sessionId, name, time)));
+      return Optional.of(new User(name, password, new BigDecimal(amount), new Session(sessionId, name, time)));
     }
     return Optional.absent();
   }

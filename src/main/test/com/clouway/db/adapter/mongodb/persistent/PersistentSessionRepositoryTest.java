@@ -2,6 +2,7 @@ package com.clouway.db.adapter.mongodb.persistent;
 
 import com.clouway.core.Session;
 import com.github.fakemongo.junit.FongoRule;
+import com.google.common.base.Optional;
 import org.bson.Document;
 import org.junit.Before;
 import org.junit.Rule;
@@ -30,10 +31,10 @@ public class PersistentSessionRepositoryTest {
   public void happyPath() throws Exception {
     insertFakeUser("ivan", "qwe", 0.0, "", 0l);
     repository.create("asd", "ivan", 123l);
-    List<Session> result = repository.findAll();
-    assertThat(result.size(), is(1));
-    assertThat(result.get(0).sessionId, is("asd"));
-    assertThat(result.get(0).sessionTimeCreated, is(123l));
+    Optional<List<Session>> result = repository.findAll();
+    assertThat(result.get().size(), is(1));
+    assertThat(result.get().get(0).sessionId, is("asd"));
+    assertThat(result.get().get(0).sessionTimeCreated, is(123l));
   }
 
 
@@ -42,10 +43,10 @@ public class PersistentSessionRepositoryTest {
     insertFakeUser("ivan", "qwe", 0.0, "", 0l);
     repository.create("asd", "ivan", 123l);
     repository.clear("asd");
-    List<Session> result = repository.findAll();
-    assertThat(result.size(), is(1));
-    assertThat(result.get(0).sessionId, is(""));
-    assertThat(result.get(0).sessionTimeCreated, is(0l));
+    Optional<List<Session>> result = repository.findAll();
+    assertThat(result.get().size(), is(1));
+    assertThat(result.get().get(0).sessionId, is(""));
+    assertThat(result.get().get(0).sessionTimeCreated, is(0l));
   }
 
   @Test
@@ -53,8 +54,8 @@ public class PersistentSessionRepositoryTest {
     insertFakeUser("ivan", "qqq", 0.0, "asd", 12l);
     insertFakeUser("asd", "qqq", 0.0, "aaa", 12l);
     insertFakeUser("asdd", "qqq", 0.0, "sss", 12l);
-    Session result = repository.findBySid("asd");
-    assertThat(result, is(new Session("asd", "ivan", 12l)));
+    Optional<Session> result = repository.findBySid("asd");
+    assertThat(result.get(), is(new Session("asd", "ivan", 12l)));
   }
 
 
@@ -62,10 +63,10 @@ public class PersistentSessionRepositoryTest {
   public void searchForAllUsers() throws Exception {
     insertFakeUser("ivan", "qqq", 0.0, "asd", 12l);
     insertFakeUser("asd", "qqq", 0.0, "aaa", 12l);
-    List<Session> result = repository.findAll();
-    assertThat(result.size(), is(2));
-    assertThat(result.get(0), is(new Session("asd", "ivan", 12l)));
-    assertThat(result.get(1), is(new Session("aaa", "asd", 12l)));
+    Optional<List<Session>> result = repository.findAll();
+    assertThat(result.get().size(), is(2));
+    assertThat(result.get().get(0), is(new Session("asd", "ivan", 12l)));
+    assertThat(result.get().get(1), is(new Session("aaa", "asd", 12l)));
   }
 
   @Test

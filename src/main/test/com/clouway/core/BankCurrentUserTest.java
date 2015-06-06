@@ -7,6 +7,8 @@ import org.junit.Before;
 import org.junit.Rule;
 import org.junit.Test;
 
+import java.math.BigDecimal;
+
 import static org.hamcrest.CoreMatchers.is;
 import static org.junit.Assert.*;
 
@@ -28,7 +30,7 @@ public class BankCurrentUserTest {
 
   @Test
   public void happyPath() throws Exception {
-    final User result = new User("ivan", "qwe", 22.0, new Session("abc", "ivan", 12l));
+    final User result = new User("ivan", "qwe", new BigDecimal(22), new Session("abc", "ivan", 12l));
     context.checking(new Expectations() {{
       oneOf(sidProvider).get();
       will(returnValue(Optional.of("abc")));

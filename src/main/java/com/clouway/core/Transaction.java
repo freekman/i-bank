@@ -1,18 +1,20 @@
 package com.clouway.core;
 
+import java.math.BigDecimal;
+
 /**
  * Created byivan.genchev1989@gmail.com.
  */
 public class Transaction {
-  private Double amount;
+  private BigDecimal amount;
   private String transactionType;
 
-  public Transaction(Double amount, String transactionType) {
+  public Transaction(BigDecimal amount, String transactionType) {
     this.amount = amount;
     this.transactionType = transactionType;
   }
 
-  public Double getAmount() {
+  public BigDecimal getAmount() {
     return amount;
   }
 

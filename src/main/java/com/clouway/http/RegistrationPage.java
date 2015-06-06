@@ -11,6 +11,7 @@ import com.google.sitebricks.At;
 import com.google.sitebricks.Show;
 import com.google.sitebricks.http.Post;
 
+import java.math.BigDecimal;
 import java.util.List;
 
 /**
@@ -38,7 +39,7 @@ public class RegistrationPage {
 
   @Post
   public void register() {
-    UserDTO userDTO = new UserDTO(userName, password, 0.0);
+    UserDTO userDTO = new UserDTO(userName, password, new BigDecimal(0));
     User user = new User(userDTO.name, userDTO.password, userDTO.amount, new Session("", userDTO.name, 0));
     messages = validator.validate(user);
     if (messages.isEmpty()) {
