@@ -1,6 +1,7 @@
 package com.clouway.core;
 
 import com.clouway.http.HttpModule;
+import com.clouway.http.InterceptorModule;
 import com.clouway.http.PageModule;
 import com.google.inject.Guice;
 import com.google.inject.Injector;
@@ -32,7 +33,7 @@ public class Main {
     handler.addEventListener(new GuiceServletContextListener() {
                                @Override
                                protected Injector getInjector() {
-                                 return Guice.createInjector(new HttpModule(reader), new PageModule());
+                                 return Guice.createInjector(new HttpModule(reader), new PageModule(),new InterceptorModule());
                                }
                              }
     );

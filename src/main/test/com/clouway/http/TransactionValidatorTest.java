@@ -31,12 +31,6 @@ public class TransactionValidatorTest {
     validator = new TransactionValidator(currentUser);
   }
 
-  @Test
-  public void validateMissingTransaction() throws Exception {
-    currentUserExpectations();
-    boolean isValid = validator.isValid(null);
-    assertThat(isValid, is(false));
-  }
 
   @Test
   public void withdrawAmountGreaterTheBalance() throws Exception {
@@ -54,24 +48,10 @@ public class TransactionValidatorTest {
   }
 
   @Test
-  public void depositWithNegativeAmount() throws Exception {
-    currentUserExpectations();
-    boolean isValid = validator.isValid(new Transaction(new BigDecimal(-12), "deposit"));
-    assertFalse(isValid);
-  }
-
-  @Test
   public void withdrawWithPositiveAmount() throws Exception {
     currentUserExpectations();
     boolean isValid = validator.isValid(new Transaction(new BigDecimal(12), "withdraw"));
     assertTrue(isValid);
-  }
-
-  @Test
-  public void withdrawWithNegativeAmount() throws Exception {
-    currentUserExpectations();
-    boolean isValid = validator.isValid(new Transaction(new BigDecimal(-112), "withdraw"));
-    assertFalse(isValid);
   }
 
   private void currentUserExpectations() {

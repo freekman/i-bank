@@ -2,6 +2,7 @@ package com.clouway.http;
 
 import org.hibernate.validator.constraints.NotBlank;
 
+import javax.validation.constraints.DecimalMin;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Pattern;
 import java.math.BigDecimal;
@@ -12,7 +13,7 @@ import java.math.BigDecimal;
 class TransactionDTO {
 
   @NotNull
-  @Pattern(regexp = "/^[1-9]\\d*$/", message = "Invalid number")
+  @DecimalMin(value="0",inclusive = false)
   public BigDecimal amount;
   @NotBlank
   public String transactionType;

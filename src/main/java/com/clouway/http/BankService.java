@@ -1,8 +1,8 @@
 package com.clouway.http;
 
+import com.clouway.core.SecureTransport;
 import com.clouway.core.Transaction;
 import com.clouway.core.TransactionExecutor;
-import com.clouway.core.TransactionTypes;
 import com.clouway.validator.SimpleValidator;
 import com.google.inject.Inject;
 import com.google.sitebricks.At;
@@ -12,14 +12,12 @@ import com.google.sitebricks.headless.Request;
 import com.google.sitebricks.headless.Service;
 import com.google.sitebricks.http.Post;
 
-import java.util.HashMap;
-import java.util.Map;
-
 /**
  * Created byivan.genchev1989@gmail.com.
  */
 @At("/bank")
 @Service
+@SecureTransport
 public class BankService {
   private final SimpleValidator<Transaction> transactionValidator;
   private final TransactionExecutor transactionExecutor;
@@ -32,11 +30,8 @@ public class BankService {
 
   @Post
   public Reply<?> executeTransaction(Request request) {
-    TransactionDTO dto = request.read(TransactionDTO.class).as(Json.class);
-    Transaction transaction = null;
-    if (null != dto && null != dto.amount) {
-      transaction = new Transaction(dto.amount, dto.transactionType);
-    }
+    TransactionDTO dto = request.read(TransactionDTO.class).as(MyJsonTransport.class);
+    Transaction transaction = new Transaction(dto.amount, dto.transactionType);
     Transaction result = null;
     boolean transactionIsValid = transactionValidator.isValid(transaction);
     if (transactionIsValid) {
@@ -45,4 +40,9 @@ public class BankService {
     }
     return Reply.with("Transaction did not occur").status(400);
   }
+
 }
+//    Transaction transaction = null;
+//    if (null != dto && null != dto.amount) {
+//      transaction = new Transaction(dto.amount, dto.transactionType);
+//    }

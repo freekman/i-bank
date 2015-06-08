@@ -1,14 +1,18 @@
 package com.clouway.http;
 
+import org.hibernate.validator.constraints.NotEmpty;
+
 import java.math.BigDecimal;
 
 /**
  * Created byivan.genchev1989@gmail.com.
  */
 class UserDTO {
-
+  @NotEmpty
   public String name;
+  @NotEmpty
   public String password;
+
   public BigDecimal amount;
 
   public UserDTO() {

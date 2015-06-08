@@ -57,21 +57,4 @@ public class BankServiceDepositTest {
     assertThat(replay, statusIs(200));
   }
 
-  @Test
-  public void transactionDTOWithNullAmount() throws Exception {
-    context.checking(new Expectations() {{
-      oneOf(request).read(TransactionDTO.class);
-      will(returnValue(new RequestRead<TransactionDTO>() {
-        @Override
-        public TransactionDTO as(Class<? extends Transport> transport) {
-          return new TransactionDTO(null, "deposit");
-        }
-      }));
-      oneOf(validator).isValid(null);
-      will(returnValue(false));
-    }});
-    Reply replay = bankService.executeTransaction(request);
-    assertThat(replay,statusIs(400));
-  }
-
 }

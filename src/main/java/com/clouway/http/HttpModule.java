@@ -9,6 +9,7 @@ import com.clouway.validator.UserFormValidator;
 import com.clouway.validator.Validator;
 import com.google.inject.Provides;
 import com.google.inject.Singleton;
+import com.google.inject.matcher.Matchers;
 import com.google.inject.servlet.ServletModule;
 import com.mongodb.MongoClient;
 import com.mongodb.client.MongoDatabase;
