@@ -7,7 +7,13 @@ import org.aopalliance.intercept.MethodInvocation;
 /**
  * Created byivan.genchev1989@gmail.com.
  */
-public class TransportBlocker implements MethodInterceptor {
+public class TransportInterceptor implements MethodInterceptor {
+
+  /**
+   * @param invocation
+   * @return an invocation to proceed if no error is cached or a replay with status 400
+   * @throws Throwable
+   */
   @Override
   public Object invoke(MethodInvocation invocation) throws Throwable {
     try {
